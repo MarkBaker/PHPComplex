@@ -18,10 +18,12 @@ class Complex {
 		//	Fix silly human errors
 		if (strpos($complexNumber,'+-') !== FALSE)
 			$complexNumber = str_replace('+-','-',$complexNumber);
+		if (strpos($complexNumber,'-+') !== FALSE)
+			$complexNumber = str_replace('-+','-',$complexNumber);
 		if (strpos($complexNumber,'++') !== FALSE)
 			$complexNumber = str_replace('++','+',$complexNumber);
 		if (strpos($complexNumber,'--') !== FALSE)
-			$complexNumber = str_replace('--','-',$complexNumber);
+			$complexNumber = str_replace('--','+',$complexNumber);
 
 		//	Basic validation of string, to parse out real and imaginary parts, and any suffix
 		$validComplex = preg_match('/^([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)?(([\-\+]?)([ij]?))$/ui',$complexNumber,$complexParts);
@@ -117,14 +119,6 @@ class Complex {
 	}
 
 
-	public function abs()
-	{
-		return sqrt(
-			($this->_realPart * $this->_realPart) +
-			($this->_imaginaryPart * $this->_imaginaryPart)
-		);
-	}
-
 	private function _validateComplexArgument($complex)
 	{
 		if (is_scalar($complex)) {
@@ -141,20 +135,123 @@ class Complex {
 		return $complex;
 	}
 
+	/**
+	 * Adds a value to this complex number
+	 *
+	 * @param	string|integer|float|Complex		$complex	The number to add
+	 * @return	Complex
+	 */
 	public function add($complex = 0.0)
 	{
 		$complex = $this->_validateComplexArgument($complex);
 
 		$this->_realPart += $complex->getReal();
 		$this->_imaginaryPart += $complex->getImaginary();
+
+		return $this;
 	}
 
+	/**
+	 * Subtracts a value from this complex number
+	 *
+	 * @param	string|integer|float|Complex		$complex	The number to subtract
+	 * @return	Complex
+	 */
 	public function subtract($complex = 0.0)
 	{
 		$complex = $this->_validateComplexArgument($complex);
 
 		$this->_realPart -= $complex->getReal();
 		$this->_imaginaryPart -= $complex->getImaginary();
+
+		return $this;
+	}
+
+	/**
+	 * Multiplies this complex number by a value
+	 *
+	 * @param	string|integer|float|Complex		$complex	The number to multiply by
+	 * @return	Complex
+	 */
+	public function multiply($complex = 1.0)
+	{
+		$complex = $this->_validateComplexArgument($complex);
+
+		$_realPart =
+			($this->getReal() * $complex->getReal()) -
+			($this->getImaginary() * $complex->getImaginary());
+		$_imaginaryPart =
+			($this->getReal() * $complex->getImaginary()) +
+			($this->getImaginary() * $complex->getReal());
+		$this->_realPart = $_realPart;
+		$this->_imaginaryPart = $_imaginaryPart;
+
+		return $this;
+	}
+
+	/**
+	 * Divides this complex number by a value
+	 *
+	 * @param	string|integer|float|Complex		$complex	The number to divide by
+	 * @return	Complex
+	 */
+	public function divideBy($complex = 1.0)
+	{
+		$complex = $this->_validateComplexArgument($complex);
+
+		$d1 =
+			($this->getReal() * $complex->getReal()) +
+			($this->getImaginary() * $complex->getImaginary());
+		$d2 =
+			($this->getImaginary() * $complex->getReal()) -
+			($this->getReal() * $complex->getImaginary());
+		$d3 =
+			($complex->getReal() * $complex->getReal()) +
+			($complex->getImaginary() * $complex->getImaginary());
+
+		$this->_realPart = $d1 / $d3;
+		$this->_imaginaryPart = $d2 / $d3;
+
+		return $this;
+	}
+
+	/**
+	 * Divides this complex number into a value
+	 *
+	 * @param	string|integer|float|Complex		$complex	The number to divide into
+	 * @return	Complex
+	 */
+	public function divideInto($complex = 1.0)
+	{
+		$complex = $this->_validateComplexArgument($complex);
+
+		$d1 =
+			($complex->getReal() * $this->getReal()) +
+			($complex->getImaginary() * $this->getImaginary());
+		$d2 =
+			($complex->getImaginary() * $this->getReal()) -
+			($complex->getReal() * $this->getImaginary());
+		$d3 =
+			($this->getReal() * $this->getReal()) +
+			($this->getImaginary() * $this->getImaginary());
+
+		$this->_realPart = $d1 / $d3;
+		$this->_imaginaryPart = $d2 / $d3;
+
+		return $this;
+	}
+
+	/**
+	 * Returns the absolute value (modulus) of this complex number
+	 *
+	 * @return	float
+	 */
+	public function abs()
+	{
+		return sqrt(
+			($this->_realPart * $this->_realPart) +
+			($this->_imaginaryPart * $this->_imaginaryPart)
+		);
 	}
 
 }
