@@ -64,7 +64,7 @@ class Complex {
 	}	//	function _parseComplex()
 
 
-	public function __construct($realPart, $imaginaryPart = NULL, $suffix = 'i')
+	public function __construct($realPart = 0.0, $imaginaryPart = NULL, $suffix = 'i')
 	{
 		if ($imaginaryPart === NULL) {
 			if (is_array($realPart)) {
