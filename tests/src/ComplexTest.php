@@ -85,4 +85,171 @@ class ComplexTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('i', $defaultComplexSuffix);
 	}
 
+    /**
+     * @dataProvider providerAdd
+     */
+	public function testAdd()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$complex->add(
+			new Complex($args[1])
+		);
+		$result = $complex->format();
+
+        $this->assertEquals($args[2], $result);
+	}
+
+    /**
+     * @dataProvider providerSubtract
+     */
+	public function testSubtract()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$complex->subtract(
+			new Complex($args[1])
+		);
+		$result = $complex->format();
+
+        $this->assertEquals($args[2], $result);
+	}
+
+    /**
+     * @dataProvider providerMultiply
+     */
+	public function testMultiply()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$complex->multiply(
+			new Complex($args[1])
+		);
+		$result = $complex->format();
+
+        $this->assertEquals($args[2], $result);
+	}
+
+    /**
+     * @dataProvider providerDivideBy
+     */
+	public function testDivideBy()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$complex->divideBy(
+			new Complex($args[1])
+		);
+		$result = $complex->format();
+
+        $this->assertEquals($args[2], $result);
+	}
+
+    /**
+     * @dataProvider providerDivideInto
+     */
+	public function testDivideInto()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$complex->divideInto(
+			new Complex($args[1])
+		);
+		$result = $complex->format();
+
+        $this->assertEquals($args[2], $result);
+	}
+
+
+    private $_twoComplexValueDataSets = array(
+		array(123,		NULL,	NULL,	456,		NULL,	NULL),
+		array(123.456,	NULL,	NULL,	789.012,	NULL,	NULL),
+		array(123.456,	78.90,	NULL,	-987.654,	-32.1,	NULL),
+		array(123.456,	78.90,	NULL,	-987.654,	NULL,	NULL),
+		array(-987.654,	-32.1,	NULL,	0,			1,		NULL),
+		array(-987.654,	-32.1,	NULL,	0,			-1,		NULL),
+	);
+
+	private function _formatTestResultArray($expectedResults)
+	{
+		$testValues = array();
+		foreach($this->_twoComplexValueDataSets as $test => $dataSet) {
+			$testValues[$test][] = array_slice($dataSet,0,3);
+			$testValues[$test][] = array_slice($dataSet,3,3);
+			$testValues[$test][] = $expectedResults[$test];
+		}
+
+		return $testValues;
+	}
+
+    public function providerAdd()
+    {
+		$expectedResults = array(
+			579,
+			912.468,
+			'-864.198+46.8i',
+			'-864.198+78.9i',
+			'-987.654-31.1i',
+			'-987.654-33.1i',
+		);
+
+		return $this->_formatTestResultArray($expectedResults);
+	}
+
+    public function providerSubtract()
+    {
+		$expectedResults = array(
+			-333,
+			-665.556,
+			'1111.11+111i',
+			'1111.11+78.9i',
+			'-987.654-33.1i',
+			'-987.654-31.1i',
+		);
+
+		return $this->_formatTestResultArray($expectedResults);
+	}
+
+    public function providerMultiply()
+    {
+		$expectedResults = array(
+			56088,
+			97408.265472,
+			'-119399.122224-81888.8382i',
+			'-121931.812224-77925.9006i',
+			'32.1-987.654i',
+			'-32.1+987.654i',
+		);
+
+		return $this->_formatTestResultArray($expectedResults);
+	}
+
+    public function providerDivideBy()
+    {
+		$expectedResults = array(
+			0.26973684210526,
+			0.15646910313151,
+			'-0.12746100416566-0.075743632655042i',
+			'-0.12499924062475-0.07988627596304i',
+			'-32.1+987.654i',
+			'32.1-987.654i',
+		);
+
+		return $this->_formatTestResultArray($expectedResults);
+	}
+
+    public function providerDivideInto()
+    {
+		$expectedResults = array(
+			3.7073170731707,
+			6.3910381026439,
+			'-5.7980554621323+3.4454913164385i',
+			'-5.6800726089814+3.6301008363193i',
+			'-3.2872812413246E-5-0.0010114319212209i',
+			'3.2872812413246E-5+0.0010114319212209i',
+		);
+
+		return $this->_formatTestResultArray($expectedResults);
+	}
+
 }

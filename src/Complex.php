@@ -70,6 +70,7 @@ class Complex {
 			if (is_array($realPart)) {
 				//	We have an array of (potentially) real and imaginary parts, and any suffix
 				list ($realPart, $imaginaryPart, $suffix) = array_values($realPart) + array(0.0, 0.0, 'i');
+				if ($suffix === NULL) $suffix = 'i';
 			} elseif((is_string($realPart)) || (is_numeric($realPart))) {
 				//	We've been given a string to parse to extract the real and imaginary parts, and any suffix
 				list ($realPart, $imaginaryPart, $suffix) = self::_parseComplex($realPart);
@@ -97,7 +98,7 @@ class Complex {
 		return $this->_suffix;
 	}
 
-	public function __toString()
+	public function format()
 	{
 		$str = "";
 		if ($this->_imaginaryPart != 0.0) {
@@ -116,6 +117,11 @@ class Complex {
 			$str = "0.0";
 
 		return $str;
+	}
+
+	public function __toString()
+	{
+		return $this->format();
 	}
 
 
