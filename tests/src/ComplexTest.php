@@ -161,6 +161,41 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	}
 
 
+    /**
+     * @dataProvider providerAbs
+     */
+	public function testAbs()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->abs();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+
+    private $_oneComplexValueDataSets = array(
+		array(123,		NULL,	NULL),
+		array(123.456,	NULL,	NULL),
+		array(123.456,	78.90,	NULL),
+		array(-987.654,	NULL,	NULL),
+		array(-987.654,	-32.1,	NULL),
+		array(123.456,	-78.90,	NULL),
+		array(0,		1,		NULL),
+		array(0,		-1,		NULL),
+	);
+
+	private function _formatOneArgumentTestResultArray($expectedResults)
+	{
+		$testValues = array();
+		foreach($this->_oneComplexValueDataSets as $test => $dataSet) {
+			$testValues[$test][] = $dataSet;
+			$testValues[$test][] = $expectedResults[$test];
+		}
+
+		return $testValues;
+	}
+
     private $_twoComplexValueDataSets = array(
 		array(123,		NULL,	NULL,	456,		NULL,	NULL),
 		array(123.456,	NULL,	NULL,	789.012,	NULL,	NULL),
@@ -170,7 +205,7 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		array(-987.654,	-32.1,	NULL,	0,			-1,		NULL),
 	);
 
-	private function _formatTestResultArray($expectedResults)
+	private function _formatTwoArgumentTestResultArray($expectedResults)
 	{
 		$testValues = array();
 		foreach($this->_twoComplexValueDataSets as $test => $dataSet) {
@@ -193,7 +228,7 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 			'-987.654-33.1i',
 		);
 
-		return $this->_formatTestResultArray($expectedResults);
+		return $this->_formatTwoArgumentTestResultArray($expectedResults);
 	}
 
     public function providerSubtract()
@@ -207,7 +242,7 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 			'-987.654-31.1i',
 		);
 
-		return $this->_formatTestResultArray($expectedResults);
+		return $this->_formatTwoArgumentTestResultArray($expectedResults);
 	}
 
     public function providerMultiply()
@@ -221,7 +256,7 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 			'-32.1+987.654i',
 		);
 
-		return $this->_formatTestResultArray($expectedResults);
+		return $this->_formatTwoArgumentTestResultArray($expectedResults);
 	}
 
     public function providerDivideBy()
@@ -235,7 +270,7 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 			'32.1-987.654i',
 		);
 
-		return $this->_formatTestResultArray($expectedResults);
+		return $this->_formatTwoArgumentTestResultArray($expectedResults);
 	}
 
     public function providerDivideInto()
@@ -249,7 +284,23 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 			'3.2872812413246E-5+0.0010114319212209i',
 		);
 
-		return $this->_formatTestResultArray($expectedResults);
+		return $this->_formatTwoArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerAbs()
+    {
+		$expectedResults = array(
+			123,
+			123.456,
+			146.51482497004,
+			987.654,
+			988.17550754712,
+			146.51482497004,
+			1,
+			1
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
 	}
 
 }
