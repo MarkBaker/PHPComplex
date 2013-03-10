@@ -260,5 +260,89 @@ class Complex {
 		);
 	}
 
+	/**
+	 * Returns the argument theta of this complex number, i.e. the angle in radians from the real
+	 * axis to the representation of the number in polar coordinates.
+	 *
+	 * @return	float
+	 */
+	public function argument()
+	{
+		if ($this->_realPart == 0.0) {
+			if ($this->_imaginaryPart == 0.0) {
+				return 0.0;
+			} elseif($this->_imaginaryPart < 0.0) {
+				return M_PI / -2;
+			} else {
+				return M_PI / 2;
+			}
+		} elseif ($this->_realPart > 0.0) {
+			return atan($this->_imaginaryPart / $this->_realPart);
+		} elseif ($this->_imaginaryPart < 0.0) {
+			return 0 - (M_PI - atan(abs($this->_imaginaryPart) / abs($this->_realPart)));
+		} else {
+			return M_PI - atan($this->_imaginaryPart / abs($this->_realPart));
+		}
+	}
+
+	/**
+	 * Returns the complex conjugate of this complex number
+	 *
+	 * @return	Complex
+	 */
+	public function conjugate()
+	{
+		return new Complex(
+			$this->_realPart,
+			0 - $this->_imaginaryPart,
+			$this->_suffix
+		);
+	}
+
+	/**
+	 * Returns the cosine of this complex number
+	 *
+	 * @return	Complex
+	 */
+	public function cos()
+	{
+		if ($this->_imaginaryPart == 0.0) {
+			return new Complex(
+				cos($this->_realPart),
+				0.0,
+				$this->_suffix
+			);
+		} else {
+			$complex = new Complex(
+				cos($this->_realPart) * cosh($this->_imaginaryPart),
+				sin($this->_realPart) * sinh($this->_imaginaryPart),
+				$this->_suffix
+			);
+			return $complex->conjugate();
+		}
+	}
+
+	/**
+	 * Returns the sine of this complex number
+	 *
+	 * @return	Complex
+	 */
+	public function sin()
+	{
+		if ($this->_imaginaryPart == 0.0) {
+			return new Complex(
+				sin($this->_realPart),
+				0.0,
+				$this->_suffix
+			);
+		} else {
+			return new Complex(
+				sin($this->_realPart) * cosh($this->_imaginaryPart),
+				cos($this->_realPart) * sinh($this->_imaginaryPart),
+				$this->_suffix
+			);
+		}
+	}
+
 }
 

@@ -173,6 +173,54 @@ class ComplexTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($args[1], $result);
 	}
 
+    /**
+     * @dataProvider providerArgument
+     */
+	public function testArgument()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->argument();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerConjugate
+     */
+	public function testConjugate()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = (string) $complex->conjugate();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerCos
+     */
+	public function testCos()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = (string) $complex->cos();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerSin
+     */
+	public function testSin()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = (string) $complex->sin();
+
+        $this->assertEquals($args[1], $result);
+	}
+
 
     private $_oneComplexValueDataSets = array(
 		array(123,		NULL,	NULL),
@@ -302,5 +350,70 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 
 		return $this->_formatOneArgumentTestResultArray($expectedResults);
 	}
+
+    public function providerArgument()
+    {
+		$expectedResults = array(
+			0,
+			0,
+			0.56867025520691,
+			M_PI,
+			-3.109102829819,
+			-0.56867025520691,
+			1.5707963267949,
+			-1.5707963267949
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerConjugate()
+    {
+		$expectedResults = array(
+			123,
+			123.456,
+			'123.456-78.9i',
+			-987.654,
+			'-987.654+32.1i',
+			'123.456+78.9i',
+			'-i',
+			'i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerCos()
+    {
+		$expectedResults = array(
+			-0.887968906691855,
+			-0.594713971092157,
+			'-5.4841934737951E+33+7.4135606095991E+33i',
+			0.36803011855732,
+			'16058546551240-40571297167732i',
+			'-5.4841934737951E+33-7.4135606095991E+33i',
+			1.54308063481524,
+			1.54308063481524
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerSin()
+    {
+		$expectedResults = array(
+			-0.459903490689591,
+			-0.803937368572824,
+			'-7.4135606095991E+33-5.4841934737951E+33i',
+			-0.929813869457046,
+			'-40571297167732-16058546551240i',
+			'-7.4135606095991E+33+5.4841934737951E+33i',
+			'1.1752011936438i',
+			'-1.1752011936438i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
 
 }
