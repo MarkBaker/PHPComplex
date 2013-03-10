@@ -2,6 +2,8 @@
 
 class Complex {
 
+	const EULER = 2.71828182845904523536;
+
 	protected $_realPart = 0.0;
 
 	protected $_imaginaryPart = 0.0;
@@ -343,6 +345,117 @@ class Complex {
 			);
 		}
 	}
+
+	/**
+	 * Returns the square root of this complex number
+	 *
+	 * @return	Complex
+	 */
+	public function sqrt() {
+		$theta = $this->argument();
+		$d1 = cos($theta / 2);
+		$d2 = sin($theta / 2);
+		$r = sqrt(
+			sqrt(
+				($this->_realPart * $this->_realPart) + 
+				($this->_imaginaryPart * $this->_imaginaryPart)
+			)
+		);
+
+		return new Complex(
+			$d1 * $r,
+			$d2 * $r,
+			$this->_suffix
+		);
+	}
+
+	/**
+	 * Returns the natural logarithm of this complex number
+	 *
+	 * @return	Complex
+	 */
+	public function ln() {
+		if (($this->_realPart == 0.0) && ($this->_imaginaryPart == 0.0)) {
+			return new Complex(
+				0.0,
+				0.0,
+				$this->_suffix
+			);
+		}
+
+		$logR = log(
+			sqrt(
+				($this->_realPart * $this->_realPart) + 
+				($this->_imaginaryPart * $this->_imaginaryPart)
+			)
+		);
+		$t = $this->argument();
+
+			return new Complex(
+				$logR,
+				$t,
+				$this->_suffix
+			);
+	}	//	function IMLN()
+
+	/**
+	 * Returns the common logarithm (base 10) of this complex number
+	 *
+	 * @return	Complex
+	 */
+	public  function log10() {
+		if (($this->_realPart == 0.0) && ($this->_imaginaryPart == 0.0)) {
+			return new Complex(
+				0.0,
+				0.0,
+				$this->_suffix
+			);
+		} elseif (($this->_realPart > 0.0) && ($this->_imaginaryPart == 0.0)) {
+			return new Complex(
+				log10($this->_realPart),
+				0.0,
+				$this->_suffix
+			);
+		}
+
+		$complex = new Complex(
+			$this->_realPart,
+			$this->_imaginaryPart,
+			$this->_suffix
+		);
+		$complex = $complex->ln();
+		return $complex->multiply(log10(self::EULER));
+	}
+
+	/**
+	 * Returns the base-2 logarithm of this complex number
+	 *
+	 * @return	Complex
+	 */
+	public  function log2() {
+		if (($this->_realPart == 0.0) && ($this->_imaginaryPart == 0.0)) {
+			return new Complex(
+				0.0,
+				0.0,
+				$this->_suffix
+			);
+		} elseif (($this->_realPart > 0.0) && ($this->_imaginaryPart == 0.0)) {
+			return new Complex(
+				log($this->_realPart,2),
+				0.0,
+				$this->_suffix
+			);
+		}
+
+		$complex = new Complex(
+			$this->_realPart,
+			$this->_imaginaryPart,
+			$this->_suffix
+		);
+		$complex = $complex->ln();
+		return $complex->multiply(log(self::EULER,2));
+	}	//	function IMLOG2()
+
 
 }
 

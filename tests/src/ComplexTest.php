@@ -5,6 +5,16 @@ include 'Complex.php';
 class ComplexTest extends PHPUnit_Framework_TestCase
 {
 
+    protected function setUp()
+    {
+        $this->_precision = ini_set('precision', 16);
+    }
+
+    protected function tearDown()
+    {
+        ini_set('precision', $this->_precision);
+    }
+
     public function testInstantiate()
     {
         $complexObject = new Complex();
@@ -221,6 +231,54 @@ class ComplexTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($args[1], $result);
 	}
 
+    /**
+     * @dataProvider providerSqrt
+     */
+	public function testSqrt()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = (string) $complex->sqrt();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerLn
+     */
+	public function testLn()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = (string) $complex->ln();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerLog10
+     */
+	public function testLog10()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = (string) $complex->log10();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerLog2
+     */
+	public function testLog2()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = (string) $complex->log2();
+
+        $this->assertEquals($args[1], $result);
+	}
+
 
     private $_oneComplexValueDataSets = array(
 		array(123,		NULL,	NULL),
@@ -312,8 +370,8 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$expectedResults = array(
 			0.26973684210526,
 			0.15646910313151,
-			'-0.12746100416566-0.075743632655042i',
-			'-0.12499924062475-0.07988627596304i',
+			'-0.127461004165656-0.07574363265504158i',
+			'-0.1249992406247532-0.0798862759630397i',
 			'-32.1+987.654i',
 			'32.1-987.654i',
 		);
@@ -326,10 +384,10 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$expectedResults = array(
 			3.7073170731707,
 			6.3910381026439,
-			'-5.7980554621323+3.4454913164385i',
-			'-5.6800726089814+3.6301008363193i',
-			'-3.2872812413246E-5-0.0010114319212209i',
-			'3.2872812413246E-5+0.0010114319212209i',
+			'-5.798055462132258+3.44549131643853i',
+			'-5.680072608981408+3.630100836319281i',
+			'-3.287281241324573E-5-0.001011431921220928i',
+			'3.287281241324573E-5+0.001011431921220928i',
 		);
 
 		return $this->_formatTwoArgumentTestResultArray($expectedResults);
@@ -388,10 +446,10 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$expectedResults = array(
 			-0.887968906691855,
 			-0.594713971092157,
-			'-5.4841934737951E+33+7.4135606095991E+33i',
+			'-5.484193473795067E+33+7.413560609599075E+33i',
 			0.36803011855732,
-			'16058546551240-40571297167732i',
-			'-5.4841934737951E+33-7.4135606095991E+33i',
+			'16058546551240.22-40571297167732.33i',
+			'-5.484193473795067E+33-7.413560609599075E+33i',
 			1.54308063481524,
 			1.54308063481524
 		);
@@ -404,16 +462,79 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$expectedResults = array(
 			-0.459903490689591,
 			-0.803937368572824,
-			'-7.4135606095991E+33-5.4841934737951E+33i',
+			'-7.413560609599075E+33-5.484193473795067E+33i',
 			-0.929813869457046,
-			'-40571297167732-16058546551240i',
-			'-7.4135606095991E+33+5.4841934737951E+33i',
-			'1.1752011936438i',
-			'-1.1752011936438i'
+			'-40571297167732.33-16058546551240.22i',
+			'-7.413560609599075E+33+5.484193473795067E+33i',
+			'1.175201193643801i',
+			'-1.175201193643801i'
 		);
 
 		return $this->_formatOneArgumentTestResultArray($expectedResults);
 	}
 
+    public function providerSqrt()
+    {
+		$expectedResults = array(
+			11.0905365064094,
+			11.1110755554987,
+			'11.618322274968+3.395498856577265i',
+			'1.9251347547791E-15+31.42696294585272i',
+			'0.5106405522066606-31.43111123987757i',
+			'11.618322274968-3.395498856577265i',
+			'0.7071067811865476+0.7071067811865475i',
+			'0.7071067811865476-0.7071067811865475i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerLn()
+    {
+		$expectedResults = array(
+			4.81218435537242,
+			4.81588481728326,
+			'4.987126617672031+0.5686702552069114i',
+			'6.895332433983527+3.141592653589793i',
+			'6.895860321189619-3.109102829818983i',
+			'4.987126617672031-0.5686702552069114i',
+			'1.570796326794897i',
+			'-1.570796326794897i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerLog10()
+    {
+		$expectedResults = array(
+			2.0899051114394,
+			2.09151220162777,
+			'2.165881570607791+0.2469703538588756i',
+			'2.994604826967564+1.364376353841841i',
+			'2.994834085468237-1.35026620266017i',
+			'2.165881570607791-0.2469703538588756i',
+			'0.6821881769209206i',
+			'-0.6821881769209206i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerLog2()
+    {
+		$expectedResults = array(
+			6.94251450533924,
+			6.94785314338702,
+			'7.194902839600788+0.8204177570880723i',
+			'9.947861907788861+4.532360141827193i',
+			'9.948623488043237-4.48548723419369i',
+			'7.194902839600788-0.8204177570880723i',
+			'2.266180070913597i',
+			'-2.266180070913597i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
 
 }
