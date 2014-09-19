@@ -59,10 +59,11 @@ class Complex {
 		}
 
 		//	Return real and imaginary parts and suffix as an array, and set a default suffix if user input lazily
-		return array( $complexParts[1],
-					  $complexParts[4],
-					  !empty($complexParts[9]) ? $complexParts[9] : 'i'
-					);
+		return array(
+            $complexParts[1],
+			$complexParts[4],
+			!empty($complexParts[9]) ? $complexParts[9] : 'i'
+		);
 	}	//	function _parseComplex()
 
 
@@ -85,16 +86,31 @@ class Complex {
 		$this->_suffix = strtolower($suffix);
 	}
 
+	/**
+	 * Gets the real part of this complex number
+	 *
+	 * @return	Float
+	 */
 	public function getReal()
 	{
 		return $this->_realPart;
 	}
 
+	/**
+	 * Gets the imaginary part of this complex number
+	 *
+	 * @return	Float
+	 */
 	public function getImaginary()
 	{
 		return $this->_imaginaryPart;
 	}
 
+	/**
+	 * Gets the suffix of this complex number
+	 *
+	 * @return	String
+	 */
 	public function getSuffix()
 	{
 		return $this->_suffix;
@@ -391,12 +407,12 @@ class Complex {
 		);
 		$t = $this->argument();
 
-			return new Complex(
-				$logR,
-				$t,
-				$this->_suffix
-			);
-	}	//	function IMLN()
+        return new Complex(
+			$logR,
+			$t,
+			$this->_suffix
+		);
+	}
 
 	/**
 	 * Returns the common logarithm (base 10) of this complex number
@@ -454,8 +470,7 @@ class Complex {
 		);
 		$complex = $complex->ln();
 		return $complex->multiply(log(self::EULER,2));
-	}	//	function IMLOG2()
-
+	}
 
 }
 

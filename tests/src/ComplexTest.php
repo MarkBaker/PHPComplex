@@ -95,6 +95,20 @@ class ComplexTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('i', $defaultComplexSuffix);
 	}
 
+    public function testInstantiateSimplistic()
+    {
+        $complexObject = new Complex('-i');
+
+        $defaultComplexReal = $complexObject->getReal();
+        $this->assertEquals(0, $defaultComplexReal);
+
+        $defaultComplexImaginary = $complexObject->getImaginary();
+        $this->assertEquals(-1, $defaultComplexImaginary);
+
+        $defaultComplexSuffix = $complexObject->getSuffix();
+        $this->assertEquals('i', $defaultComplexSuffix);
+	}
+
     /**
      * @dataProvider providerAdd
      */
@@ -255,6 +269,14 @@ class ComplexTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($args[1], $result);
 	}
 
+	public function testLnZero()
+	{
+		$complex = new Complex(0);
+		$result = (string) $complex->ln();
+
+        $this->assertEquals('0', $result);
+	}
+
     /**
      * @dataProvider providerLog10
      */
@@ -267,6 +289,14 @@ class ComplexTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($args[1], $result);
 	}
 
+	public function testLog10Zero()
+	{
+		$complex = new Complex(0);
+		$result = (string) $complex->log10();
+
+        $this->assertEquals('0', $result);
+	}
+
     /**
      * @dataProvider providerLog2
      */
@@ -277,6 +307,14 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$result = (string) $complex->log2();
 
         $this->assertEquals($args[1], $result);
+	}
+
+	public function testLog2Zero()
+	{
+		$complex = new Complex(0);
+		$result = (string) $complex->log2();
+
+        $this->assertEquals('0', $result);
 	}
 
 
