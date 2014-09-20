@@ -45,7 +45,7 @@ class Complex
             //    Neither real nor imaginary part, so test to see if we actually have a suffix
             $validComplex = preg_match('/^([\-\+]?)([ij])$/ui', $complexNumber, $complexParts);
             if (!$validComplex) {
-                throw new Exception('COMPLEX: Invalid complex number');
+                throw new \Exception('COMPLEX: Invalid complex number');
             }
             //    We have a suffix, so set the real to 0, the imaginary to either 1 or -1 (as defined by the sign)
             $imaginary = 1;
@@ -164,12 +164,12 @@ class Complex
         if (is_scalar($complex)) {
             $complex = new Complex($complex);
         } elseif (!is_object($complex) || !($complex instanceof Complex)) {
-            throw new Exception('Value "'.$complex.'" is not a valid complex number');
+            throw new \Exception('COMPLEX: Value "'.$complex.'" is not a valid complex number');
         }
         if ($complex->getSuffix() !== '' &&
             $this->suffix !== '' &&
             $complex->getSuffix() !== $this->suffix) {
-            throw new Exception('Inconsistent suffix');
+            throw new \Exception('COMPLEX: Inconsistent suffix');
         }
 
         return $complex;
