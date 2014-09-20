@@ -335,14 +335,54 @@ class Complex
     {
         if ($this->imaginaryPart == 0.0) {
             return new Complex(cos($this->realPart), 0.0, $this->suffix);
+        }
+
+        $complex = new Complex(
+            cos($this->realPart) * cosh($this->imaginaryPart),
+            sin($this->realPart) * sinh($this->imaginaryPart),
+            $this->suffix
+        );
+        return $complex->conjugate();
+    }
+
+    /**
+     * Returns the hyperbolic cosine of this complex number
+     *
+     * @return    Complex
+     */
+    public function cosh()
+    {
+        if ($this->imaginaryPart == 0.0) {
+            return new Complex(cosh($this->realPart), 0.0, $this->suffix);
         } else {
-            $complex = new Complex(
-                cos($this->realPart) * cosh($this->imaginaryPart),
-                sin($this->realPart) * sinh($this->imaginaryPart),
+            return new Complex(
+                cosh($this->realPart) * cos($this->imaginaryPart),
+                sinh($this->realPart) * sin($this->imaginaryPart),
                 $this->suffix
             );
-            return $complex->conjugate();
         }
+    }
+
+    /**
+     * Returns the inverse cosine of this complex number
+     *
+     * @return    Complex
+     */
+    public function acos()
+    {
+        $v = clone $this;
+        $v = $v->multiply($this);
+        $t = new Complex(1.0);
+        $t = $t->subtract($v);
+        $t = $t->sqrt();
+        $v = new Complex(
+            $this->realPart - $t->getImaginary(),
+            $this->imaginaryPart + $t->getReal()
+        );
+        $z = $v->ln();
+        return new Complex(
+            $z->getImaginary(), -1 * $z->getReal()
+        );
     }
 
     /**
@@ -361,6 +401,46 @@ class Complex
                 $this->suffix
             );
         }
+    }
+
+    /**
+     * Returns the hyperbolic sine of this complex number
+     *
+     * @return    Complex
+     */
+    public function sinh()
+    {
+        if ($this->imaginaryPart == 0.0) {
+            return new Complex(sinh($this->realPart), 0.0, $this->suffix);
+        } else {
+            return new Complex(
+                sinh($this->realPart) * cos($this->imaginaryPart),
+                cosh($this->realPart) * sin($this->imaginaryPart),
+                $this->suffix
+            );
+        }
+    }
+
+    /**
+     * Returns the inverse sine of this complex number
+     *
+     * @return    Complex
+     */
+    public function asin()
+    {
+        $v = clone $this;
+        $v = $v->multiply($this);
+        $t = new Complex(1.0);
+        $t = $t->subtract($v);
+        $t = $t->sqrt();
+        $v = new Complex(
+            $t->getReal() - $this->imaginaryPart,
+            $t->getImaginary() + $this->realPart
+        );
+        $z = $v->ln();
+        return new Complex(
+            $z->getImaginary(), -1 * $z->getReal()
+        );
     }
 
     /**
@@ -386,12 +466,13 @@ class Complex
     /**
      * Returns the natural logarithm of this complex number
      *
-     * @return    Complex
+     * @return Complex
+     * @throws \InvalidArgumentException
      */
     public function ln()
     {
         if (($this->realPart == 0.0) && ($this->imaginaryPart == 0.0)) {
-            return new Complex(0.0, 0.0, $this->suffix);
+            throw new \InvalidArgumentException();
         }
 
         $logR = log(
@@ -408,12 +489,13 @@ class Complex
     /**
      * Returns the common logarithm (base 10) of this complex number
      *
-     * @return    Complex
+     * @return Complex
+     * @throws \InvalidArgumentException
      */
     public function log10()
     {
         if (($this->realPart == 0.0) && ($this->imaginaryPart == 0.0)) {
-            return new Complex(0.0, 0.0, $this->suffix);
+            throw new \InvalidArgumentException();
         } elseif (($this->realPart > 0.0) && ($this->imaginaryPart == 0.0)) {
             return new Complex(log10($this->realPart), 0.0, $this->suffix);
         }
@@ -430,12 +512,13 @@ class Complex
     /**
      * Returns the base-2 logarithm of this complex number
      *
-     * @return    Complex
+     * @return Complex
+     * @throws \InvalidArgumentException
      */
     public function log2()
     {
         if (($this->realPart == 0.0) && ($this->imaginaryPart == 0.0)) {
-            return new Complex(0.0, 0.0, $this->suffix);
+            throw new \InvalidArgumentException();
         } elseif (($this->realPart > 0.0) && ($this->imaginaryPart == 0.0)) {
             return new Complex(log($this->realPart, 2), 0.0, $this->suffix);
         }
