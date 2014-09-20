@@ -119,9 +119,10 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$complex->add(
 			new Complex($args[1])
 		);
-		$result = $complex->format();
 
-        $this->assertEquals($args[2], $result);
+        $expected = new Complex($args[2]);
+        $this->assertEquals($expected->getReal(), $complex->getReal());
+        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
 	}
 
     /**
@@ -134,9 +135,10 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$complex->subtract(
 			new Complex($args[1])
 		);
-		$result = $complex->format();
 
-        $this->assertEquals($args[2], $result);
+        $expected = new Complex($args[2]);
+        $this->assertEquals($expected->getReal(), $complex->getReal());
+        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
 	}
 
     /**
@@ -149,9 +151,10 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$complex->multiply(
 			new Complex($args[1])
 		);
-		$result = $complex->format();
 
-        $this->assertEquals($args[2], $result);
+        $expected = new Complex($args[2]);
+        $this->assertEquals($expected->getReal(), $complex->getReal());
+        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
 	}
 
     /**
@@ -164,9 +167,10 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$complex->divideBy(
 			new Complex($args[1])
 		);
-		$result = $complex->format();
 
-        $this->assertEquals($args[2], $result);
+        $expected = new Complex($args[2]);
+        $this->assertEquals($expected->getReal(), $complex->getReal());
+        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
 	}
 
     /**
@@ -179,9 +183,10 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 		$complex->divideInto(
 			new Complex($args[1])
 		);
-		$result = $complex->format();
 
-        $this->assertEquals($args[2], $result);
+        $expected = new Complex($args[2]);
+        $this->assertEquals($expected->getReal(), $complex->getReal());
+        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
 	}
 
 
@@ -216,9 +221,15 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = (string) $complex->conjugate();
+		$result = $complex->conjugate();
 
-        $this->assertEquals($args[1], $result);
+        if (is_numeric($args[1])) {
+            $this->assertEquals($args[1], (string) $result);
+        } else {
+            $expected = new Complex($args[1]);
+            $this->assertEquals($expected->getReal(), $result->getReal());
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        }
 	}
 
     /**
@@ -228,9 +239,15 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = (string) $complex->cos();
+		$result = $complex->cos();
 
-        $this->assertEquals($args[1], $result);
+        if (is_numeric($args[1])) {
+            $this->assertEquals($args[1], (string) $result);
+        } else {
+            $expected = new Complex($args[1]);
+            $this->assertEquals($expected->getReal(), $result->getReal());
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        }
 	}
 
     /**
@@ -240,9 +257,15 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = (string) $complex->sin();
+		$result = $complex->sin();
 
-        $this->assertEquals($args[1], $result);
+        if (is_numeric($args[1])) {
+            $this->assertEquals($args[1], (string) $result);
+        } else {
+            $expected = new Complex($args[1]);
+            $this->assertEquals($expected->getReal(), $result->getReal());
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        }
 	}
 
     /**
@@ -252,9 +275,15 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = (string) $complex->sqrt();
+		$result = $complex->sqrt();
 
-        $this->assertEquals($args[1], $result);
+        if (is_numeric($args[1])) {
+            $this->assertEquals($args[1], (string) $result);
+        } else {
+            $expected = new Complex($args[1]);
+            $this->assertEquals($expected->getReal(), $result->getReal());
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        }
 	}
 
     /**
@@ -264,9 +293,15 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = (string) $complex->ln();
+		$result = $complex->ln();
 
-        $this->assertEquals($args[1], $result);
+        if (is_numeric($args[1])) {
+            $this->assertEquals($args[1], (string) $result);
+        } else {
+            $expected = new Complex($args[1]);
+            $this->assertEquals($expected->getReal(), $result->getReal());
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        }
 	}
 
 	public function testLnZero()
@@ -284,9 +319,15 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = (string) $complex->log10();
+		$result = $complex->log10();
 
-        $this->assertEquals($args[1], $result);
+        if (is_numeric($args[1])) {
+            $this->assertEquals($args[1], (string) $result);
+        } else {
+            $expected = new Complex($args[1]);
+            $this->assertEquals($expected->getReal(), $result->getReal());
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        }
 	}
 
 	public function testLog10Zero()
@@ -304,9 +345,15 @@ class ComplexTest extends PHPUnit_Framework_TestCase
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = (string) $complex->log2();
+		$result = $complex->log2();
 
-        $this->assertEquals($args[1], $result);
+        if (is_numeric($args[1])) {
+            $this->assertEquals($args[1], (string) $result);
+        } else {
+            $expected = new Complex($args[1]);
+            $this->assertEquals($expected->getReal(), $result->getReal());
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        }
 	}
 
 	public function testLog2Zero()
