@@ -1,5 +1,7 @@
 <?php
 
+namespace MarkBaker\PHPComplex;
+
 class Complex
 {
     const EULER = 2.71828182845904523536;

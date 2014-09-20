@@ -1,8 +1,11 @@
 <?php
 
+namespace MarkBaker\PHPComplex;
+use MarkBaker\PHPComplex\Complex as Complex;
+
 include 'Complex.php';
 
-class ComplexTest extends PHPUnit_Framework_TestCase
+class ComplexTest extends \PHPUnit_Framework_TestCase
 {
 
     protected function setUp()
@@ -21,7 +24,7 @@ class ComplexTest extends PHPUnit_Framework_TestCase
         //    Must return an object...
         $this->assertTrue(is_object($complexObject));
         //    ... of the correct type
-        $this->assertTrue(is_a($complexObject, 'Complex'));
+        $this->assertTrue(is_a($complexObject, __NAMESPACE__ . '\Complex'));
 
         $defaultComplexReal = $complexObject->getReal();
         $this->assertEquals(0.0, $defaultComplexReal);

@@ -1,0 +1,3 @@
+# General Ignores
+vendor
+tests/codeCoverage

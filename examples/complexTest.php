@@ -1,5 +1,7 @@
 <?php
 
+use MarkBaker\PHPComplex\Complex as Complex;
+
 include '../src/Complex.php';
 
 echo 'Create', PHP_EOL;
