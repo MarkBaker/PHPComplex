@@ -15,19 +15,19 @@ class Complex
 
     protected static function parseComplex($complexNumber)
     {
-        //    Test for real number, with no imaginary part
+        // Test for real number, with no imaginary part
         if (is_numeric($complexNumber)) {
             return array($complexNumber, 0, null);
         }
 
-        //    Fix silly human errors
+        // Fix silly human errors
         $complexNumber = str_replace(
             array('+-', '-+', '++', '--'),
             array('-', '-', '+', '+'),
             $complexNumber
         );
 
-        //    Basic validation of string, to parse out real and imaginary parts, and any suffix
+        // Basic validation of string, to parse out real and imaginary parts, and any suffix
         $validComplex = preg_match(
             '/^([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)?(([\-\+]?)([ij]?))$/ui',
             $complexNumber,
@@ -35,12 +35,12 @@ class Complex
         );
 
         if (!$validComplex) {
-            //    Neither real nor imaginary part, so test to see if we actually have a suffix
+            // Neither real nor imaginary part, so test to see if we actually have a suffix
             $validComplex = preg_match('/^([\-\+]?)([ij])$/ui', $complexNumber, $complexParts);
             if (!$validComplex) {
                 throw new \Exception('COMPLEX: Invalid complex number');
             }
-            //    We have a suffix, so set the real to 0, the imaginary to either 1 or -1 (as defined by the sign)
+            // We have a suffix, so set the real to 0, the imaginary to either 1 or -1 (as defined by the sign)
             $imaginary = 1;
             if ($complexParts[1] === '-') {
                 $imaginary = 0 - $imaginary;
@@ -76,18 +76,18 @@ class Complex
     {
         if ($imaginaryPart === null) {
             if (is_array($realPart)) {
-                //    We have an array of (potentially) real and imaginary parts, and any suffix
+                // We have an array of (potentially) real and imaginary parts, and any suffix
                 list ($realPart, $imaginaryPart, $suffix) = array_values($realPart) + array(0.0, 0.0, 'i');
                 if ($suffix === null) {
                     $suffix = 'i';
                 }
             } elseif ((is_string($realPart)) || (is_numeric($realPart))) {
-                //    We've been given a string to parse to extract the real and imaginary parts, and any suffix
+                // We've been given a string to parse to extract the real and imaginary parts, and any suffix
                 list($realPart, $imaginaryPart, $suffix) = self::parseComplex($realPart);
             }
         }
 
-        //    Set parsed values in our properties
+        // Set parsed values in our properties
         $this->realPart = (float) $realPart;
         $this->imaginaryPart = (float) $imaginaryPart;
         $this->suffix = strtolower($suffix);
@@ -96,7 +96,7 @@ class Complex
     /**
      * Gets the real part of this complex number
      *
-     * @return    Float
+     * @return Float
      */
     public function getReal()
     {
@@ -106,7 +106,7 @@ class Complex
     /**
      * Gets the imaginary part of this complex number
      *
-     * @return    Float
+     * @return Float
      */
     public function getImaginary()
     {
@@ -116,7 +116,7 @@ class Complex
     /**
      * Gets the suffix of this complex number
      *
-     * @return    String
+     * @return String
      */
     public function getSuffix()
     {
@@ -168,7 +168,7 @@ class Complex
     }
 
     /**
-     * Adds a value to this complex number
+     * Adds a value to this complex number, modifying the value of this instance
      *
      * @param    string|integer|float|Complex    $complex   The number to add
      * @return    Complex
@@ -184,7 +184,7 @@ class Complex
     }
 
     /**
-     * Subtracts a value from this complex number
+     * Subtracts a value from this complex number, modifying the value of this instance
      *
      * @param    string|integer|float|Complex    $complex   The number to subtract
      * @return    Complex
@@ -200,7 +200,7 @@ class Complex
     }
 
     /**
-     * Multiplies this complex number by a value
+     * Multiplies this complex number by a value, modifying the value of this instance
      *
      * @param    string|integer|float|Complex    $complex   The number to multiply by
      * @return    Complex
@@ -220,7 +220,7 @@ class Complex
     }
 
     /**
-     * Divides this complex number by a value
+     * Divides this complex number by a value, modifying the value of this instance
      *
      * @param    string|integer|float|Complex    $complex   The number to divide by
      * @return    Complex
@@ -243,7 +243,7 @@ class Complex
     }
 
     /**
-     * Divides this complex number into a value
+     * Divides this complex number into a value, modifying the value of this instance
      *
      * @param    string|integer|float|Complex    $complex   The number to divide into
      * @return    Complex
@@ -284,7 +284,7 @@ class Complex
      *
      * @return    float
      */
-    public function argument()
+    public function theta()
     {
         if ($this->realPart == 0.0) {
             if ($this->imaginaryPart == 0.0) {
@@ -468,8 +468,8 @@ class Complex
     public function sec()
     {
         $complex = clone $this;
-        $z = $complex->cos();
-        return $z->inverse();
+        return $complex->cos()
+            ->inverse();
     }
 
     /**
@@ -480,8 +480,7 @@ class Complex
     public function sech()
     {
         $complex = clone $this;
-        $z = $complex->cosh();
-        return $z->inverse();
+        return $complex->cosh()->inverse();
     }
 
     /**
@@ -492,8 +491,7 @@ class Complex
     public function asec()
     {
         $complex = clone $this;
-        $z = $complex->inverse();
-        return $z->acos();
+        return $complex->inverse()->acos();
     }
 
     /**
@@ -504,8 +502,7 @@ class Complex
     public function asech()
     {
         $complex = clone $this;
-        $z = $complex->inverse();
-        return $z->acosh();
+        return $complex->inverse()->acosh();
     }
 
     /**
@@ -516,8 +513,7 @@ class Complex
     public function csc()
     {
         $complex = clone $this;
-        $z = $complex->sin();
-        return $z->inverse();
+        return $complex->sin()->inverse();
     }
 
     /**
@@ -528,8 +524,7 @@ class Complex
     public function csch()
     {
         $complex = clone $this;
-        $z = $complex->sinh();
-        return $z->inverse();
+        return $complex->sinh()->inverse();
     }
 
     /**
@@ -540,8 +535,7 @@ class Complex
     public function acsc()
     {
         $complex = clone $this;
-        $z = $complex->inverse();
-        return $z->asin();
+        return $complex->inverse()->asin();
     }
 
     /**
@@ -552,8 +546,7 @@ class Complex
     public function acsch()
     {
         $complex = clone $this;
-        $z = $complex->inverse();
-        return $z->asinh();
+        return $complex->inverse()->asinh();
     }
 
     /**

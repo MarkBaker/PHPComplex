@@ -1,3 +1,4 @@
 # General Ignores
+analysis
 vendor
 tests/codeCoverage

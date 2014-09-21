@@ -19,7 +19,7 @@ Currently provides functions for:
 and
 
  - abs (absolute)
- - argument (argument theta)
+ - theta (argument theta)
  - conjugate
  - negative
  - inverse

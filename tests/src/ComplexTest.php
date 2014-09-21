@@ -227,13 +227,13 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
-     * @dataProvider providerArgument
+     * @dataProvider providerTheta
      */
-	public function testArgument()
+	public function testTheta()
 	{
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
-		$result = $complex->argument();
+		$result = $complex->theta();
 
         $this->assertEquals($args[1], $result);
 	}
@@ -601,7 +601,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
      * Results derived from Wolfram Alpha using
      *  N[Argument[<VALUE>], 16]
      */
-    public function providerArgument()
+    public function providerTheta()
     {
 		$expectedResults = array(
 			0.0,
