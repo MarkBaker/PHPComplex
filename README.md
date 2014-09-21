@@ -18,17 +18,42 @@ Currently provides functions for:
 
 and
 
- - abs
- - argument
+ - abs (absolute)
+ - argument (argument theta)
  - conjugate
- - cos
- - cosh
- - acos
- - sin
- - sinh
- - asin
- - sqrt
- - ln
- - log10
- - log2
+ - negative
+ - inverse
+ - cos (cosine)
+ - acos (inverse cosine)
+ - cosh (hyperbolic cosine)
+ - sin (sine)
+ - asin (inverse sine)
+ - sinh (hyperbolic sine)
+ - sec (secant)
+ - asec (inverse secant)
+ - sech (hyperbolic secant)
+ - asech (inverse hyperbolic secant)
+ - csc (cosecant)
+ - acsc (inverse cosecant)
+ - csch (hyperbolic secant)
+ - acsch (inverse hyperbolic secant)
+ - sqrt (square root)
+ - exp (exponential)
+ - ln (natural log)
+ - log10 (base-10 log)
+ - log2 (base-2 log)
  
+---
+
+Planned additional functionality, but still to implement
+
+ - acosh (inverse hyperbolic cosine)
+ - asinh (inverse hyperbolic sine)
+ - tan (tangent)
+ - atan (inverse tangent)
+ - tanh (hyperbolic tangent)
+ - atanh (inverse hyperbolic tangent)
+ - cot (cotangent)
+ - acot (inverse cotangent)
+ - coth (hyperbolic cotangent)
+ - acotanh (inverse hyperbolic cotangent)

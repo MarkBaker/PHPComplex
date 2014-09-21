@@ -21,18 +21,11 @@ class Complex
         }
 
         //    Fix silly human errors
-        if (strpos($complexNumber, '+-') !== false) {
-            $complexNumber = str_replace('+-', '-', $complexNumber);
-        }
-        if (strpos($complexNumber, '-+') !== false) {
-            $complexNumber = str_replace('-+', '-', $complexNumber);
-        }
-        if (strpos($complexNumber, '++') !== false) {
-            $complexNumber = str_replace('++', '+', $complexNumber);
-        }
-        if (strpos($complexNumber, '--') !== false) {
-            $complexNumber = str_replace('--', '+', $complexNumber);
-        }
+        $complexNumber = str_replace(
+            array('+-', '-+', '++', '--'),
+            array('-', '-', '+', '+'),
+            $complexNumber
+        );
 
         //    Basic validation of string, to parse out real and imaginary parts, and any suffix
         $validComplex = preg_match(
@@ -157,7 +150,6 @@ class Complex
     {
         return $this->format();
     }
-
 
     private function validateComplexArgument($complex)
     {
@@ -305,8 +297,7 @@ class Complex
         } elseif ($this->realPart > 0.0) {
             return atan($this->imaginaryPart / $this->realPart);
         } elseif ($this->imaginaryPart < 0.0) {
-            return 0 -
-                (M_PI - atan(abs($this->imaginaryPart) / abs($this->realPart)));
+            return -(M_PI - atan(abs($this->imaginaryPart) / abs($this->realPart)));
         } else {
             return M_PI - atan($this->imaginaryPart / abs($this->realPart));
         }
@@ -321,9 +312,33 @@ class Complex
     {
         return new Complex(
             $this->realPart,
-            0 - $this->imaginaryPart,
+            -1 * $this->imaginaryPart,
             $this->suffix
         );
+    }
+
+    /**
+     * Returns the negative of this complex number
+     *
+     * @return    Complex
+     */
+    public function negative()
+    {
+        return new Complex(
+            -1 * $this->realPart,
+            -1 * $this->imaginaryPart,
+            $this->suffix
+        );
+    }
+
+    /**
+     * Returns the inverse of this complex number
+     *
+     * @return    Complex
+     */
+    public function inverse()
+    {
+        return $this->divideInto();
     }
 
     /**
@@ -381,7 +396,8 @@ class Complex
         );
         $z = $v->ln();
         return new Complex(
-            $z->getImaginary(), -1 * $z->getReal()
+            $z->getImaginary(),
+            -1 * $z->getReal()
         );
     }
 
@@ -439,8 +455,105 @@ class Complex
         );
         $z = $v->ln();
         return new Complex(
-            $z->getImaginary(), -1 * $z->getReal()
+            $z->getImaginary(),
+            -1 * $z->getReal()
         );
+    }
+
+    /**
+     * Returns the secant of this complex number
+     *
+     * @return    Complex
+     */
+    public function sec()
+    {
+        $complex = clone $this;
+        $z = $complex->cos();
+        return $z->inverse();
+    }
+
+    /**
+     * Returns the hyperbolic secant of this complex number
+     *
+     * @return    Complex
+     */
+    public function sech()
+    {
+        $complex = clone $this;
+        $z = $complex->cosh();
+        return $z->inverse();
+    }
+
+    /**
+     * Returns the inverse secant of this complex number
+     *
+     * @return    Complex
+     */
+    public function asec()
+    {
+        $complex = clone $this;
+        $z = $complex->inverse();
+        return $z->acos();
+    }
+
+    /**
+     * Returns the inverse hyperbolic secant of this complex number
+     *
+     * @return    Complex
+     */
+    public function asech()
+    {
+        $complex = clone $this;
+        $z = $complex->inverse();
+        return $z->acosh();
+    }
+
+    /**
+     * Returns the cosecant of this complex number
+     *
+     * @return    Complex
+     */
+    public function csc()
+    {
+        $complex = clone $this;
+        $z = $complex->sin();
+        return $z->inverse();
+    }
+
+    /**
+     * Returns the hyperbolic cosecant of this complex number
+     *
+     * @return    Complex
+     */
+    public function csch()
+    {
+        $complex = clone $this;
+        $z = $complex->sinh();
+        return $z->inverse();
+    }
+
+    /**
+     * Returns the inverse cosecant of this complex number
+     *
+     * @return    Complex
+     */
+    public function acsc()
+    {
+        $complex = clone $this;
+        $z = $complex->inverse();
+        return $z->asin();
+    }
+
+    /**
+     * Returns the inverse hyperbolic cosecant of this complex number
+     *
+     * @return    Complex
+     */
+    public function acsch()
+    {
+        $complex = clone $this;
+        $z = $complex->inverse();
+        return $z->asinh();
     }
 
     /**
@@ -461,6 +574,19 @@ class Complex
         );
 
         return new Complex($d1 * $r, $d2 * $r, $this->suffix);
+    }
+
+    /**
+     * Returns the exponential of this complex number
+     *
+     * @return    Complex
+     */
+    public function exp()
+    {
+        $rho = exp($this->realPart);
+        $theta = $this->imaginaryPart;
+ 
+        return new Complex($rho * cos($theta), $rho * sin($theta), $this->suffix);
     }
 
     /**

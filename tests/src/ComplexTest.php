@@ -7,15 +7,36 @@ include 'Complex.php';
 
 class ComplexTest extends \PHPUnit_Framework_TestCase
 {
+    // Saved php.ini precision, so that we can adjust the setting
+    private $precision;
+
+    // Number of significant digits used for assertEquals
+    private $significantDigits = 12;
 
     protected function setUp()
     {
-        $this->_precision = ini_set('precision', 16);
+        $this->precision = ini_set('precision', 16);
     }
 
     protected function tearDown()
     {
-        ini_set('precision', $this->_precision);
+        ini_set('precision', $this->precision);
+    }
+
+    protected function getAssertionPrecision($value)
+    {
+        return pow(10, floor(log10($value)) - $this->significantDigits + 1);
+    }
+
+    public function complexNumberAssertions($expected, $result)
+    {
+        if (is_numeric($expected)) {
+            $this->assertEquals($expected, (string) $result, null, $this->getAssertionPrecision($expected));
+        } else {
+            $expected = new Complex($expected);
+            $this->assertEquals($expected->getReal(), $result->getReal(), null, $this->getAssertionPrecision($expected->getReal()));
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary(), null, $this->getAssertionPrecision($expected->getImaginary()));
+        }
     }
 
     public function testInstantiate()
@@ -226,13 +247,19 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->conjugate();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerNegative
+     */
+	public function testNegative()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->negative();
+
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -244,13 +271,19 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->cos();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerCosH
+     */
+	public function testCosH()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->cosh();
+
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -262,13 +295,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->acos();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -280,13 +307,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->sin();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -298,13 +319,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->sinh();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -316,13 +331,31 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->asin();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerSec
+     */
+	public function testSec()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->sec();
+
+        $this->complexNumberAssertions($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerCsc
+     */
+	public function testCoSec()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->csc();
+
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -334,13 +367,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->sqrt();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -352,13 +379,19 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->ln();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerExp
+     */
+	public function testExp()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->exp();
+
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -379,13 +412,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->log10();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -406,13 +433,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$complex = new Complex($args[0]);
 		$result = $complex->log2();
 
-        if (is_numeric($args[1])) {
-            $this->assertEquals($args[1], (string) $result);
-        } else {
-            $expected = new Complex($args[1]);
-            $this->assertEquals($expected->getReal(), $result->getReal());
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary());
-        }
+        $this->complexNumberAssertions($args[1], $result);
 	}
 
     /**
@@ -635,6 +656,33 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 	}
 
     /*
+     */
+    public function providerNegative()
+    {
+		$expectedResults = array(
+			-123,
+			-123.456,
+			-0.123,
+            '-123.456-78.9i',
+            '-123.456+78.90i',
+            '-0.123-45.67i',
+            '-0.123+45.67i',
+            '-0.123-0.4567i',
+            '-0.123+0.4567i',
+			987.654,
+            0.9876,
+			'987.654-32.1i',
+			'987.654+32.1i',
+			'0.98765-0.4321i',
+			'0.98765+0.4321i',
+			'-i',
+			'i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    /*
      * Results derived from Wolfram Alpha using
      *  N[Cosine[<VALUE> Radians], 16]
      */
@@ -810,6 +858,64 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 
     /*
      * Results derived from Wolfram Alpha using
+     *  N[Sec[<VALUE> Radians], 16]
+     */
+    public function providerSec()
+    {
+		$expectedResults = array(
+			-1.126165558798132,
+            -1.681480591692767,
+            1.007612479905867,
+            '-6.449165389627598E-35-8.718014549593755E-35i',
+            '-6.449165389627598E-35+8.718014549593755E-35i',
+            '2.907417962662243E-20+3.59426829725669E-21i',
+            '2.907417962662243E-20-3.59426829725669E-21i',
+            '0.9084132229054091+0.0479967296782065i',
+            '0.9084132229054091-0.0479967296782065i',
+            2.717168920630777,
+            1.815888051858395,
+            '8.43452224851900E-15-2.130949445023649E-14i',
+            '8.43452224851900E-15+2.130949445023649E-14i',
+            '1.2013013562456205-0.7413041320971853i',
+            '1.2013013562456205+0.7413041320971853i',
+            0.6480542736638854,
+            0.6480542736638854
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    /*
+     * Results derived from Wolfram Alpha using
+     *  N[CoSec[<VALUE> Radians], 16]
+     */
+    public function providerCsc()
+    {
+		$expectedResults = array(
+			-2.174369232337363,
+            -1.243877992355593,
+            8.150617542148799,
+            '-8.718014549593755E-35+6.449165389627598E-35i',
+            '-8.718014549593755E-35-6.449165389627598E-35i',
+            '3.59426829725669E-21-2.907417962662243E-20i',
+            '3.59426829725669E-21+2.907417962662243E-20i',
+            '0.568919538178610-1.966857982854930i',
+            '0.568919538178610+1.966857982854930i',
+            -1.075484064981668,
+            -1.198025582276623,
+            '-2.130949445023643E-14-8.43452224851907E-15i',
+            '-2.130949445023643E-14+8.43452224851907E-15i',
+            '-1.020634209071783-0.274077973196426i',
+            '-1.020634209071783+0.274077973196426i',
+            '-0.8509181282393215i',
+            '0.850918128239322i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    /*
+     * Results derived from Wolfram Alpha using
      *  N[Sqrt[<VALUE>], 16]
      */
     public function providerSqrt()
@@ -832,6 +938,35 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
             '0.2125871703559090-1.0162889869520048i',
             '0.7071067811865475+0.7071067811865475i',
             '0.7071067811865475-0.7071067811865475i'
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    /*
+     * Results derived from Wolfram Alpha using
+     *  N[Exp[<VALUE>], 16]
+     */
+    public function providerExp()
+    {
+		$expectedResults = array(
+			2.619517318749063E+53,
+			4.132944352778093E+53,
+            1.130884420947489,
+            '-3.867742030528957E+53-1.456640178094807E+53i',
+            '-3.867742030528957E+53+1.456640178094807E+53i',
+            '-0.1319068210028709+1.1231652434591514i',
+            '-0.1319068210028709-1.1231652434591514i',
+            '1.0149830674019495+0.4987072752918969i',
+            '1.0149830674019495-0.4987072752918969i',
+            1.167663676157479E-429,
+            0.3724695460779954,
+            '9.049450809167929E-430+7.379111471865009E-430i',
+            '9.049450809167929E-430-7.379111471865009E-430i',
+            '0.3382183320280979+0.1559745170630393i',
+            '0.3382183320280979-0.1559745170630393i',
+            '0.5403023058681397+0.8414709848078965i',
+            '0.5403023058681397-0.8414709848078965i'
 		);
 
 		return $this->_formatOneArgumentTestResultArray($expectedResults);
