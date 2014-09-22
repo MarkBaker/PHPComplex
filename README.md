@@ -56,4 +56,4 @@ Planned additional functionality, but still to implement
  - cot (cotangent)
  - acot (inverse cotangent)
  - coth (hyperbolic cotangent)
- - acotanh (inverse hyperbolic cotangent)
+ - acoth (inverse hyperbolic cotangent)

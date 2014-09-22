@@ -291,16 +291,14 @@ class Complex
                 return 0.0;
             } elseif ($this->imaginaryPart < 0.0) {
                 return M_PI / -2;
-            } else {
-                return M_PI / 2;
             }
+            return M_PI / 2;
         } elseif ($this->realPart > 0.0) {
             return atan($this->imaginaryPart / $this->realPart);
         } elseif ($this->imaginaryPart < 0.0) {
             return -(M_PI - atan(abs($this->imaginaryPart) / abs($this->realPart)));
-        } else {
-            return M_PI - atan($this->imaginaryPart / abs($this->realPart));
         }
+        return M_PI - atan($this->imaginaryPart / abs($this->realPart));
     }
 
     /**
@@ -556,7 +554,7 @@ class Complex
      */
     public function sqrt()
     {
-        $theta = $this->argument();
+        $theta = $this->theta();
         $d1 = cos($theta / 2);
         $d2 = sin($theta / 2);
         $r = sqrt(
@@ -600,7 +598,7 @@ class Complex
                 ($this->imaginaryPart * $this->imaginaryPart)
             )
         );
-        $t = $this->argument();
+        $t = $this->theta();
 
         return new Complex($logR, $t, $this->suffix);
     }
