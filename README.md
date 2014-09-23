@@ -18,8 +18,9 @@ Currently provides functions for:
 
 and
 
+ - theta (polar theta angle)
+ - rho (polar distance/radius)
  - abs (absolute)
- - theta (argument theta)
  - conjugate
  - negative
  - inverse

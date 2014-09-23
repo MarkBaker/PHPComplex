@@ -119,7 +119,7 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('i', $defaultComplexSuffix);
 	}
 
-    public function testInstantiateSimplistic()
+    public function testInstantiateImaginary1()
     {
         $complexObject = new Complex('-i');
 
@@ -131,6 +131,57 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('i', $defaultComplexSuffix);
+	}
+
+    public function testInstantiateImaginary2()
+    {
+        $complexObject = new Complex('-2.5i');
+
+        $defaultComplexReal = $complexObject->getReal();
+        $this->assertEquals(0, $defaultComplexReal);
+
+        $defaultComplexImaginary = $complexObject->getImaginary();
+        $this->assertEquals(-2.5, $defaultComplexImaginary);
+
+        $defaultComplexSuffix = $complexObject->getSuffix();
+        $this->assertEquals('i', $defaultComplexSuffix);
+	}
+
+    public function testInstantiateImaginary3()
+    {
+        $complexObject = new Complex('2.5-i');
+
+        $defaultComplexReal = $complexObject->getReal();
+        $this->assertEquals(2.5, $defaultComplexReal);
+
+        $defaultComplexImaginary = $complexObject->getImaginary();
+        $this->assertEquals(-1, $defaultComplexImaginary);
+
+        $defaultComplexSuffix = $complexObject->getSuffix();
+        $this->assertEquals('i', $defaultComplexSuffix);
+	}
+
+    public function testFormat()
+    {
+        $complexObject = new Complex('-2.5i');
+        $format = $complexObject->format();
+        $this->assertEquals('-2.5i', $format);
+
+        $complexObject = new Complex('-i');
+        $format = $complexObject->format();
+        $this->assertEquals('-i', $format);
+
+        $complexObject = new Complex('-1+2i');
+        $format = $complexObject->format();
+        $this->assertEquals('-1+2i', $format);
+	}
+
+    /**
+     * @expectedException Exception
+     */
+	public function testInvalidComplex()
+	{
+		$complex = new Complex('ABCDEFGHI');
 	}
 
     /**
@@ -234,6 +285,18 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
 		$result = $complex->theta();
+
+        $this->assertEquals($args[1], $result);
+	}
+
+    /**
+     * @dataProvider providerRho
+     */
+	public function testRho()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->rho();
 
         $this->assertEquals($args[1], $result);
 	}
@@ -621,6 +684,31 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
             -2.729179556246168,
             1.570796326794897,
             -1.570796326794897
+		);
+
+		return $this->_formatOneArgumentTestResultArray($expectedResults);
+	}
+
+    public function providerRho()
+    {
+		$expectedResults = array(
+			123,
+			123.456,
+            0.123,
+			146.514824970035,
+			146.514824970035,
+            45.67016563359498,
+            45.67016563359498,
+            0.4729734559148113,
+            0.4729734559148113,
+            987.654,
+            0.9876,
+            988.1755075471159,
+            988.1755075471159,
+            1.078036609999865,
+            1.078036609999865,
+            1.0,
+            1.0
 		);
 
 		return $this->_formatOneArgumentTestResultArray($expectedResults);

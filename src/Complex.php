@@ -229,15 +229,15 @@ class Complex
     {
         $complex = $this->validateComplexArgument($complex);
 
-        $d1 = ($this->getReal() * $complex->getReal()) +
+        $delta1 = ($this->getReal() * $complex->getReal()) +
             ($this->getImaginary() * $complex->getImaginary());
-        $d2 = ($this->getImaginary() * $complex->getReal()) -
+        $delta2 = ($this->getImaginary() * $complex->getReal()) -
             ($this->getReal() * $complex->getImaginary());
-        $d3 = ($complex->getReal() * $complex->getReal()) +
+        $delta3 = ($complex->getReal() * $complex->getReal()) +
             ($complex->getImaginary() * $complex->getImaginary());
 
-        $this->realPart = $d1 / $d3;
-        $this->imaginaryPart = $d2 / $d3;
+        $this->realPart = $delta1 / $delta3;
+        $this->imaginaryPart = $delta2 / $delta3;
 
         return $this;
     }
@@ -252,15 +252,15 @@ class Complex
     {
         $complex = $this->validateComplexArgument($complex);
 
-        $d1 = ($complex->getReal() * $this->getReal()) +
+        $delta1 = ($complex->getReal() * $this->getReal()) +
             ($complex->getImaginary() * $this->getImaginary());
-        $d2 = ($complex->getImaginary() * $this->getReal()) -
+        $delta2 = ($complex->getImaginary() * $this->getReal()) -
             ($complex->getReal() * $this->getImaginary());
-        $d3 = ($this->getReal() * $this->getReal()) +
+        $delta3 = ($this->getReal() * $this->getReal()) +
             ($this->getImaginary() * $this->getImaginary());
 
-        $this->realPart = $d1 / $d3;
-        $this->imaginaryPart = $d2 / $d3;
+        $this->realPart = $delta1 / $delta3;
+        $this->imaginaryPart = $delta2 / $delta3;
 
         return $this;
     }
@@ -279,7 +279,7 @@ class Complex
     }
 
     /**
-     * Returns the argument theta of this complex number, i.e. the angle in radians
+     * Returns the theta of this complex number, i.e. the angle in radians
      * from the real axis to the representation of the number in polar coordinates.
      *
      * @return    float
@@ -299,6 +299,30 @@ class Complex
             return -(M_PI - atan(abs($this->imaginaryPart) / abs($this->realPart)));
         }
         return M_PI - atan($this->imaginaryPart / abs($this->realPart));
+    }
+
+    /**
+     * Synonym for theta()
+     *
+     * @see    theta
+     */
+    public function argument()
+    {
+        return $this->theta()
+    }
+
+    /**
+     * Returns the rho of this complex number, i.e. the distance/radius
+     * from the centrepoint to the representation of the number in polar coordinates.
+     *
+     * @return    float
+     */
+    public function rho()
+    {
+        return sqrt(
+            ($this->realPart * $this->realPart) +
+            ($this->imaginaryPart * $this->imaginaryPart)
+        );
     }
 
     /**
@@ -555,16 +579,11 @@ class Complex
     public function sqrt()
     {
         $theta = $this->theta();
-        $d1 = cos($theta / 2);
-        $d2 = sin($theta / 2);
-        $r = sqrt(
-            sqrt(
-                ($this->realPart * $this->realPart) +
-                ($this->imaginaryPart * $this->imaginaryPart)
-            )
-        );
+        $delta1 = cos($theta / 2);
+        $delta2 = sin($theta / 2);
+        $rho = sqrt($this->rho());
 
-        return new Complex($d1 * $r, $d2 * $r, $this->suffix);
+        return new Complex($delta1 * $rho, $delta2 * $rho, $this->suffix);
     }
 
     /**
@@ -592,15 +611,11 @@ class Complex
             throw new \InvalidArgumentException();
         }
 
-        $logR = log(
-            sqrt(
-                ($this->realPart * $this->realPart) +
-                ($this->imaginaryPart * $this->imaginaryPart)
-            )
+        return new Complex(
+            log($this->rho()),
+            $this->theta(),
+            $this->suffix
         );
-        $t = $this->theta();
-
-        return new Complex($logR, $t, $this->suffix);
     }
 
     /**
@@ -622,8 +637,8 @@ class Complex
             $this->imaginaryPart,
             $this->suffix
         );
-        $complex = $complex->ln();
-        return $complex->multiply(log10(self::EULER));
+        return $complex->ln()
+            ->multiply(log10(self::EULER));
     }
 
     /**
@@ -645,7 +660,7 @@ class Complex
             $this->imaginaryPart,
             $this->suffix
         );
-        $complex = $complex->ln();
-        return $complex->multiply(log(self::EULER, 2));
+        return $complex->ln()
+            ->multiply(log(self::EULER, 2));
     }
 }
