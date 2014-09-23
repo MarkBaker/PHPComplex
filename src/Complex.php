@@ -308,7 +308,7 @@ class Complex
      */
     public function argument()
     {
-        return $this->theta()
+        return $this->theta();
     }
 
     /**
