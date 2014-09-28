@@ -353,6 +353,23 @@ class Complex
         );
     }
 
+    public function reverse()
+    {
+        $t = $this->realPart;
+        $this->realPart = $this->imaginaryPart;
+        $this->imaginaryPart = $t;
+    }
+
+    public function invertImaginary()
+    {
+        $this->imaginaryPart *= -1;
+    }
+
+    public function invertReal()
+    {
+        $this->realPart *= -1;
+    }
+
     /**
      * Returns the inverse of this complex number
      *
@@ -391,13 +408,12 @@ class Complex
     {
         if ($this->imaginaryPart == 0.0) {
             return new Complex(cosh($this->realPart), 0.0, $this->suffix);
-        } else {
-            return new Complex(
-                cosh($this->realPart) * cos($this->imaginaryPart),
-                sinh($this->realPart) * sin($this->imaginaryPart),
-                $this->suffix
-            );
         }
+        return new Complex(
+            cosh($this->realPart) * cos($this->imaginaryPart),
+            sinh($this->realPart) * sin($this->imaginaryPart),
+            $this->suffix
+        );
     }
 
     /**
@@ -417,10 +433,29 @@ class Complex
             $this->imaginaryPart + $t->getReal()
         );
         $z = $v->ln();
+
         return new Complex(
             $z->getImaginary(),
             -1 * $z->getReal()
         );
+    }
+
+    /**
+     * Returns the inverse hyperbolic cosine of this complex number
+     *
+     * @return    Complex
+     */
+    public function acosh()
+    {
+        if (($this->imaginaryPart == 0.0) && ($this->realPart > 1)) {
+            return new Complex(acosh($this->realPart), 0.0, $this->suffix);
+        }
+        $z = $this->acos();
+        $z->reverse();
+        if ($z->getReal() < 0.0) {
+            $z->invertReal();
+        }
+        return $z;
     }
 
     /**
@@ -432,13 +467,12 @@ class Complex
     {
         if ($this->imaginaryPart == 0.0) {
             return new Complex(sin($this->realPart), 0.0, $this->suffix);
-        } else {
-            return new Complex(
-                sin($this->realPart) * cosh($this->imaginaryPart),
-                cos($this->realPart) * sinh($this->imaginaryPart),
-                $this->suffix
-            );
         }
+        return new Complex(
+            sin($this->realPart) * cosh($this->imaginaryPart),
+            cos($this->realPart) * sinh($this->imaginaryPart),
+            $this->suffix
+        );
     }
 
     /**
@@ -593,10 +627,13 @@ class Complex
      */
     public function exp()
     {
+        if (($this->realPart == 0.0) && (abs($this->imaginaryPart) == M_PI)) {
+            return new Complex(-1.0, 0.0);
+        }
+
         $rho = exp($this->realPart);
-        $theta = $this->imaginaryPart;
  
-        return new Complex($rho * cos($theta), $rho * sin($theta), $this->suffix);
+        return new Complex($rho * cos($this->imaginaryPart), $rho * sin($this->imaginaryPart), $this->suffix);
     }
 
     /**
