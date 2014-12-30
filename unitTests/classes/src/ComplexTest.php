@@ -1,9 +1,8 @@
 <?php
 
-namespace MarkBaker\PHPComplex;
-use MarkBaker\PHPComplex\Complex as Complex;
+namespace Complex;
 
-include 'Complex.php';
+use Complex\Complex as Complex;
 
 class ComplexTest extends \PHPUnit_Framework_TestCase
 {

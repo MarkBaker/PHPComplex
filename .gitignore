@@ -1,4 +1,9 @@
-# General Ignores
+Complex.phar
+unitTests/codeCoverage
 analysis
-vendor
-tests/codeCoverage
+
+## IDE support
+*.buildpath
+*.project
+/.settings
+/.idea

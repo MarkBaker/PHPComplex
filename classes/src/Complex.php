@@ -1,7 +1,14 @@
 <?php
 
-namespace MarkBaker\PHPComplex;
+namespace Complex;
 
+/**
+ * Complex Number object.
+ *
+ * @package Complex
+ * @copyright  Copyright (c) 2013-2014 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ */
 class Complex
 {
     const EULER = 2.71828182845904523536;

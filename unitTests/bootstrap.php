@@ -3,17 +3,17 @@
  * $Id: bootstrap.php 2892 2011-08-14 15:11:50Z markbaker@phpexcel.net $
  *
  * @copyright   Copyright (C) 2012 Mark Baker. All rights reserved.
- * @package     PHPComplex
- * @subpackage  PHP Complex Number Unit Tests
+ * @package     Complex
+ * @subpackage  Complex Unit Tests
  * @author      Mark Baker
  */
 
-// PHP 5.3 Compat
+// PHP 5.3 Compatibility
 date_default_timezone_set('Europe/London');
 
 // Define path to application directory
 defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../src'));
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../classes'));
 
 // Define path to application tests directory
 defined('APPLICATION_TESTS_PATH')
@@ -33,7 +33,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
  * @todo Sort out xdebug in vagrant so that this works in all sandboxes
  * For now, it is safer to test for it rather then remove it.
  */
-echo "PHP Complex Number tests beginning\n";
+echo "Complex tests beginning\n";
 
 if(extension_loaded('xdebug')) {
     echo "Xdebug extension loaded and running\n";
@@ -42,3 +42,5 @@ if(extension_loaded('xdebug')) {
     echo 'Xdebug not found, you should run the following at the command line: echo "zend_extension=/usr/lib64/php/modules/xdebug.so" > /etc/php.d/xdebug.ini' . "\n";
 }
 
+
+require_once(APPLICATION_PATH . '/src/Complex.php');
