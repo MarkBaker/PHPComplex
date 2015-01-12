@@ -331,30 +331,6 @@ class Complex
     }
 
     /**
-     * Returns the inverse cosine of this complex number
-     *
-     * @return    Complex
-     */
-    public function acos()
-    {
-        $v = clone $this;
-        $v = $v->multiply($this);
-        $t = new Complex(1.0);
-        $t = $t->subtract($v);
-        $t = sqrt($t);
-        $v = new Complex(
-            $this->realPart - $t->getImaginary(),
-            $this->imaginaryPart + $t->getReal()
-        );
-        $z = ln($v);
-
-        return new Complex(
-            $z->getImaginary(),
-            -1 * $z->getReal()
-        );
-    }
-
-    /**
      * Returns the inverse hyperbolic cosine of this complex number
      *
      * @return    Complex
@@ -362,48 +338,14 @@ class Complex
     public function acosh()
     {
         if (($this->imaginaryPart == 0.0) && ($this->realPart > 1)) {
-            return new Complex(acosh($this->realPart), 0.0, $this->suffix);
+            return new Complex(\acosh($this->realPart), 0.0, $this->suffix);
         }
-        $z = $this->acos();
+        $z = acos($this);
         $z->reverse();
         if ($z->getReal() < 0.0) {
             $z->invertReal();
         }
         return $z;
-    }
-
-    /**
-     * Returns the inverse sine of this complex number
-     *
-     * @return    Complex
-     */
-    public function asin()
-    {
-        $v = clone $this;
-        $v = $v->multiply($this);
-        $t = new Complex(1.0);
-        $t = $t->subtract($v);
-        $t = sqrt($t);
-        $v = new Complex(
-            $t->getReal() - $this->imaginaryPart,
-            $t->getImaginary() + $this->realPart
-        );
-        $z = ln($v);
-        return new Complex(
-            $z->getImaginary(),
-            -1 * $z->getReal()
-        );
-    }
-
-    /**
-     * Returns the inverse secant of this complex number
-     *
-     * @return    Complex
-     */
-    public function asec()
-    {
-        $complex = clone $this;
-        return inverse($complex)->acos();
     }
 
     /**
@@ -415,28 +357,6 @@ class Complex
     {
         $complex = clone $this;
         return inverse($complex)->acosh();
-    }
-
-    /**
-     * Returns the hyperbolic cosecant of this complex number
-     *
-     * @return    Complex
-     */
-    public function csch()
-    {
-        $complex = clone $this;
-        return inverse(sinh($complex));
-    }
-
-    /**
-     * Returns the inverse cosecant of this complex number
-     *
-     * @return    Complex
-     */
-    public function acsc()
-    {
-        $complex = clone $this;
-        return inverse($complex)->asin();
     }
 
     /**

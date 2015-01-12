@@ -276,18 +276,6 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
-     * @dataProvider providerACos
-     */
-	public function testACos()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->acos();
-
-        $this->complexNumberAssertions($args[1], $result);
-	}
-
-    /**
      * @dataProvider providerACosH
      */
 	public function testACosH()
@@ -295,30 +283,6 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
 		$result = $complex->acosh();
-
-        $this->complexNumberAssertions($args[1], $result);
-	}
-
-    /**
-     * @dataProvider providerASin
-     */
-	public function testASin()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->asin();
-
-        $this->complexNumberAssertions($args[1], $result);
-	}
-
-    /**
-     * @dataProvider providerASec
-     */
-	public function testASec()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->asec();
 
         $this->complexNumberAssertions($args[1], $result);
 	}
@@ -483,39 +447,6 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 
     /*
      * Results derived from Wolfram Alpha using
-     *  N[ArcCos[<VALUE>], 18]
-     */
-    public function providerACos()
-    {
-		$expectedResults = array(
-			'3.17631318059165577i',
-			'3.20475382161825604i',
-            '1.44703059570184200',
-			'0.50386235199241278-3.33784183956736074i',
-			'0.50386235199241278+3.33784183956736074i',
-			'1.55280848768351476-2.61399140081652779i',
-			'1.55280848768351476+2.61399140081652779i',
-			'1.46865136582657190-0.63823568781287892i',
-			'1.46865136582657190+0.63823568781287892i',
-            '3.14159265358979324-2.98073255621495518i',
-            2.98426811978550341,
-            '2.72759273898886477-3.06941431940712748i',
-            '2.72759273898886477+3.06941431940712748i',
-            '2.49959220942165618-0.67028138559198731i',
-            '2.49959220942165618+0.67028138559198731i',
-            '1.57079632679489662-1.86229574331084822i',
-            '1.57079632679489662+1.86229574331084822i',
-            '1.57079632679489662-0.88137358701954303i',
-            '1.57079632679489662+0.88137358701954303i',
-            '1.57079632679489662-0.12269194815825956i',
-            '1.57079632679489662+0.12269194815825956i',
-		);
-
-		return $this->_formatOneArgumentTestResultArray($expectedResults);
-	}
-
-    /*
-     * Results derived from Wolfram Alpha using
      *  N[ArcCosH[<VALUE>], 18]
      */
     public function providerACosH()
@@ -542,72 +473,6 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
             '0.88137358701954303-1.57079632679489662i',
             '0.12269194815825956+1.57079632679489662i',
             '0.12269194815825956-1.57079632679489662i',
-		);
-
-		return $this->_formatOneArgumentTestResultArray($expectedResults);
-	}
-
-    /*
-     * Results derived from Wolfram Alpha using
-     *  N[ArcSin[<VALUE>], 18]
-     */
-    public function providerASin()
-    {
-		$expectedResults = array(
-			'1.57079632679489662-3.17631318059165577i',
-			'1.57079632679489662-3.20475382161825604i',
-            0.123765731093054622,
-            '1.06693397480248384+3.33784183956736074i',
-            '1.06693397480248384-3.33784183956736074i',
-            '0.01798783911138186+2.61399140081652779i',
-            '0.01798783911138186-2.61399140081652779i',
-            '0.102144960968324714+0.638235687812878915i',
-            '0.102144960968324714-0.638235687812878915i',
-            '-1.57079632679489662+2.98073255621495518i',
-            -1.41347179299060679,
-            '-1.15679641219396815+3.06941431940712748i',
-            '-1.15679641219396815-3.06941431940712748i',
-            '-0.928795882626759563+0.670281385591987313i',
-            '-0.928795882626759563-0.670281385591987313i',
-            '1.86229574331084822i',
-            '-1.86229574331084822i',
-            '0.881373587019543025i',
-            '-0.881373587019543025i',
-            '0.122691948158259558i',
-            '-0.122691948158259558i',
-		);
-
-		return $this->_formatOneArgumentTestResultArray($expectedResults);
-	}
-
-    /*
-     * Results derived from Wolfram Alpha using
-     *  N[ArcSec[<VALUE> Radians], 18]
-     */
-    public function providerASec()
-    {
-		$expectedResults = array(
-			1.48736624018428161,
-            1.48970302082660277,
-            '2.78123430803937039i',
-            '1.50859800830252214+0.03426287528025610i',
-            '1.50859800830252214-0.03426287528025610i',
-            '1.56814734798028957+0.14672193818647115i',
-            '1.56814734798028957-0.14672193818647115i',
-            '1.42248128431339558+1.16195623593418560i',
-            '1.42248128431339558-1.16195623593418560i',
-            1.67222057013667903,
-            '3.14159265358979324-0.15797756885066499i',
-            '1.65582341680235061+0.03730682535518739i',
-            '1.65582341680235061-0.03730682535518739i',
-            '2.40822472454593001+0.53025304749856957i',
-            '2.40822472454593001-0.53025304749856957i',
-            '1.57079632679489662+0.31316588045086838i',
-            '1.57079632679489662-0.31316588045086838i',
-            '1.57079632679489662+0.88137358701954303i',
-            '1.57079632679489662-0.88137358701954303i',
-            '1.57079632679489662+2.79247907463123116i',
-            '1.57079632679489662-2.79247907463123116i',
 		);
 
 		return $this->_formatOneArgumentTestResultArray($expectedResults);
