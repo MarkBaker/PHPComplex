@@ -18,7 +18,7 @@ namespace Complex;
  * @return    \real            The theta value of the complex argument.
  * @throws    \Exception       If argument isn't a valid real or complex number.
  */
-function theta(Complex $complex)
+function theta($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 

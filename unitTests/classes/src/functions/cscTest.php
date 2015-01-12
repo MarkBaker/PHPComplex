@@ -5,9 +5,7 @@ include_once __DIR__ . '/baseFunctionTest.php';
 
 class cscTest extends baseFunctionTest
 {
-    public function testFunctionExists() {
-        $this->namespaced_function_exists('csc'); 
-    }
+    protected static $functionName = 'csc';
 
     /**
      * @dataProvider providerCsc

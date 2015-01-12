@@ -20,8 +20,17 @@ abstract class baseFunctionTest extends \PHPUnit_Framework_TestCase
         ini_set('precision', $this->precision);
     }
 
-    protected function namespaced_function_exists($functionName) {
-        $this->assertTrue(function_exists('\\' . __NAMESPACE__ . '\\' . $functionName)); 
+    public function testNamespacedFunctionExists() {
+        $this->assertTrue(function_exists('\\' . __NAMESPACE__ . '\\' . static::$functionName)); 
+    }
+
+    /**
+     * @expectedException \Exception
+     */
+    public function testInvalidArgument()
+    {
+        $invalidComplex = '*** INVALID ***';
+		$result = call_user_func(static::$functionName, $invalidComplex);
     }
 
     protected function getAssertionPrecision($value)

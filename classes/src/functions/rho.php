@@ -18,7 +18,7 @@ namespace Complex;
  * @return    \real            The rho value of the complex argument.
  * @throws    \Exception       If argument isn't a valid real or complex number.
  */
-function rho(Complex $complex)
+function rho($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 

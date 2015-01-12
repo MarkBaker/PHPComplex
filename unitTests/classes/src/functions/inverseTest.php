@@ -5,9 +5,7 @@ include_once __DIR__ . '/baseFunctionTest.php';
 
 class inverseTest extends baseFunctionTest
 {
-    public function testFunctionExists() {
-        $this->namespaced_function_exists('inverse'); 
-    }
+    protected static $functionName = 'inverse';
 
     /**
      * @dataProvider providerInverse

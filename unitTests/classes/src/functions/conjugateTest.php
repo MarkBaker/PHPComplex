@@ -5,9 +5,7 @@ include_once __DIR__ . '/baseFunctionTest.php';
 
 class conjugateTest extends baseFunctionTest
 {
-    public function testFunctionExists() {
-        $this->namespaced_function_exists('conjugate'); 
-    }
+    protected static $functionName = 'conjugate';
 
     /**
      * @dataProvider providerConjugate

@@ -5,9 +5,7 @@ include_once __DIR__ . '/baseFunctionTest.php';
 
 class sinhTest extends baseFunctionTest
 {
-    public function testFunctionExists() {
-        $this->namespaced_function_exists('sinh'); 
-    }
+    protected static $functionName = 'sinh';
 
     /**
      * @dataProvider providerSinh

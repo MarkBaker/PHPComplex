@@ -5,9 +5,7 @@ include_once __DIR__ . '/baseFunctionTest.php';
 
 class argumentTest extends baseFunctionTest
 {
-    public function testFunctionExists() {
-        $this->namespaced_function_exists('argument'); 
-    }
+    protected static $functionName = 'argument';
 
     /**
      * @dataProvider providerArgument
