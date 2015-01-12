@@ -7,7 +7,7 @@ PHP Class for handling Complex numbers
 
 ---
 
-Currently provides functions for:
+Currently provides methods for:
 
  - addition
  - subtraction
@@ -16,28 +16,27 @@ Currently provides functions for:
     - division by
     - division into
 
-and
+together with functions for 
 
  - theta (polar theta angle)
  - rho (polar distance/radius)
- - abs (absolute)
  - conjugate
- - negative
- - inverse
+ * negative
+ - inverse (1 / complex)
  - cos (cosine)
- - acos (inverse cosine)
+ * acos (inverse cosine)
  - cosh (hyperbolic cosine)
  - sin (sine)
- - asin (inverse sine)
+ * asin (inverse sine)
  - sinh (hyperbolic sine)
  - sec (secant)
- - asec (inverse secant)
+ * asec (inverse secant)
  - sech (hyperbolic secant)
- - asech (inverse hyperbolic secant)
+ * asech (inverse hyperbolic secant)
  - csc (cosecant)
- - acsc (inverse cosecant)
+ * acsc (inverse cosecant)
  - csch (hyperbolic secant)
- - acsch (inverse hyperbolic secant)
+ * acsch (inverse hyperbolic secant)
  - sqrt (square root)
  - exp (exponential)
  - ln (natural log)

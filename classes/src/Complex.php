@@ -1,5 +1,13 @@
 <?php
 
+/**
+ *
+ * Class for the management of Complex numbers
+ *
+ * @package Complex
+ * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ */
 namespace Complex;
 
 /**
@@ -11,16 +19,28 @@ namespace Complex;
  */
 class Complex
 {
-    const EULER = 2.71828182845904523536;
+    /**
+     * @constant    Euler's Number.
+     */
+    const EULER = 2.7182818284590452353602874713526624977572;
 
+    /**
+     * @var    float    $realPart    The value of of this complex number on the real plane.
+     */
     protected $realPart = 0.0;
 
+    /**
+     * @var    float    $imaginaryPart    The value of of this complex number on the imaginary plane.
+     */
     protected $imaginaryPart = 0.0;
 
+    /**
+     * @var    string    $suffix    The suffix for this complex number (i or j).
+     */
     protected $suffix;
 
 
-    protected static function parseComplex($complexNumber)
+    private static function parseComplex($complexNumber)
     {
         // Test for real number, with no imaginary part
         if (is_numeric($complexNumber)) {
@@ -134,7 +154,7 @@ class Complex
     {
         $str = "";
         if ($this->imaginaryPart != 0.0) {
-            if (abs($this->imaginaryPart) != 1.0) {
+            if (\abs($this->imaginaryPart) != 1.0) {
                 $str .= $this->imaginaryPart . $this->suffix;
             } else {
                 $str .= (($this->imaginaryPart < 0.0) ? '-' : '') . $this->suffix;
@@ -158,17 +178,19 @@ class Complex
         return $this->format();
     }
 
-    private function validateComplexArgument($complex)
+    /**
+     * Validates whether the argument is a valid complex number, converting scalar or array values if possible
+     *
+     * @param     mixed    $complex   The value to validate
+     * @return    Complex
+     * @throws    \Exception    If the argument isn't a Complex number or cannot be converted to one
+     */
+    public static function validateComplexArgument($complex)
     {
-        if (is_scalar($complex)) {
+        if (is_scalar($complex) || is_array($complex)) {
             $complex = new Complex($complex);
         } elseif (!is_object($complex) || !($complex instanceof Complex)) {
             throw new \Exception('COMPLEX: Value "'.$complex.'" is not a valid complex number');
-        }
-        if ($complex->getSuffix() !== '' &&
-            $this->suffix !== '' &&
-            $complex->getSuffix() !== $this->suffix) {
-            throw new \Exception('COMPLEX: Inconsistent suffix');
         }
 
         return $complex;
@@ -182,7 +204,7 @@ class Complex
      */
     public function add($complex = 0.0)
     {
-        $complex = $this->validateComplexArgument($complex);
+        $complex = self::validateComplexArgument($complex);
 
         $this->realPart += $complex->getReal();
         $this->imaginaryPart += $complex->getImaginary();
@@ -198,7 +220,7 @@ class Complex
      */
     public function subtract($complex = 0.0)
     {
-        $complex = $this->validateComplexArgument($complex);
+        $complex = self::validateComplexArgument($complex);
 
         $this->realPart -= $complex->getReal();
         $this->imaginaryPart -= $complex->getImaginary();
@@ -214,7 +236,7 @@ class Complex
      */
     public function multiply($complex = 1.0)
     {
-        $complex = $this->validateComplexArgument($complex);
+        $complex = self::validateComplexArgument($complex);
 
         $realPart = ($this->getReal() * $complex->getReal()) -
             ($this->getImaginary() * $complex->getImaginary());
@@ -234,7 +256,7 @@ class Complex
      */
     public function divideBy($complex = 1.0)
     {
-        $complex = $this->validateComplexArgument($complex);
+        $complex = self::validateComplexArgument($complex);
 
         $delta1 = ($this->getReal() * $complex->getReal()) +
             ($this->getImaginary() * $complex->getImaginary());
@@ -257,7 +279,7 @@ class Complex
      */
     public function divideInto($complex = 1.0)
     {
-        $complex = $this->validateComplexArgument($complex);
+        $complex = self::validateComplexArgument($complex);
 
         $delta1 = ($complex->getReal() * $this->getReal()) +
             ($complex->getImaginary() * $this->getImaginary());
@@ -270,80 +292,6 @@ class Complex
         $this->imaginaryPart = $delta2 / $delta3;
 
         return $this;
-    }
-
-    /**
-     * Returns the absolute value (modulus) of this complex number
-     *
-     * @return    float
-     */
-    public function abs()
-    {
-        return sqrt(
-            ($this->realPart * $this->realPart) +
-            ($this->imaginaryPart * $this->imaginaryPart)
-        );
-    }
-
-    /**
-     * Returns the theta of this complex number, i.e. the angle in radians
-     * from the real axis to the representation of the number in polar coordinates.
-     *
-     * @return    float
-     */
-    public function theta()
-    {
-        if ($this->realPart == 0.0) {
-            if ($this->imaginaryPart == 0.0) {
-                return 0.0;
-            } elseif ($this->imaginaryPart < 0.0) {
-                return M_PI / -2;
-            }
-            return M_PI / 2;
-        } elseif ($this->realPart > 0.0) {
-            return atan($this->imaginaryPart / $this->realPart);
-        } elseif ($this->imaginaryPart < 0.0) {
-            return -(M_PI - atan(abs($this->imaginaryPart) / abs($this->realPart)));
-        }
-        return M_PI - atan($this->imaginaryPart / abs($this->realPart));
-    }
-
-    /**
-     * Synonym for theta()
-     *
-     * @see    theta
-     */
-    public function argument()
-    {
-        return $this->theta();
-    }
-
-    /**
-     * Returns the rho of this complex number, i.e. the distance/radius
-     * from the centrepoint to the representation of the number in polar coordinates.
-     *
-     * @return    float
-     */
-    public function rho()
-    {
-        return sqrt(
-            ($this->realPart * $this->realPart) +
-            ($this->imaginaryPart * $this->imaginaryPart)
-        );
-    }
-
-    /**
-     * Returns the complex conjugate of this complex number
-     *
-     * @return    Complex
-     */
-    public function conjugate()
-    {
-        return new Complex(
-            $this->realPart,
-            -1 * $this->imaginaryPart,
-            $this->suffix
-        );
     }
 
     /**
@@ -360,6 +308,11 @@ class Complex
         );
     }
 
+    /**
+     * Returns the reverse of this complex number
+     *
+     * @return    Complex
+     */
     public function reverse()
     {
         $t = $this->realPart;
@@ -378,52 +331,6 @@ class Complex
     }
 
     /**
-     * Returns the inverse of this complex number
-     *
-     * @return    Complex
-     */
-    public function inverse()
-    {
-        return $this->divideInto();
-    }
-
-    /**
-     * Returns the cosine of this complex number
-     *
-     * @return    Complex
-     */
-    public function cos()
-    {
-        if ($this->imaginaryPart == 0.0) {
-            return new Complex(cos($this->realPart), 0.0, $this->suffix);
-        }
-
-        $complex = new Complex(
-            cos($this->realPart) * cosh($this->imaginaryPart),
-            sin($this->realPart) * sinh($this->imaginaryPart),
-            $this->suffix
-        );
-        return $complex->conjugate();
-    }
-
-    /**
-     * Returns the hyperbolic cosine of this complex number
-     *
-     * @return    Complex
-     */
-    public function cosh()
-    {
-        if ($this->imaginaryPart == 0.0) {
-            return new Complex(cosh($this->realPart), 0.0, $this->suffix);
-        }
-        return new Complex(
-            cosh($this->realPart) * cos($this->imaginaryPart),
-            sinh($this->realPart) * sin($this->imaginaryPart),
-            $this->suffix
-        );
-    }
-
-    /**
      * Returns the inverse cosine of this complex number
      *
      * @return    Complex
@@ -434,12 +341,12 @@ class Complex
         $v = $v->multiply($this);
         $t = new Complex(1.0);
         $t = $t->subtract($v);
-        $t = $t->sqrt();
+        $t = sqrt($t);
         $v = new Complex(
             $this->realPart - $t->getImaginary(),
             $this->imaginaryPart + $t->getReal()
         );
-        $z = $v->ln();
+        $z = ln($v);
 
         return new Complex(
             $z->getImaginary(),
@@ -466,41 +373,6 @@ class Complex
     }
 
     /**
-     * Returns the sine of this complex number
-     *
-     * @return    Complex
-     */
-    public function sin()
-    {
-        if ($this->imaginaryPart == 0.0) {
-            return new Complex(sin($this->realPart), 0.0, $this->suffix);
-        }
-        return new Complex(
-            sin($this->realPart) * cosh($this->imaginaryPart),
-            cos($this->realPart) * sinh($this->imaginaryPart),
-            $this->suffix
-        );
-    }
-
-    /**
-     * Returns the hyperbolic sine of this complex number
-     *
-     * @return    Complex
-     */
-    public function sinh()
-    {
-        if ($this->imaginaryPart == 0.0) {
-            return new Complex(sinh($this->realPart), 0.0, $this->suffix);
-        } else {
-            return new Complex(
-                sinh($this->realPart) * cos($this->imaginaryPart),
-                cosh($this->realPart) * sin($this->imaginaryPart),
-                $this->suffix
-            );
-        }
-    }
-
-    /**
      * Returns the inverse sine of this complex number
      *
      * @return    Complex
@@ -511,39 +383,16 @@ class Complex
         $v = $v->multiply($this);
         $t = new Complex(1.0);
         $t = $t->subtract($v);
-        $t = $t->sqrt();
+        $t = sqrt($t);
         $v = new Complex(
             $t->getReal() - $this->imaginaryPart,
             $t->getImaginary() + $this->realPart
         );
-        $z = $v->ln();
+        $z = ln($v);
         return new Complex(
             $z->getImaginary(),
             -1 * $z->getReal()
         );
-    }
-
-    /**
-     * Returns the secant of this complex number
-     *
-     * @return    Complex
-     */
-    public function sec()
-    {
-        $complex = clone $this;
-        return $complex->cos()
-            ->inverse();
-    }
-
-    /**
-     * Returns the hyperbolic secant of this complex number
-     *
-     * @return    Complex
-     */
-    public function sech()
-    {
-        $complex = clone $this;
-        return $complex->cosh()->inverse();
     }
 
     /**
@@ -554,7 +403,7 @@ class Complex
     public function asec()
     {
         $complex = clone $this;
-        return $complex->inverse()->acos();
+        return inverse($complex)->acos();
     }
 
     /**
@@ -565,18 +414,7 @@ class Complex
     public function asech()
     {
         $complex = clone $this;
-        return $complex->inverse()->acosh();
-    }
-
-    /**
-     * Returns the cosecant of this complex number
-     *
-     * @return    Complex
-     */
-    public function csc()
-    {
-        $complex = clone $this;
-        return $complex->sin()->inverse();
+        return inverse($complex)->acosh();
     }
 
     /**
@@ -587,7 +425,7 @@ class Complex
     public function csch()
     {
         $complex = clone $this;
-        return $complex->sinh()->inverse();
+        return inverse(sinh($complex));
     }
 
     /**
@@ -598,7 +436,7 @@ class Complex
     public function acsc()
     {
         $complex = clone $this;
-        return $complex->inverse()->asin();
+        return inverse($complex)->asin();
     }
 
     /**
@@ -609,102 +447,6 @@ class Complex
     public function acsch()
     {
         $complex = clone $this;
-        return $complex->inverse()->asinh();
-    }
-
-    /**
-     * Returns the square root of this complex number
-     *
-     * @return    Complex
-     */
-    public function sqrt()
-    {
-        $theta = $this->theta();
-        $delta1 = cos($theta / 2);
-        $delta2 = sin($theta / 2);
-        $rho = sqrt($this->rho());
-
-        return new Complex($delta1 * $rho, $delta2 * $rho, $this->suffix);
-    }
-
-    /**
-     * Returns the exponential of this complex number
-     *
-     * @return    Complex
-     */
-    public function exp()
-    {
-        if (($this->realPart == 0.0) && (abs($this->imaginaryPart) == M_PI)) {
-            return new Complex(-1.0, 0.0);
-        }
-
-        $rho = exp($this->realPart);
- 
-        return new Complex($rho * cos($this->imaginaryPart), $rho * sin($this->imaginaryPart), $this->suffix);
-    }
-
-    /**
-     * Returns the natural logarithm of this complex number
-     *
-     * @return Complex
-     * @throws \InvalidArgumentException
-     */
-    public function ln()
-    {
-        if (($this->realPart == 0.0) && ($this->imaginaryPart == 0.0)) {
-            throw new \InvalidArgumentException();
-        }
-
-        return new Complex(
-            log($this->rho()),
-            $this->theta(),
-            $this->suffix
-        );
-    }
-
-    /**
-     * Returns the common logarithm (base 10) of this complex number
-     *
-     * @return Complex
-     * @throws \InvalidArgumentException
-     */
-    public function log10()
-    {
-        if (($this->realPart == 0.0) && ($this->imaginaryPart == 0.0)) {
-            throw new \InvalidArgumentException();
-        } elseif (($this->realPart > 0.0) && ($this->imaginaryPart == 0.0)) {
-            return new Complex(log10($this->realPart), 0.0, $this->suffix);
-        }
-
-        $complex = new Complex(
-            $this->realPart,
-            $this->imaginaryPart,
-            $this->suffix
-        );
-        return $complex->ln()
-            ->multiply(log10(self::EULER));
-    }
-
-    /**
-     * Returns the base-2 logarithm of this complex number
-     *
-     * @return Complex
-     * @throws \InvalidArgumentException
-     */
-    public function log2()
-    {
-        if (($this->realPart == 0.0) && ($this->imaginaryPart == 0.0)) {
-            throw new \InvalidArgumentException();
-        } elseif (($this->realPart > 0.0) && ($this->imaginaryPart == 0.0)) {
-            return new Complex(log($this->realPart, 2), 0.0, $this->suffix);
-        }
-
-        $complex = new Complex(
-            $this->realPart,
-            $this->imaginaryPart,
-            $this->suffix
-        );
-        return $complex->ln()
-            ->multiply(log(self::EULER, 2));
+        return inverse($complex)->asinh();
     }
 }

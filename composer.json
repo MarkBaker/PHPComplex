@@ -17,7 +17,26 @@
     "autoload": {
         "psr-4": {
             "Complex\\": "classes/src/"
-        }
+        },
+        "files": [
+            "classes/src/functions/abs.php"
+            "classes/src/functions/argument.php"
+            "classes/src/functions/conjugate.php",
+            "classes/src/functions/cos.php",
+            "classes/src/functions/cosh.php",
+            "classes/src/functions/csc.php"
+            "classes/src/functions/exp.php"
+            "classes/src/functions/inverse.php"
+            "classes/src/functions/ln.php"
+            "classes/src/functions/log10.php"
+            "classes/src/functions/log2.php"
+            "classes/src/functions/rho.php"
+            "classes/src/functions/sec.php"
+            "classes/src/functions/sin.php"
+            "classes/src/functions/sinh.php"
+            "classes/src/functions/sqrt.php"
+            "classes/src/functions/theta.php"
+        ]
     },
     "minimum-stability": "dev"
 }

@@ -43,4 +43,6 @@ if(extension_loaded('xdebug')) {
 }
 
 
-require_once(APPLICATION_PATH . '/src/Complex.php');
+require_once(APPLICATION_PATH . '/Bootstrap.php');
+// Unset non-serializable resources used in the Complex bootstrap for loading function files
+unset($file, $iterator);
