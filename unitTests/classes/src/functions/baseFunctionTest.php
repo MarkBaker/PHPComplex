@@ -30,7 +30,7 @@ abstract class baseFunctionTest extends \PHPUnit_Framework_TestCase
     public function testInvalidArgument()
     {
         $invalidComplex = '*** INVALID ***';
-		$result = call_user_func(static::$functionName, $invalidComplex);
+		$result = call_user_func('\\' . __NAMESPACE__ . '\\' . static::$functionName, $invalidComplex);
     }
 
     protected function getAssertionPrecision($value)

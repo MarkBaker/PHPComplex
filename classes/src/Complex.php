@@ -315,9 +315,9 @@ class Complex
      */
     public function reverse()
     {
-        $t = $this->realPart;
+        $swap = $this->realPart;
         $this->realPart = $this->imaginaryPart;
-        $this->imaginaryPart = $t;
+        $this->imaginaryPart = $swap;
     }
 
     public function invertImaginary()
@@ -340,12 +340,12 @@ class Complex
         if (($this->imaginaryPart == 0.0) && ($this->realPart > 1)) {
             return new Complex(\acosh($this->realPart), 0.0, $this->suffix);
         }
-        $z = acos($this);
-        $z->reverse();
-        if ($z->getReal() < 0.0) {
-            $z->invertReal();
+        $acosh = acos($this);
+        $acosh->reverse();
+        if ($acosh->getReal() < 0.0) {
+            $acosh->invertReal();
         }
-        return $z;
+        return $acosh;
     }
 
     /**

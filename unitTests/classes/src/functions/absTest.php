@@ -19,7 +19,6 @@ class absTest extends baseFunctionTest
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-        
 	}
 
     /*

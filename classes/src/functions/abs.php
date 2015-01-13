@@ -20,6 +20,7 @@ namespace Complex;
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
  * @return    \real            The absolute (or rho) value of the complex argument.
  * @throws    \Exception       If argument isn't a valid real or complex number.
+ *
  * @see    rho
  *
  */
