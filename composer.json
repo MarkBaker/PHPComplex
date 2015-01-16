@@ -1,5 +1,5 @@
 {
-    "name": "MarkBaker/PHPComplex",
+    "name": "markbaker/complex",
     "type": "library",
     "description": "PHP Class for working with complex numbers",
     "keywords": ["complex"],
