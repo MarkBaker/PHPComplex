@@ -6,35 +6,47 @@ include('../classes/Bootstrap.php');
 
 echo 'Function Examples', PHP_EOL;
 
-$complexValues = [
-    123,
-    -123,
-    [123, 456],
-    [123, 456, 'j'],
-    [123, -456],
-    [-123, 456],
-    [-123, -456],
-    '1.23e-4--2.34e-5i',
-    '-1.23e-4--2.34e-5i',
-    '-1.23e-4-2.34e-5i',
-    '1.23e-4-2.34e-5i',
-    [0, 123],
-    [0, -123],
-];
-
 $functions = [
+    'abs',
+    'acos',
+    'acosh',
+    'acsc',
+    'acsch',
+    'argument',
+    'asec',
+    'asech',
+    'asin',
+    'asinh',
     'conjugate',
     'cos',
-    'sin',
+    'cosh',
+    'csc',
+    'csch',
+    'exp',
+    'inverse',
+    'ln',
+    'log2',
+    'log10',
     'rho',
-    'theta',
+    'sec',
+    'sech',
+    'sin',
+    'sinh',
+    'sqrt',
+    'theta'
 ];
 
-foreach($functions as $function) {
-    $complexFunction = __NAMESPACE__ . '\\' . $function;
-    foreach($complexValues as $complexValue) {
-        $complex = new Complex($complexValue);
-        echo $function, '(', $complex, ') is ', $complexFunction($complex), PHP_EOL;
+for($real = -3.5; $real <= 3.5; $real += 0.5) {
+    for($imaginary = -3.5; $imaginary <= 3.5; $imaginary += 0.5) {
+        foreach($functions as $function) {
+            $complexFunction = __NAMESPACE__ . '\\' . $function;
+            $complex = new Complex($real, $imaginary);
+            try {
+                echo $function, '(', $complex, ') = ', $complexFunction($complex), PHP_EOL;
+            } catch(\Exception $e) {
+                echo $function, '(', $complex, ') ERROR: ', $e->getMessage(), PHP_EOL;
+            }
+        }
+        echo PHP_EOL;
     }
-    echo PHP_EOL;
 }
