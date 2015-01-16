@@ -253,10 +253,15 @@ class Complex
      *
      * @param    string|integer|float|Complex    $complex   The number to divide by
      * @return    Complex
+     * @throws    \InvalidArgumentException    If function would result in a division by zero
      */
     public function divideBy($complex = 1.0)
     {
         $complex = self::validateComplexArgument($complex);
+
+        if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
+            throw new \InvalidArgumentException('Division by zero');
+        }
 
         $delta1 = ($this->getReal() * $complex->getReal()) +
             ($this->getImaginary() * $complex->getImaginary());
@@ -276,9 +281,14 @@ class Complex
      *
      * @param    string|integer|float|Complex    $complex   The number to divide into
      * @return    Complex
+     * @throws    \InvalidArgumentException    If function would result in a division by zero
      */
     public function divideInto($complex = 1.0)
     {
+        if ($this->getReal() == 0.0 && $this->getImaginary() == 0.0) {
+            throw new \InvalidArgumentException('Division by zero');
+        }
+
         $complex = self::validateComplexArgument($complex);
 
         $delta1 = ($complex->getReal() * $this->getReal()) +
