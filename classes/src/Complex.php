@@ -329,44 +329,4 @@ class Complex
     {
         $this->realPart *= -1;
     }
-
-    /**
-     * Returns the inverse hyperbolic cosine of this complex number
-     *
-     * @return    Complex
-     */
-    public function acosh()
-    {
-        if (($this->imaginaryPart == 0.0) && ($this->realPart > 1)) {
-            return new Complex(\acosh($this->realPart), 0.0, $this->suffix);
-        }
-        $acosh = acos($this);
-        $acosh->reverse();
-        if ($acosh->getReal() < 0.0) {
-            $acosh->invertReal();
-        }
-        return $acosh;
-    }
-
-    /**
-     * Returns the inverse hyperbolic secant of this complex number
-     *
-     * @return    Complex
-     */
-    public function asech()
-    {
-        $complex = clone $this;
-        return inverse($complex)->acosh();
-    }
-
-    /**
-     * Returns the inverse hyperbolic cosecant of this complex number
-     *
-     * @return    Complex
-     */
-    public function acsch()
-    {
-        $complex = clone $this;
-        return inverse($complex)->asinh();
-    }
 }
