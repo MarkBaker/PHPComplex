@@ -16,6 +16,7 @@ namespace Complex;
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
  * @return    Complex          The tangent of the complex argument.
  * @throws    \Exception       If argument isn't a valid real or complex number.
+ * @throws    \InvalidArgumentException    If function would result in a division by zero
  */
 function tan($complex)
 {
@@ -29,7 +30,7 @@ function tan($complex)
     $bValue = $complex->getImaginary();
     $divisor = 1 + \pow(\tan($aValue), 2) * \pow(\tanh($bValue), 2);
     if ($divisor == 0.0) {
-        throw new Exception('Division by zero while calculating \Complex\tan()');
+        throw new \InvalidArgumentException('Division by zero');
     }
 
     return new Complex(

@@ -253,6 +253,15 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
+     * @expectedException Exception
+     */
+	public function testDivideByZero()
+	{
+        $complex = new Complex('2.5-i');
+		$complex->divideBy(0.0);
+	}
+
+    /**
      * @dataProvider providerDivideInto
      */
 	public function testDivideInto()
@@ -269,6 +278,17 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
+     * @expectedException Exception
+     */
+	public function testDivideIntoByZero()
+	{
+        $complex = new Complex(0.0);
+		$complex->divideInto(
+            new Complex('2.5-i')
+        );
+	}
+
+    /**
      * @dataProvider providerNegative
      */
 	public function testNegative()
@@ -278,6 +298,15 @@ class ComplexTest extends \PHPUnit_Framework_TestCase
 		$result = $complex->negative();
 
         $this->complexNumberAssertions($args[1], $result);
+	}
+
+    /**
+     * @expectedException Exception
+     */
+	public function testValidateComplexArgument()
+	{
+        $nonComplex = new \stdClass();
+		Complex::validateComplexArgument($nonComplex);
 	}
 
 
