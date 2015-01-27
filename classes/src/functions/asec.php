@@ -4,7 +4,6 @@
  *
  * Function code for the complex asec() function
  *
- * @package Complex
  * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */

@@ -4,7 +4,6 @@
  *
  * Class for the management of Complex numbers
  *
- * @package Complex
  * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */
@@ -14,8 +13,6 @@ namespace Complex;
  * Complex Number object.
  *
  * @package Complex
- * @copyright  Copyright (c) 2013-2014 Mark Baker (https://github.com/MarkBaker/PHPComplex)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  */
 class Complex
 {
@@ -40,6 +37,13 @@ class Complex
     protected $suffix;
 
 
+    /**
+     * Validates whether the argument is a valid complex number, converting scalar or array values if possible
+     *
+     * @param     mixed    $complexNumber   The value to parse
+     * @return    array
+     * @throws    \Exception    If the argument isn't a Complex number or cannot be converted to one
+     */
     private static function parseComplex($complexNumber)
     {
         // Test for real number, with no imaginary part
