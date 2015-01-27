@@ -45,6 +45,7 @@
             "classes/src/functions/sin.php",
             "classes/src/functions/sinh.php",
             "classes/src/functions/sqrt.php",
+            "classes/src/functions/tan.php",
             "classes/src/functions/theta.php"
         ]
     },
