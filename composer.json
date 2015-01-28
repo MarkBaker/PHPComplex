@@ -29,6 +29,7 @@
             "classes/src/functions/asech.php",
             "classes/src/functions/asin.php",
             "classes/src/functions/asinh.php",
+            "classes/src/functions/atan.php",
             "classes/src/functions/conjugate.php",
             "classes/src/functions/cos.php",
             "classes/src/functions/cosh.php",

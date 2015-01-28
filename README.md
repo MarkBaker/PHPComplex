@@ -40,6 +40,7 @@ together with functions for
  - csch (hyperbolic secant)
  - acsch (inverse hyperbolic secant)
  - tan (tangent)
+ - atan (inverse tangent)
  - sqrt (square root)
  - exp (exponential)
  - ln (natural log)
@@ -50,7 +51,6 @@ together with functions for
 
 Planned additional functionality, but still to implement
 
- * atan (inverse tangent)
  * tanh (hyperbolic tangent)
  * atanh (inverse hyperbolic tangent)
  * cot (cotangent)
