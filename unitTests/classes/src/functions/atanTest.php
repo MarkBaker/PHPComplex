@@ -13,9 +13,11 @@ class atanTest extends baseFunctionTest
 	public function testAtan()
 	{
 		$args = func_get_args();
+        if (strpos($args[1], 'Exception') !== false) {
+            $this->setExpectedException($args[1]);
+        }
 		$complex = new Complex($args[0]);
-		$result = atan($complex);
-
+        $result = atan($complex);
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -45,8 +47,8 @@ class atanTest extends baseFunctionTest
             '-0.8263539907993-0.2116413714332627i',
             '1.57079632679489662+0.32976531495669911i',
             '-1.57079632679489662-0.32976531495669911i',
-            \NAN,
-            \NAN,
+            'InvalidArgumentException',
+            'InvalidArgumentException',
             '0.123625981183130070i',
             '-0.1236259811831301i',
 		);
