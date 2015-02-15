@@ -62,6 +62,7 @@ Planned additional functionality, but still to implement
 ---
 Functions added
 - tanh (hyperbolic tangent)
+- atanh (inverse hyperbolic tangent)
 - coth (hyperbolic cotangent)
 - acoth (inverse hyperbolic cotangent)
 - gudermannian () Hyperbolic
