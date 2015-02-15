@@ -40,7 +40,8 @@ $functions = [
     'haversine',
     'inversegudermannian',
     'inversehaversine',
-    'tanh'
+    'tanh',
+    'atanh'
 ];
 
 for($real = -3.5; $real <= 3.5; $real += 0.5) {

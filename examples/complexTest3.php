@@ -10,6 +10,7 @@ $complexFunction5 =  __NAMESPACE__ . '\\' . 'inversegudermannian';
 $complexFunction6 =  __NAMESPACE__ . '\\' . 'acoth';
 $complexFunction7 =  __NAMESPACE__ . '\\' . 'coth';
 $complexFunction8 =  __NAMESPACE__ . '\\' . 'tanh';
+$complexFunction9 =  __NAMESPACE__ . '\\' . 'atanh';
 
 
 echo $complexFunction1( 9 ) . '<br/>' . PHP_EOL;
@@ -52,5 +53,17 @@ unset($i);
 echo "<h3>Tanh</h3><br/>" . PHP_EOL;
 for ( $i = -10; $i <= 10; $i++ ) {
     echo ( $i ) . ': ' . $complexFunction8( $i ) . '<br/>' . PHP_EOL;
+}
+unset($i);
+
+echo "<h3>Tanh</h3><br/>" . PHP_EOL;
+for ( $i = -10; $i <= 10; $i++ ) {
+    echo ( $i ) . ': ' . $complexFunction8( $i ) . '<br/>' . PHP_EOL;
+}
+unset($i);
+
+echo "<h3>ArcTanh</h3><br/>" . PHP_EOL;
+for ( $i = -10; $i <= 10; $i++ ) {
+    echo ( $i ) . ': ' . $complexFunction9( $i ) . '<br/>' . PHP_EOL;
 }
 unset($i);
