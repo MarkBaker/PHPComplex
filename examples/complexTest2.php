@@ -4,7 +4,7 @@ namespace Complex;
 
 include('../classes/Bootstrap.php');
 
-echo 'Function Examples', PHP_EOL;
+echo "<h3>Function Examples</h3><br/>", PHP_EOL;
 
 $functions = [
     'abs',
@@ -33,7 +33,14 @@ $functions = [
     'sin',
     'sinh',
     'sqrt',
-    'theta'
+    'theta',
+    'acoth',
+    'coth',
+    'gudermannian',
+    'haversine',
+    'inversegudermannian',
+    'inversehaversine',
+    'tanh'
 ];
 
 for($real = -3.5; $real <= 3.5; $real += 0.5) {
@@ -42,11 +49,11 @@ for($real = -3.5; $real <= 3.5; $real += 0.5) {
             $complexFunction = __NAMESPACE__ . '\\' . $function;
             $complex = new Complex($real, $imaginary);
             try {
-                echo $function, '(', $complex, ') = ', $complexFunction($complex), PHP_EOL;
+                echo $function, '(', $complex, ') = ', $complexFunction($complex), "<br/>",PHP_EOL;
             } catch(\Exception $e) {
-                echo $function, '(', $complex, ') ERROR: ', $e->getMessage(), PHP_EOL;
+                echo $function, '(', $complex, ') ERROR: ', $e->getMessage(), "<br/>", PHP_EOL;
             }
         }
-        echo PHP_EOL;
+        echo "<br/>",PHP_EOL;
     }
 }
