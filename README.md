@@ -59,3 +59,13 @@ Planned additional functionality, but still to implement
  * acoth (inverse hyperbolic cotangent)
  * pow (power)
  
+---
+Functions added
+- tanh (hyperbolic tangent)
+- coth (hyperbolic cotangent)
+- acoth (inverse hyperbolic cotangent)
+- gudermannian () Hyperbolic
+- inversegudermannian () Hyperbolic
+- haversine () Trigonometric
+- inversehaversine () Trigonometric
+ 
