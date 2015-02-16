@@ -23,6 +23,7 @@
             "classes/src/functions/acos.php",
             "classes/src/functions/acosh.php",
             "classes/src/functions/acot.php",
+            "classes/src/functions/acoth.php",
             "classes/src/functions/acsc.php",
             "classes/src/functions/acsch.php",
             "classes/src/functions/argument.php",
@@ -31,10 +32,12 @@
             "classes/src/functions/asin.php",
             "classes/src/functions/asinh.php",
             "classes/src/functions/atan.php",
+            "classes/src/functions/atanh.php",
             "classes/src/functions/conjugate.php",
             "classes/src/functions/cos.php",
             "classes/src/functions/cosh.php",
             "classes/src/functions/cot.php",
+            "classes/src/functions/coth.php",
             "classes/src/functions/csc.php",
             "classes/src/functions/csch.php",
             "classes/src/functions/exp.php",
@@ -49,6 +52,7 @@
             "classes/src/functions/sinh.php",
             "classes/src/functions/sqrt.php",
             "classes/src/functions/tan.php",
+            "classes/src/functions/tanh.php",
             "classes/src/functions/theta.php"
         ]
     },
