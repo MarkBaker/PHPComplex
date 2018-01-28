@@ -12,7 +12,7 @@ abstract class baseFunctionTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->precision = ini_set('precision', 16);
+        $this->precision = ini_set('precision', 18);
     }
 
     protected function tearDown()
@@ -44,8 +44,8 @@ abstract class baseFunctionTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($expected, (string) $result, null, $this->getAssertionPrecision($expected));
         } else {
             $expected = new Complex($expected);
-            $this->assertEquals($expected->getReal(), $result->getReal(), null, $this->getAssertionPrecision($expected->getReal()));
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary(), null, $this->getAssertionPrecision($expected->getImaginary()));
+            $this->assertEquals($expected->getReal(), $result->getReal(), 'Real Component', $this->getAssertionPrecision($expected->getReal()));
+            $this->assertEquals($expected->getImaginary(), $result->getImaginary(), 'Imaginary Component', $this->getAssertionPrecision($expected->getImaginary()));
         }
     }
 
@@ -66,7 +66,7 @@ abstract class baseFunctionTest extends \PHPUnit_Framework_TestCase
 		array(-0.98765,	0.4321,	    NULL),
 		array(-0.98765,	-0.4321,	NULL),
 		array(0,		M_PI,		NULL),
-		array(0,		-3.14159265358979324,   NULL),  // Shame we can't yet have dynamic expressions in property definitions
+		array(0,		-M_PI,      NULL),
 		array(0,		1,		    NULL),
 		array(0,		-1,		    NULL),
 		array(0,		0.123,		NULL),

@@ -15,6 +15,7 @@ class atanhTest extends baseFunctionTest
 		$args = func_get_args();
 		$complex = new Complex($args[0]);
         $result = atanh($complex);
+//var_dump($args, $complex, $result); echo PHP_EOL;
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);

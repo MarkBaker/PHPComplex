@@ -194,7 +194,7 @@ class Complex
         if (is_scalar($complex) || is_array($complex)) {
             $complex = new Complex($complex);
         } elseif (!is_object($complex) || !($complex instanceof Complex)) {
-            throw new \Exception('COMPLEX: Value "'.$complex.'" is not a valid complex number');
+            throw new \Exception('COMPLEX: Value is not a valid complex number');
         }
 
         return $complex;
