@@ -14,19 +14,31 @@ matrix:
   allow_failures:
     - php: hhvm
 
-before_script:
+before_install:
   ## Packages
-  - sudo apt-get -qq update > /dev/null
+  - sudo apt-get -qq update
+
+before_script:
   ## Composer
   - composer self-update
-  - composer install --prefer-source --dev
-  - phpenv global "$TRAVIS_PHP_VERSION"
+  - composer install --prefer-source
+  ## PHPDocumentor
+  - mkdir -p build/docs
+  - mkdir -p build/coverage
 
 script:
   ## PHP_CodeSniffer
-  - ./vendor/bin/phpcs --report-width=200 --report-summary  --report-full Classes/ unitTests/ --standard=PSR2 -n
+  - ./vendor/bin/phpcs ./classes/src/ --standard=PSR2 -n
+  ## PHP Copy/Paste Detector
+  # - ./vendor/bin/phpcpd ./classes/src/
+  ## PHP Mess Detector
+  - ./vendor/bin/phpmd ./classes/src/ text ./phpmd.xml.dist
   ## PHPUnit
-  - phpunit -c ./unitTests/
+  - ./vendor/bin/phpunit -c ./unitTests/ --coverage-text --coverage-html ./build/coverage
+  ## PHPLOC
+  - ./vendor/bin/phploc ./classes/src/
+  ## PHPDocumentor
+  ## - ./vendor/bin/phpdoc -q -d ./classes/src -t ./build/docs --template="responsive-twig"
 
 notifications:
   email: false
