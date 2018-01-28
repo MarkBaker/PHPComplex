@@ -5,6 +5,11 @@ PHPComplex
 
 PHP Class for handling Complex numbers
 
+Master: [![Build Status](https://travis-ci.org/MarkBaker/PHPComplex.png?branch=master)](http://travis-ci.org/MarkBaker/PHPComplex)
+
+Develop: [![Build Status](https://travis-ci.org/MarkBaker/PHPComplex.png?branch=develop)](http://travis-ci.org/MarkBaker/PHPComplex)
+
+
 ---
 
 Currently provides methods for:
