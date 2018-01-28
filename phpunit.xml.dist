@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<phpunit bootstrap="./unitTests/bootstrap.php"
+    backupGlobals="true"
+    colors="true" 
+    convertErrorsToExceptions="true" 
+    convertNoticesToExceptions="true" 
+    convertWarningsToExceptions="true" 
+    processIsolation="false" 
+    syntaxCheck="true" 
+    verbose="true" 
+    strict="true"
+    stopOnError="false"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false">
+    <php>
+        <ini name="memory_limit" value="2048M"/>
+    </php>
+    <testsuite name="Complex Unit Test Suite">
+        <directory suffix="Test.php">./unitTests/classes</directory>
+    </testsuite>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../unitTests/classes</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="./unitTests/codeCoverage" charset="UTF-8"
+             yui="true" highlight="false"
+             lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="./unitTests/codeCoverage/codeCoverage.xml"/>
+        <log type="metrics-xml" target="./unitTests/metrics/metrics.xml"/>
+        <log type="test-xml" target="./unitTests/testResults/logfile.xml" logIncompleteSkipped="false"/>
+    </logging>
+</phpunit> 

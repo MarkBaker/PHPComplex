@@ -21,7 +21,7 @@ function atanh($complex)
     $complex = Complex::validateComplexArgument($complex);
 
     $imaginary = $complex->getImaginary();
-    if ($imaginary == 0.0 ) {
+    if ($imaginary == 0.0) {
         $real = $complex->getReal();
         if ($real > -1.0 && $real < 1.0) {
             return new Complex(\atanh($real), 0.0, $complex->getSuffix());
