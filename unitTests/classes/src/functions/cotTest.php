@@ -21,6 +21,20 @@ class cotTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerCot
+     */
+	public function testCotInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->cot();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Cot[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class cotTest extends baseFunctionTest
             '-2.773816874338468E-4+1.000218501537719i',
             '-0.5133418577751009-0.5449260588445627i',
             '-0.5133418577751009+0.5449260588445627i',
-            '-1.00374187319732129i',
-            '1.00374187319732129i',
 			'-1.31303528549933130i',
 			'1.3130352854993313i',
             '-8.17104000770619135i',

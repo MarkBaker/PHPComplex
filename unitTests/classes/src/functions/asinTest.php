@@ -21,6 +21,20 @@ class asinTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerASin
+     */
+	public function testAsinInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->asin();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[ArcSin[<VALUE>], 18]
@@ -43,8 +57,6 @@ class asinTest extends baseFunctionTest
             '-1.15679641219396815-3.06941431940712748i',
             '-0.928795882626759563+0.670281385591987313i',
             '-0.928795882626759563-0.670281385591987313i',
-            '1.86229574331084822i',
-            '-1.86229574331084822i',
             '0.881373587019543025i',
             '-0.881373587019543025i',
             '0.122691948158259558i',

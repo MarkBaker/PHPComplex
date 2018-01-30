@@ -21,6 +21,20 @@ class acoshTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerAcosh
+     */
+	public function testAcoshInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->acosh();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[ArcCosH[<VALUE>], 18]
@@ -43,8 +57,6 @@ class acoshTest extends baseFunctionTest
             '3.06941431940712748-2.72759273898886477i',
             '0.67028138559198731+2.49959220942165618i',
             '0.67028138559198731-2.49959220942165618i',
-            '1.86229574331084822+1.57079632679489662i',
-            '1.86229574331084822-1.57079632679489662i',
             '0.88137358701954303+1.57079632679489662i',
             '0.88137358701954303-1.57079632679489662i',
             '0.12269194815825956+1.57079632679489662i',

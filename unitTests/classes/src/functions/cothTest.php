@@ -24,6 +24,23 @@ class cothTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerCoth
+     */
+	public function testCothInvoker()
+	{
+		$args = func_get_args();
+        if (strpos($args[1], 'Exception') !== false) {
+            $this->setExpectedException($args[1]);
+        }
+		$complex = new Complex($args[0]);
+		$result = $complex->coth();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Coth[<VALUE> Radians], 18]
@@ -46,8 +63,6 @@ class cothTest extends baseFunctionTest
             '-0.999999996258627+3.721818315566377E-9i',
             '-1.168797734949383-0.251471514080718i',
             '-1.168797734949383+0.251471514080718i',
-            '-6.50467164953053602E17i',
-            'Exception',
 			'-0.642092615934330703i',
 			'0.6420926159343307i',
             '-8.08903988853953767i',

@@ -18,6 +18,24 @@ class acotTest extends baseFunctionTest
         }
 		$complex = new Complex($args[0]);
         $result = acot($complex);
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
+    /**
+     * @dataProvider providerAcot
+     */
+	public function testAcotInvoker()
+	{
+		$args = func_get_args();
+        if (strpos($args[1], 'Exception') !== false) {
+            $this->setExpectedException($args[1]);
+        }
+		$complex = new Complex($args[0]);
+		$result = $complex->acot();
+
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -45,8 +63,6 @@ class acotTest extends baseFunctionTest
             '-0.0848960316219556861+0.0369304870575309931i',
             '-0.744442335995596569-0.211641371433262802i',
             '-0.744442335995596569+0.211641371433262802i',
-            '-0.329765314956699107i',
-            '0.329765314956699107i',
             'InvalidArgumentException',
             'InvalidArgumentException',
             '-1.57079632679489662-0.12362598118313007i',

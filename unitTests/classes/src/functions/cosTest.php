@@ -21,6 +21,20 @@ class cosTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerCos
+     */
+	public function testCosInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->cos();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Cosine[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class cosTest extends baseFunctionTest
             '-33.8632992264903040+16.4240194053061343i',
             '0.602864164806169264+0.372017973792045322i',
             '0.602864164806169264-0.372017973792045322i',
-            11.5919532755215206,
-            11.5919532755215206,
 			1.54308063481524378,
 			1.54308063481524378,
             1.00757404175415510,

@@ -20,6 +20,19 @@ class atanhTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerATanh
+     */
+	public function testAtanhInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+        $result = $complex->atanh();
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha utang
      *  N[ArcTanh[<VALUE>], 18]
@@ -42,8 +55,6 @@ class atanhTest extends baseFunctionTest
             '-0.08507023405349073-1.53336304554086626i',
             '-0.774365673480939215+0.878142243314273647i',
             '-0.774365673480939215-0.878142243314273647i',
-            '1.26262725567891168i',
-            '-1.26262725567891168i',
             '0.785398163397448310i',
             '-0.785398163397448310i',
             '0.122385281471802660i',

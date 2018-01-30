@@ -21,6 +21,20 @@ class sinTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerSin
+     */
+	public function testSinInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->sin();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Sine[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class sinTest extends baseFunctionTest
             '16.42981920783279+33.85134532450693i',
             '-0.913881087001989+0.245410817942156i',
             '-0.913881087001989-0.245410817942156i',
-            '11.5487393572577484i',
-            '-11.5487393572577484i',
             '1.17520119364380146i',
             '-1.17520119364380146i',
             '0.123310379193334229i',

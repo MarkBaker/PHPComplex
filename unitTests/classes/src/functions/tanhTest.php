@@ -24,6 +24,23 @@ class tanhTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerTanh
+     */
+	public function testTanhInvoker()
+	{
+		$args = func_get_args();
+        if (strpos($args[1], 'Exception') !== false) {
+            $this->setExpectedException($args[1]);
+        }
+		$complex = new Complex($args[0]);
+		$result = $complex->tanh();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Tanh[<VALUE> Radians], {INF,32}]
@@ -46,8 +63,6 @@ class tanhTest extends baseFunctionTest
             '-1.000000003741373-0.0000000037218183434158i',
             '-0.817726452647815+0.1759371215414836i',
             '-0.817726452647815-0.1759371215414836i',
-            0.0,
-            0.0,
 			'1.55740772465490223050697480745836i',
 			'-1.55740772465490223050697480745836i',
             '0.12362406586927441783085053209750i',

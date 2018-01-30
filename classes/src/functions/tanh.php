@@ -20,7 +20,6 @@ namespace Complex;
 function tanh($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
-
     $real = $complex->getReal();
     $imaginary = $complex->getImaginary();
     $divisor = \cos($imaginary) * \cos($imaginary) + \sinh($real) * \sinh($real);

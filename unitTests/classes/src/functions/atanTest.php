@@ -23,6 +23,22 @@ class atanTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerATan
+     */
+	public function testAtanInvoker()
+	{
+		$args = func_get_args();
+        if (strpos($args[1], 'Exception') !== false) {
+            $this->setExpectedException($args[1]);
+        }
+		$complex = new Complex($args[0]);
+        $result = $complex->atan();
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha utang
      *  N[ArcTan[<VALUE>], 18]
@@ -45,8 +61,6 @@ class atanTest extends baseFunctionTest
             '-1.485900295172941-0.036930487057531i',
             '-0.8263539907993+0.2116413714332627i',
             '-0.8263539907993-0.2116413714332627i',
-            '1.57079632679489662+0.32976531495669911i',
-            '-1.57079632679489662-0.32976531495669911i',
             'InvalidArgumentException',
             'InvalidArgumentException',
             '0.123625981183130070i',

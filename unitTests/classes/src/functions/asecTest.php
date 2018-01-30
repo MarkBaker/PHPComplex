@@ -21,6 +21,20 @@ class asecTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerASec
+     */
+	public function testAsecInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->asec();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[ArcSec[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class asecTest extends baseFunctionTest
             '1.65582341680235061-0.03730682535518739i',
             '2.40822472454593001+0.53025304749856957i',
             '2.40822472454593001-0.53025304749856957i',
-            '1.57079632679489662+0.31316588045086838i',
-            '1.57079632679489662-0.31316588045086838i',
             '1.57079632679489662+0.88137358701954303i',
             '1.57079632679489662-0.88137358701954303i',
             '1.57079632679489662+2.79247907463123116i',

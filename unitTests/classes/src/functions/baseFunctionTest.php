@@ -65,8 +65,6 @@ abstract class baseFunctionTest extends \PHPUnit_Framework_TestCase
 		array(-9.8765,	-4.321,	    NULL),
 		array(-0.98765,	0.4321,	    NULL),
 		array(-0.98765,	-0.4321,	NULL),
-		array(0,		M_PI,		NULL),
-		array(0,		-M_PI,      NULL),
 		array(0,		1,		    NULL),
 		array(0,		-1,		    NULL),
 		array(0,		0.123,		NULL),

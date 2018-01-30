@@ -21,6 +21,20 @@ class inverseTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerInverse
+     */
+	public function testInverseInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->inverse();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[1 / (<VALUE>), 18]
@@ -43,8 +57,6 @@ class inverseTest extends baseFunctionTest
             '-0.0849837808779019890+0.0371806730292527206i',
             '-0.849837808779019890-0.371806730292527206i',
             '-0.849837808779019890+0.371806730292527206i',
-            '-0.318309886183790671i',
-            '0.318309886183790671i',
             '-1.0i',
             '1.0i',
             '-8.13008130081300813i',

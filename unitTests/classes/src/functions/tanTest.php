@@ -21,6 +21,20 @@ class tanTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerTan
+     */
+	public function testTanInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->tan();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Tan[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class tanTest extends baseFunctionTest
             '-2.772604891775643E-4-0.999781469304592i',
             '-0.915922535860841+0.972276174471301i',
             '-0.915922535860841-0.972276174471301i',
-            '0.996272076220749944i',
-            '-0.99627207622074994i',
 			'0.761594155955764888i',
 			'-0.76159415595576489i',
             '0.122383441894408763i',

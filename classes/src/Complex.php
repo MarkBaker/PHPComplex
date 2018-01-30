@@ -343,4 +343,49 @@ class Complex
     {
         $this->realPart *= -1;
     }
+
+    protected static $functions = [
+        'abs',
+        'acos',
+        'acosh',
+        'acot',
+        'acoth',
+        'acsc',
+        'acsch',
+        'argument',
+        'asec',
+        'asech',
+        'asin',
+        'asinh',
+        'atan',
+        'atanh',
+        'conjugate',
+        'cos',
+        'cosh',
+        'cot',
+        'coth',
+        'csc',
+        'csch',
+        'exp',
+        'inverse',
+        'ln',
+        'log2',
+        'log10',
+        'rho',
+        'sec',
+        'sech',
+        'sin',
+        'sinh',
+        'sqrt',
+        'tan',
+        'tanh',
+        'theta',
+    ];
+
+    public function __call($functionName, $arguments) {
+        if (in_array($functionName, self::$functions)) {
+            $functionName = "\\" . __NAMESPACE__ . "\\{$functionName}";
+            return $functionName($this);
+        }
+    }
 }

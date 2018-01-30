@@ -21,6 +21,20 @@ class coshTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerCosh
+     */
+	public function testCoshInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->cosh();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[CosH[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class coshTest extends baseFunctionTest
             '-3713.15391515609948-8997.66952898386423i',
             '1.38818027193114323-0.48420588419596441i',
             '1.38818027193114323+0.48420588419596441i',
-            -1.0,
-            -1.0,
             0.540302305868139717,
             0.540302305868139717,
             0.992445032135193570,

@@ -21,6 +21,20 @@ class acosTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerAcos
+     */
+	public function testAcosInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->acos();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[ArcCos[<VALUE>], 18]
@@ -43,8 +57,6 @@ class acosTest extends baseFunctionTest
             '2.72759273898886477+3.06941431940712748i',
             '2.49959220942165618-0.67028138559198731i',
             '2.49959220942165618+0.67028138559198731i',
-            '1.57079632679489662-1.86229574331084822i',
-            '1.57079632679489662+1.86229574331084822i',
             '1.57079632679489662-0.88137358701954303i',
             '1.57079632679489662+0.88137358701954303i',
             '1.57079632679489662-0.12269194815825956i',

@@ -21,6 +21,20 @@ class sinhTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerSinh
+     */
+	public function testSinhInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->sinh();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[SinH[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class sinhTest extends baseFunctionTest
             '3713.15389556070345+8997.66957646719047i',
             '-1.049961939903045305+0.640180401259003748i',
             '-1.049961939903045305-0.640180401259003748i',
-            '-1.53735661672049712E-18i',
-            '-1.53735661672049712E-18i',
             '0.841470984807896507i',
             '-0.841470984807896507i',
             '0.122690090024315336i',

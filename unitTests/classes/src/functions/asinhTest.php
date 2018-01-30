@@ -21,6 +21,20 @@ class asinhTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerASinh
+     */
+	public function testAsinhInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->asinh();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[ArcSinH[<VALUE>], 18]
@@ -43,8 +57,6 @@ class asinhTest extends baseFunctionTest
             '-3.07233418755286186-0.41084011937288351i',
             '-0.906185270744662449+0.304882778123071105i',
             '-0.906185270744662449-0.304882778123071105i',
-            '1.81152627246085311+1.57079632679489662i',
-            '-1.81152627246085311-1.57079632679489662i',
             '1.57079632679489662i',
             '-1.57079632679489662i',
             '0.123312275191871996i',

@@ -21,6 +21,20 @@ class conjugateTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerConjugate
+     */
+	public function testConjugateInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->conjugate();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Conjugate[<VALUE>], 18]
@@ -43,8 +57,6 @@ class conjugateTest extends baseFunctionTest
 			'-9.8765+4.321i',
 			'-0.98765-0.4321i',
 			'-0.98765+0.4321i',
-            '-3.14159265358979324i',
-            '3.14159265358979324i',
 			'-i',
 			'i',
             '-0.123i',

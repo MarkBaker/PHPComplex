@@ -21,6 +21,20 @@ class absTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerAbs
+     */
+	public function testAbsInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->abs();
+
+        $this->assertEquals($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Abs[<VALUE>], 18]
@@ -43,8 +57,6 @@ class absTest extends baseFunctionTest
             10.7803660999986452,
             1.07803660999986452,
             1.07803660999986452,
-            3.14159265358979324,
-            3.14159265358979324,
 			1,
 			1,
             0.123,

@@ -22,6 +22,20 @@ class lnTest extends baseFunctionTest
 	}
 
     /**
+     * @dataProvider providerLn
+     */
+	public function testLnInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->ln();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
+    /**
      * @expectedException InvalidArgumentException
      */
 	public function testLnZero()
@@ -52,8 +66,6 @@ class lnTest extends baseFunctionTest
             '2.37772652594302344-2.72917955624616780i',
             '0.07514143294897775+2.72917955624616780i',
             '0.07514143294897775-2.72917955624616780i',
-            '1.14472988584940017+1.57079632679489662i',
-            '1.14472988584940017-1.57079632679489662i',
             '1.57079632679489662i',
             '-1.57079632679489662i',
             '-2.09557092360971956+1.57079632679489662i',

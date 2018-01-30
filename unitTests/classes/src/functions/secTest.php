@@ -21,6 +21,20 @@ class secTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerSec
+     */
+	public function testSecInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->sec();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Sec[<VALUE>], 18]
@@ -43,8 +57,6 @@ class secTest extends baseFunctionTest
             '-0.0239067997283027954-0.0115950232737292425i',
             '1.201301356245620536-0.741304132097185254i',
             '1.201301356245620536+0.741304132097185254i',
-            0.0862667383340544146,
-            0.0862667383340544146,
             0.648054273663885400,
             0.648054273663885400,
             0.992482893127170164,

@@ -21,6 +21,20 @@ class expTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerExp
+     */
+	public function testExpInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->exp();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Exp[<VALUE>], 18]
@@ -43,8 +57,6 @@ class expTest extends baseFunctionTest
             '-0.0000195953960306484277+0.0000474833262322171154i',
             '0.338218332028097927+0.155974517063039339i',
             '0.338218332028097927-0.155974517063039339i',
-            '-1.0',
-            '-1.0',
             '0.540302305868139717+0.841470984807896507i',
             '0.540302305868139717-0.841470984807896507i',
             '0.992445032135193570+0.122690090024315336i',

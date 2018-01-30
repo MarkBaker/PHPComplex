@@ -22,6 +22,21 @@ class cscTest extends baseFunctionTest
         
 	}
 
+    /**
+     * @dataProvider providerCsc
+     */
+	public function testCscInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->csc();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+        
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[CoSec[<VALUE> Radians], 18]
@@ -44,8 +59,6 @@ class cscTest extends baseFunctionTest
             '0.01160418811259422-0.02390880715368388i',
             '-1.020634209071783-0.274077973196426i',
             '-1.020634209071783+0.274077973196426i',
-            '-0.0865895375300469417i',
-            '0.086589537530046942i',
             '-0.850918128239321545i',
             '0.85091812823932155i',
             '-8.10961742670609559i',

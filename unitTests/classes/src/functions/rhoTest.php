@@ -21,6 +21,20 @@ class rhoTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerRho
+     */
+	public function testRhoInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->rho();
+
+        $this->assertEquals($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Argument[<VALUE>], 18]
@@ -43,8 +57,6 @@ class rhoTest extends baseFunctionTest
             10.78036609999864,
             1.078036609999865,
             1.078036609999865,
-            3.14159265358979324,
-            3.14159265358979324,
             1.0,
             1.0,
             0.123,

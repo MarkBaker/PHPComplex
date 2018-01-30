@@ -21,6 +21,20 @@ class sqrtTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerSqrt
+     */
+	public function testSqrtInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->sqrt();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[Sqrt[<VALUE>], 18]
@@ -43,8 +57,6 @@ class sqrtTest extends baseFunctionTest
             '0.67225965965490047-3.21378795971347845i',
             '0.212587170355908969+1.016288986952004839i',
             '0.212587170355908969-1.016288986952004839i',
-            '1.25331413731550025+1.25331413731550025i',
-            '1.25331413731550025-1.25331413731550025i',
             '0.707106781186547524+0.707106781186547524i',
             '0.707106781186547524-0.707106781186547524i',
             '0.247991935352744888+0.247991935352744888i',

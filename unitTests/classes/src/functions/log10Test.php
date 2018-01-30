@@ -22,6 +22,20 @@ class log10Test extends baseFunctionTest
 	}
 
     /**
+     * @dataProvider providerLog10
+     */
+	public function testLog10Invoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->log10();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
+    /**
      * @expectedException InvalidArgumentException
      */
 	public function testLog10Zero()
@@ -52,8 +66,6 @@ class log10Test extends baseFunctionTest
             '1.03263350969204423-1.18526762140087618i',
             '0.032633509692044229+1.185267621400876176i',
             '0.032633509692044229-1.185267621400876176i',
-            '0.497149872694133855+0.682188176920920674i',
-            '0.497149872694133855-0.682188176920920674i',
             '0.682188176920920674i',
             '-0.682188176920920674i',
             '-0.910094888560602068+0.682188176920920674i',

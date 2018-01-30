@@ -21,6 +21,20 @@ class acschTest extends baseFunctionTest
         $this->assertEquals(new Complex($args[0]), $complex);
 	}
 
+    /**
+     * @dataProvider providerACscH
+     */
+	public function testAcschInvoker()
+	{
+		$args = func_get_args();
+		$complex = new Complex($args[0]);
+		$result = $complex->acsch();
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+	}
+
     /*
      * Results derived from Wolfram Alpha using
      *  N[ArcCoSecH[<VALUE> Radians], 18]
@@ -43,8 +57,6 @@ class acschTest extends baseFunctionTest
             '-0.0849399857278769+0.03705542905440914i',
             '-0.797550648913176-0.2821819018431379i',
             '-0.797550648913176+0.2821819018431379i',
-            '-0.323946106931980720i',
-            '0.32394610693198072i',
             '-1.57079632679489662i',
             '1.57079632679489662i',
             '-2.78491421388117441-1.57079632679489662i',
