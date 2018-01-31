@@ -8,7 +8,7 @@ class asinhTest extends baseFunctionTest
     protected static $functionName = 'asinh';
 
     /**
-     * @dataProvider providerASinh
+     * @dataProvider dataProvider
      */
 	public function testAsinh()
 	{
@@ -22,7 +22,7 @@ class asinhTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerASinh
+     * @dataProvider dataProviderInvoker
      */
 	public function testAsinhInvoker()
 	{
@@ -39,7 +39,7 @@ class asinhTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[ArcSinH[<VALUE>], 18]
      */
-    public function providerASinh()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			3.17978543769987883,

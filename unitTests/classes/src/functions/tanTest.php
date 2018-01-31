@@ -8,7 +8,7 @@ class tanTest extends baseFunctionTest
     protected static $functionName = 'tan';
 
     /**
-     * @dataProvider providerTan
+     * @dataProvider dataProvider
      */
 	public function testTan()
 	{
@@ -22,7 +22,7 @@ class tanTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerTan
+     * @dataProvider dataProviderInvoker
      */
 	public function testTanInvoker()
 	{
@@ -39,7 +39,7 @@ class tanTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Tan[<VALUE> Radians], 18]
      */
-    public function providerTan()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			-0.635859928661580792,

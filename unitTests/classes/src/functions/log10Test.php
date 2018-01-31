@@ -8,7 +8,7 @@ class log10Test extends baseFunctionTest
     protected static $functionName = 'log10';
 
     /**
-     * @dataProvider providerLog10
+     * @dataProvider dataProvider
      */
 	public function testLog10()
 	{
@@ -22,7 +22,7 @@ class log10Test extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerLog10
+     * @dataProvider dataProviderInvoker
      */
 	public function testLog10Invoker()
 	{
@@ -48,7 +48,7 @@ class log10Test extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Log10[<VALUE>], 18]
      */
-    public function providerLog10()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			1.07918124604762483,

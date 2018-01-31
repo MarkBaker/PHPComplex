@@ -8,7 +8,7 @@ class conjugateTest extends baseFunctionTest
     protected static $functionName = 'conjugate';
 
     /**
-     * @dataProvider providerConjugate
+     * @dataProvider dataProvider
      */
 	public function testConjugate()
 	{
@@ -22,7 +22,7 @@ class conjugateTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerConjugate
+     * @dataProvider dataProviderInvoker
      */
 	public function testConjugateInvoker()
 	{
@@ -39,7 +39,7 @@ class conjugateTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Conjugate[<VALUE>], 18]
      */
-    public function providerConjugate()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			12,

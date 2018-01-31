@@ -8,7 +8,7 @@ class secTest extends baseFunctionTest
     protected static $functionName = 'sec';
 
     /**
-     * @dataProvider providerSec
+     * @dataProvider dataProvider
      */
 	public function testSec()
 	{
@@ -22,7 +22,7 @@ class secTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerSec
+     * @dataProvider dataProviderInvoker
      */
 	public function testSecInvoker()
 	{
@@ -39,7 +39,7 @@ class secTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Sec[<VALUE>], 18]
      */
-    public function providerSec()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			1.18503917609398493,

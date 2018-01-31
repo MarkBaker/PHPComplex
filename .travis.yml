@@ -25,8 +25,8 @@ before_script:
   - composer self-update
   - composer install --prefer-source
   ## PHPDocumentor
-  - mkdir -p build/docs
-  - mkdir -p build/coverage
+  ## - mkdir -p build/docs
+  ## - mkdir -p build/coverage
 
 script:
   ## PHP_CodeSniffer

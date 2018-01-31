@@ -8,7 +8,7 @@ class cothTest extends baseFunctionTest
     protected static $functionName = 'coth';
 
     /**
-     * @dataProvider providerCoth
+     * @dataProvider dataProvider
      */
 	public function testCoth()
 	{
@@ -25,7 +25,7 @@ class cothTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerCoth
+     * @dataProvider dataProviderInvoker
      */
 	public function testCothInvoker()
 	{
@@ -45,7 +45,7 @@ class cothTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Coth[<VALUE> Radians], 18]
      */
-    public function providerCoth()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			1.00000000007550269,

@@ -8,7 +8,7 @@ class rhoTest extends baseFunctionTest
     protected static $functionName = 'rho';
 
     /**
-     * @dataProvider providerRho
+     * @dataProvider dataProvider
      */
 	public function testRho()
 	{
@@ -22,7 +22,7 @@ class rhoTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerRho
+     * @dataProvider dataProviderInvoker
      */
 	public function testRhoInvoker()
 	{
@@ -39,7 +39,7 @@ class rhoTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Argument[<VALUE>], 18]
      */
-    public function providerRho()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			12,

@@ -8,7 +8,7 @@ class acosTest extends baseFunctionTest
     protected static $functionName = 'acos';
 
     /**
-     * @dataProvider providerACos
+     * @dataProvider dataProvider
      */
 	public function testAcos()
 	{
@@ -22,7 +22,7 @@ class acosTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerAcos
+     * @dataProvider dataProviderInvoker
      */
 	public function testAcosInvoker()
 	{
@@ -39,7 +39,7 @@ class acosTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[ArcCos[<VALUE>], 18]
      */
-    public function providerACos()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			'3.17631318059165577i',

@@ -8,7 +8,7 @@ class cotTest extends baseFunctionTest
     protected static $functionName = 'cot';
 
     /**
-     * @dataProvider providerCot
+     * @dataProvider dataProvider
      */
 	public function testCot()
 	{
@@ -22,7 +22,7 @@ class cotTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerCot
+     * @dataProvider dataProviderInvoker
      */
 	public function testCotInvoker()
 	{
@@ -39,7 +39,7 @@ class cotTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Cot[<VALUE> Radians], 18]
      */
-    public function providerCot()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			-1.57267340639768934,

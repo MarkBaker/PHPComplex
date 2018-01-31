@@ -8,7 +8,7 @@ class lnTest extends baseFunctionTest
     protected static $functionName = 'ln';
 
     /**
-     * @dataProvider providerLn
+     * @dataProvider dataProvider
      */
 	public function testLn()
 	{
@@ -22,7 +22,7 @@ class lnTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerLn
+     * @dataProvider dataProviderInvoker
      */
 	public function testLnInvoker()
 	{
@@ -48,7 +48,7 @@ class lnTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Ln[<VALUE>], 18]
      */
-    public function providerLn()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			2.48490664978800031,

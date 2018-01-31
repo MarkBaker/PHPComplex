@@ -8,7 +8,7 @@ class cscTest extends baseFunctionTest
     protected static $functionName = 'csc';
 
     /**
-     * @dataProvider providerCsc
+     * @dataProvider dataProvider
      */
 	public function testCsc()
 	{
@@ -19,11 +19,10 @@ class cscTest extends baseFunctionTest
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-        
 	}
 
     /**
-     * @dataProvider providerCsc
+     * @dataProvider dataProviderInvoker
      */
 	public function testCscInvoker()
 	{
@@ -34,14 +33,13 @@ class cscTest extends baseFunctionTest
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-        
 	}
 
     /*
      * Results derived from Wolfram Alpha using
      *  N[CoSec[<VALUE> Radians], 18]
      */
-    public function providerCsc()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			-1.86367959778243849,

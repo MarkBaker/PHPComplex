@@ -8,7 +8,7 @@ class expTest extends baseFunctionTest
     protected static $functionName = 'exp';
 
     /**
-     * @dataProvider providerExp
+     * @dataProvider dataProvider
      */
 	public function testExp()
 	{
@@ -22,7 +22,7 @@ class expTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerExp
+     * @dataProvider dataProviderInvoker
      */
 	public function testExpInvoker()
 	{
@@ -39,7 +39,7 @@ class expTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Exp[<VALUE>], 18]
      */
-    public function providerExp()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			162754.791419003921,

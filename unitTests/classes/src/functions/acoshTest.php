@@ -8,7 +8,7 @@ class acoshTest extends baseFunctionTest
     protected static $functionName = 'acosh';
 
     /**
-     * @dataProvider providerACosh
+     * @dataProvider dataProvider
      */
 	public function testAcosh()
 	{
@@ -22,7 +22,7 @@ class acoshTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerAcosh
+     * @dataProvider dataProviderInvoker
      */
 	public function testAcoshInvoker()
 	{
@@ -39,7 +39,7 @@ class acoshTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[ArcCosH[<VALUE>], 18]
      */
-    public function providerACosh()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			3.17631318059165577,

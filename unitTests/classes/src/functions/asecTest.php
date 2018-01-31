@@ -8,7 +8,7 @@ class asecTest extends baseFunctionTest
     protected static $functionName = 'asec';
 
     /**
-     * @dataProvider providerASec
+     * @dataProvider dataProvider
      */
 	public function testAsec()
 	{
@@ -22,7 +22,7 @@ class asecTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerASec
+     * @dataProvider dataProviderInvoker
      */
 	public function testAsecInvoker()
 	{
@@ -39,7 +39,7 @@ class asecTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[ArcSec[<VALUE> Radians], 18]
      */
-    public function providerASec()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			1.48736624018428161,

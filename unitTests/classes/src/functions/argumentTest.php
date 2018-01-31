@@ -8,7 +8,7 @@ class argumentTest extends baseFunctionTest
     protected static $functionName = 'argument';
 
     /**
-     * @dataProvider providerArgument
+     * @dataProvider dataProvider
      */
 	public function testArgument()
 	{
@@ -22,7 +22,7 @@ class argumentTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerArgument
+     * @dataProvider dataProviderInvoker
      */
 	public function testArgumentInvoker()
 	{
@@ -39,7 +39,7 @@ class argumentTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Argument[<VALUE>], 18]
      */
-    public function providerArgument()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			0.0,

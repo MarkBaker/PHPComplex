@@ -8,7 +8,7 @@ class sinhTest extends baseFunctionTest
     protected static $functionName = 'sinh';
 
     /**
-     * @dataProvider providerSinh
+     * @dataProvider dataProvider
      */
 	public function testSinh()
 	{
@@ -22,7 +22,7 @@ class sinhTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerSinh
+     * @dataProvider dataProviderInvoker
      */
 	public function testSinhInvoker()
 	{
@@ -39,7 +39,7 @@ class sinhTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[SinH[<VALUE> Radians], 18]
      */
-    public function providerSinH()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			81377.3957064298542,

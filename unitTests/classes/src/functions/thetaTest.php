@@ -8,7 +8,7 @@ class thetaTest extends baseFunctionTest
     protected static $functionName = 'theta';
 
     /**
-     * @dataProvider providerTheta
+     * @dataProvider dataProvider
      */
 	public function testTheta()
 	{
@@ -22,7 +22,7 @@ class thetaTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerTheta
+     * @dataProvider dataProviderInvoker
      */
 	public function testThetaInvoker()
 	{
@@ -39,7 +39,7 @@ class thetaTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Argument[<VALUE>], 18]
      */
-    public function providerTheta()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			0.0,

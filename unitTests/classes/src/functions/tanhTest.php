@@ -8,7 +8,7 @@ class tanhTest extends baseFunctionTest
     protected static $functionName = 'tanh';
 
     /**
-     * @dataProvider providerTanh
+     * @dataProvider dataProvider
      */
 	public function testTanh()
 	{
@@ -25,7 +25,7 @@ class tanhTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerTanh
+     * @dataProvider dataProviderInvoker
      */
 	public function testTanhInvoker()
 	{
@@ -45,7 +45,7 @@ class tanhTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Tanh[<VALUE> Radians], {INF,32}]
      */
-    public function providerTanh()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			0.9999999999244973091172683731325,

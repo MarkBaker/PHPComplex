@@ -8,7 +8,7 @@ class atanhTest extends baseFunctionTest
     protected static $functionName = 'atanh';
 
     /**
-     * @dataProvider providerATanh
+     * @dataProvider dataProvider
      */
 	public function testAtanh()
 	{
@@ -21,7 +21,7 @@ class atanhTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerATanh
+     * @dataProvider dataProviderInvoker
      */
 	public function testAtanhInvoker()
 	{
@@ -37,7 +37,7 @@ class atanhTest extends baseFunctionTest
      * Results derived from Wolfram Alpha utang
      *  N[ArcTanh[<VALUE>], 18]
      */
-    public function providerATanh()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			'0.08352704233158310-1.57079632679489662i',

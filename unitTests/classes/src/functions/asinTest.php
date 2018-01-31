@@ -8,7 +8,7 @@ class asinTest extends baseFunctionTest
     protected static $functionName = 'asin';
 
     /**
-     * @dataProvider providerASin
+     * @dataProvider dataProvider
      */
 	public function testAsin()
 	{
@@ -22,7 +22,7 @@ class asinTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerASin
+     * @dataProvider dataProviderInvoker
      */
 	public function testAsinInvoker()
 	{
@@ -39,7 +39,7 @@ class asinTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[ArcSin[<VALUE>], 18]
      */
-    public function providerASin()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			'1.57079632679489662-3.17631318059165577i',

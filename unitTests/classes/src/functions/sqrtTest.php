@@ -8,7 +8,7 @@ class sqrtTest extends baseFunctionTest
     protected static $functionName = 'sqrt';
 
     /**
-     * @dataProvider providerSqrt
+     * @dataProvider dataProvider
      */
 	public function testSqrt()
 	{
@@ -22,7 +22,7 @@ class sqrtTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerSqrt
+     * @dataProvider dataProviderInvoker
      */
 	public function testSqrtInvoker()
 	{
@@ -39,7 +39,7 @@ class sqrtTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Sqrt[<VALUE>], 18]
      */
-    public function providerSqrt()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			3.46410161513775459,

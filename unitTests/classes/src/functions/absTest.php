@@ -8,7 +8,7 @@ class absTest extends baseFunctionTest
     protected static $functionName = 'abs';
 
     /**
-     * @dataProvider providerAbs
+     * @dataProvider dataProvider
      */
 	public function testAbs()
 	{
@@ -22,7 +22,7 @@ class absTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerAbs
+     * @dataProvider dataProviderInvoker
      */
 	public function testAbsInvoker()
 	{
@@ -39,7 +39,7 @@ class absTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Abs[<VALUE>], 18]
      */
-    public function providerAbs()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			12,
@@ -65,5 +65,4 @@ class absTest extends baseFunctionTest
 
 		return $this->formatOneArgumentTestResultArray($expectedResults);
 	}
-
 }

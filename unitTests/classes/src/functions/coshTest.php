@@ -8,7 +8,7 @@ class coshTest extends baseFunctionTest
     protected static $functionName = 'cosh';
 
     /**
-     * @dataProvider providerCosh
+     * @dataProvider dataProvider
      */
 	public function testCosh()
 	{
@@ -22,7 +22,7 @@ class coshTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerCosh
+     * @dataProvider dataProviderInvoker
      */
 	public function testCoshInvoker()
 	{
@@ -39,7 +39,7 @@ class coshTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[CosH[<VALUE> Radians], 18]
      */
-    public function providerCosH()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			81377.3957125740666,

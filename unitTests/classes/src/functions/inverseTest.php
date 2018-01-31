@@ -8,7 +8,7 @@ class inverseTest extends baseFunctionTest
     protected static $functionName = 'inverse';
 
     /**
-     * @dataProvider providerInverse
+     * @dataProvider dataProvider
      */
 	public function testInverse()
 	{
@@ -22,7 +22,7 @@ class inverseTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerInverse
+     * @dataProvider dataProviderInvoker
      */
 	public function testInverseInvoker()
 	{
@@ -39,7 +39,7 @@ class inverseTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[1 / (<VALUE>), 18]
      */
-    public function providerInverse()
+    public function dataProvider()
     {
 		$expectedResults = array(
             0.0833333333333333333,

@@ -8,7 +8,7 @@ class sechTest extends baseFunctionTest
     protected static $functionName = 'sech';
 
     /**
-     * @dataProvider providerSech
+     * @dataProvider dataProvider
      */
 	public function testSech()
 	{
@@ -22,7 +22,7 @@ class sechTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerSech
+     * @dataProvider dataProviderInvoker
      */
 	public function testSechInvoker()
 	{
@@ -39,7 +39,7 @@ class sechTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[SecH[<VALUE> Radians], 18]
      */
-    public function providerSech()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			0.0000122884247061925150,

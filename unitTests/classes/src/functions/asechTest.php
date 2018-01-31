@@ -8,7 +8,7 @@ class asechTest extends baseFunctionTest
     protected static $functionName = 'asech';
 
     /**
-     * @dataProvider providerASecH
+     * @dataProvider dataProvider
      */
 	public function testAcsch()
 	{
@@ -22,7 +22,7 @@ class asechTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerASecH
+     * @dataProvider dataProviderInvoker
      */
 	public function testAcschInvoker()
 	{
@@ -39,7 +39,7 @@ class asechTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[ArcSecH[<VALUE> Radians], 18]
      */
-    public function providerASecH()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			'1.48736624018428161i',

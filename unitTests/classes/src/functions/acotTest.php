@@ -8,7 +8,7 @@ class acotTest extends baseFunctionTest
     protected static $functionName = 'acot';
 
     /**
-     * @dataProvider providerACot
+     * @dataProvider dataProvider
      */
 	public function testAcot()
 	{
@@ -25,7 +25,7 @@ class acotTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerAcot
+     * @dataProvider dataProviderInvoker
      */
 	public function testAcotInvoker()
 	{
@@ -45,7 +45,7 @@ class acotTest extends baseFunctionTest
      * Results derived from Wolfram Alpha ucotg
      *  N[ArcCot[<VALUE>], 18]
      */
-    public function providerACot()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			0.0831412318884412299,

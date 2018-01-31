@@ -8,7 +8,7 @@ class cosTest extends baseFunctionTest
     protected static $functionName = 'cos';
 
     /**
-     * @dataProvider providerCos
+     * @dataProvider dataProvider
      */
 	public function testCos()
 	{
@@ -22,7 +22,7 @@ class cosTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerCos
+     * @dataProvider dataProviderInvoker
      */
 	public function testCosInvoker()
 	{
@@ -39,7 +39,7 @@ class cosTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Cosine[<VALUE> Radians], 18]
      */
-    public function providerCos()
+    public function dataProvider()
     {
 		$expectedResults = array(
 			0.843853958732492105,

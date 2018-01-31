@@ -8,7 +8,7 @@ class sinTest extends baseFunctionTest
     protected static $functionName = 'sin';
 
     /**
-     * @dataProvider providerSin
+     * @dataProvider dataProvider
      */
 	public function testSin()
 	{
@@ -22,7 +22,7 @@ class sinTest extends baseFunctionTest
 	}
 
     /**
-     * @dataProvider providerSin
+     * @dataProvider dataProviderInvoker
      */
 	public function testSinInvoker()
 	{
@@ -39,7 +39,7 @@ class sinTest extends baseFunctionTest
      * Results derived from Wolfram Alpha using
      *  N[Sine[<VALUE> Radians], 18]
      */
-    public function providerSin()
+    public function dataProvider()
     {
 		$expectedResults = array(
             -0.536572918000434972,
