@@ -382,7 +382,8 @@ class Complex
         'theta',
     ];
 
-    public function __call($functionName, $arguments) {
+    public function __call($functionName, $arguments)
+    {
         if (in_array($functionName, self::$functions)) {
             $functionName = "\\" . __NAMESPACE__ . "\\{$functionName}";
             return $functionName($this);
