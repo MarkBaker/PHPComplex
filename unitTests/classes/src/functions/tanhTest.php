@@ -14,7 +14,7 @@ class tanhTest extends baseFunctionTest
 	{
 		$args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
-            $this->setExpectedException($args[1]);
+            $this->expectException($args[1]);
         }
 		$complex = new Complex($args[0]);
 		$result = tanh($complex);
@@ -31,7 +31,7 @@ class tanhTest extends baseFunctionTest
 	{
 		$args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
-            $this->setExpectedException($args[1]);
+            $this->expectException($args[1]);
         }
 		$complex = new Complex($args[0]);
 		$result = $complex->tanh();
