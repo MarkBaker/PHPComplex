@@ -14,7 +14,7 @@ class acotTest extends baseFunctionTest
 	{
 		$args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
-            $this->expectException($args[1]);
+            $this->setExpectedException($args[1]);
         }
 		$complex = new Complex($args[0]);
         $result = acot($complex);
@@ -31,7 +31,7 @@ class acotTest extends baseFunctionTest
 	{
 		$args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
-            $this->expectException($args[1]);
+            $this->setExpectedException($args[1]);
         }
 		$complex = new Complex($args[0]);
 		$result = $complex->acot();

@@ -12,12 +12,23 @@ abstract class baseFunctionTest extends \PHPUnit\Framework\TestCase
 
     protected function setUp()
     {
-        $this->precision = ini_set('precision', 18);
+        $this->precision = ini_set('precision', 16);
     }
 
     protected function tearDown()
     {
         ini_set('precision', $this->precision);
+    }
+
+    public function setExpectedException($exception, $message=null) {
+        if (!method_exists($this,'expectException')) {
+            return parent::setExpectedException($exception, $message);
+        }
+
+        $this->expectException($exception);
+        if ($message !== null) {
+            $this->expectExceptionMessage($message);
+        }
     }
 
     public function testNamespacedFunctionExists() {
