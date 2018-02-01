@@ -15,6 +15,7 @@ matrix:
       dist: precise
   allow_failures:
     - php: hhvm
+    - php: 5.3
 
 before_install:
   ## Packages
