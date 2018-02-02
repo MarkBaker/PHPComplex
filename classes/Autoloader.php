@@ -34,9 +34,9 @@ class Autoloader
      */
     public static function Load($pClassName)
     {
-        if ((class_exists($pClassName, FALSE)) || (strpos($pClassName, 'Complex\\') !== 0)) {
+        if ((class_exists($pClassName, false)) || (strpos($pClassName, 'Complex\\') !== 0)) {
             // Either already loaded, or not a Complex class request
-            return FALSE;
+            return false;
         }
 
         $pClassFilePath = __DIR__ . DIRECTORY_SEPARATOR .
@@ -44,9 +44,9 @@ class Autoloader
                           str_replace('Complex\\', '', $pClassName) .
                           '.php';
 
-        if ((file_exists($pClassFilePath) === FALSE) || (is_readable($pClassFilePath) === FALSE)) {
+        if ((file_exists($pClassFilePath) === false) || (is_readable($pClassFilePath) === false)) {
             // Can't load
-            return FALSE;
+            return false;
         }
         require($pClassFilePath);
     }

@@ -310,27 +310,27 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
 
     private $_oneComplexValueDataSets = array(
-        array(12,       NULL,       NULL),
-        array(12.345,   NULL,       NULL),
-        array(0.12345,  NULL,       NULL),
-        array(12.345,   6.789,      NULL),
-        array(12.345,   -6.789,     NULL),
-        array(0.12345,  6.789,      NULL),
-        array(0.12345,  -6.789,     NULL),
-        array(0.12345,  0.6789,     NULL),
-        array(0.12345,  -0.6789,    NULL),
-        array(-9.8765,  NULL,       NULL),
-        array(-0.98765, NULL,       NULL),
-        array(-9.8765,  +4.321,     NULL),
-        array(-9.8765,  -4.321,     NULL),
-        array(-0.98765, 0.4321,     NULL),
-        array(-0.98765, -0.4321,    NULL),
-        array(0,        M_PI,       NULL),
-        array(0,        -3.14159265358979324,   NULL),  // Shame we can't yet have dynamic expressions in property definitions
-        array(0,        1,          NULL),
-        array(0,        -1,         NULL),
-        array(0,        0.123,      NULL),
-        array(0,        -0.123,     NULL),
+        array(12,       null,       null),
+        array(12.345,   null,       null),
+        array(0.12345,  null,       null),
+        array(12.345,   6.789,      null),
+        array(12.345,   -6.789,     null),
+        array(0.12345,  6.789,      null),
+        array(0.12345,  -6.789,     null),
+        array(0.12345,  0.6789,     null),
+        array(0.12345,  -0.6789,    null),
+        array(-9.8765,  null,       null),
+        array(-0.98765, null,       null),
+        array(-9.8765,  +4.321,     null),
+        array(-9.8765,  -4.321,     null),
+        array(-0.98765, 0.4321,     null),
+        array(-0.98765, -0.4321,    null),
+        array(0,        M_PI,       null),
+        array(0,        -3.14159265358979324,   null),  // Shame we can't yet have dynamic expressions in property definitions
+        array(0,        1,          null),
+        array(0,        -1,         null),
+        array(0,        0.123,      null),
+        array(0,        -0.123,     null),
     );
 
     private function _formatOneArgumentTestResultArray($expectedResults)
@@ -345,12 +345,12 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     }
 
     private $_twoComplexValueDataSets = array(
-        array(123,      NULL,   NULL,   456,        NULL,   NULL),
-        array(123.456,  NULL,   NULL,   789.012,    NULL,   NULL),
-        array(123.456,  78.90,  NULL,   -987.654,   -32.1,  NULL),
-        array(123.456,  78.90,  NULL,   -987.654,   NULL,   NULL),
-        array(-987.654, -32.1,  NULL,   0,          1,      NULL),
-        array(-987.654, -32.1,  NULL,   0,          -1,     NULL),
+        array(123,      null,   null,   456,        null,   null),
+        array(123.456,  null,   null,   789.012,    null,   null),
+        array(123.456,  78.90,  null,   -987.654,   -32.1,  null),
+        array(123.456,  78.90,  null,   -987.654,   null,   null),
+        array(-987.654, -32.1,  null,   0,          1,      null),
+        array(-987.654, -32.1,  null,   0,          -1,     null),
     );
 
     private function _formatTwoArgumentTestResultArray($expectedResults)
