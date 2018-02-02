@@ -56,7 +56,8 @@ script:
   # Search for PHP syntax errors.
   - find -L . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
   ## PHPUnit
-  - if [[ "$COVERAGE" == "1" ]]; then ./vendor/bin/phpunit -c ./unitTests/ --coverage-text --coverage-html ./build/coverage; fi
+  - if [[ "$COVERAGE" == "1" && $TRAVIS_PHP_VERSION == "7.2" ]]; then phpunit -c ./unitTests/ --coverage-text --coverage-html ./build/coverage; fi
+  - if [[ "$COVERAGE" == "1" && $TRAVIS_PHP_VERSION != "7.2" ]]; then ./vendor/bin/phpunit -c ./unitTests/ --coverage-text --coverage-html ./build/coverage; fi
   - if [[ "$COVERAGE" != "1" ]]; then ./vendor/bin/phpunit -c ./unitTests/; fi
   # Validate the composer.json file.
   # @link https://getcomposer.org/doc/03-cli.md#validate
