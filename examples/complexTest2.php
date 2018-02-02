@@ -6,7 +6,7 @@ include('../classes/Bootstrap.php');
 
 echo 'Function Examples', PHP_EOL;
 
-$functions = [
+$functions = array(
     'abs',
     'acos',
     'acosh',
@@ -34,7 +34,7 @@ $functions = [
     'sinh',
     'sqrt',
     'theta'
-];
+);
 
 for($real = -3.5; $real <= 3.5; $real += 0.5) {
     for($imaginary = -3.5; $imaginary <= 3.5; $imaginary += 0.5) {

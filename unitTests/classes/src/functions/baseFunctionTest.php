@@ -98,6 +98,6 @@ abstract class baseFunctionTest extends \PHPUnit\Framework\TestCase
     public function dataProviderInvoker()
     {
         $tests = $this->dataProvider();
-        return [array_pop($tests)];
+        return array(array_pop($tests));
     }
 }
