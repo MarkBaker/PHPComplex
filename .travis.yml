@@ -1,4 +1,15 @@
+cache:
+  apt: true
+
 language: php
+
+## Cache composer downloads.
+cache:
+  directories:
+    # Cache directory for older Composer versions.
+    - $HOME/.composer/cache/files
+    # Cache directory for more recent Composer versions.
+    - $HOME/.cache/composer/files
 
 php:
   - 5.4
@@ -26,7 +37,7 @@ before_install:
 before_script:
   ## Composer
   - composer self-update
-  - composer install --prefer-source
+  - composer install --prefer-dist
   ## PHPDocumentor
   ## - mkdir -p build/docs
   ## - mkdir -p build/coverage
