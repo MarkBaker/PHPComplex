@@ -64,5 +64,4 @@ class asinTest extends BaseFunctionTestAbstract
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }
-
 }

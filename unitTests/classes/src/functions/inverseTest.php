@@ -64,5 +64,4 @@ class inverseTest extends BaseFunctionTestAbstract
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }
-
 }

@@ -64,5 +64,4 @@ class asechTest extends BaseFunctionTestAbstract
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }
-
 }

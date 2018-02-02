@@ -64,5 +64,4 @@ class acosTest extends BaseFunctionTestAbstract
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }
-
 }

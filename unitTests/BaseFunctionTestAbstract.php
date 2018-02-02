@@ -20,8 +20,9 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
         ini_set('precision', $this->precision);
     }
 
-    public function setExpectedException($exception, $message = '', $code = null) {
-        if (!method_exists($this,'expectException')) {
+    public function setExpectedException($exception, $message = '', $code = null)
+    {
+        if (!method_exists($this, 'expectException')) {
             return parent::setExpectedException($exception, $message);
         }
 
@@ -31,8 +32,9 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
         }
     }
 
-    public function testNamespacedFunctionExists() {
-        $this->assertTrue(function_exists('\\' . __NAMESPACE__ . '\\' . static::$functionName)); 
+    public function testNamespacedFunctionExists()
+    {
+        $this->assertTrue(function_exists('\\' . __NAMESPACE__ . '\\' . static::$functionName));
     }
 
     /**
@@ -85,7 +87,7 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
     protected function formatOneArgumentTestResultArray($expectedResults)
     {
         $testValues = array();
-        foreach($this->oneComplexValueDataSets as $test => $dataSet) {
+        foreach ($this->oneComplexValueDataSets as $test => $dataSet) {
             $testValues[$test][] = $dataSet;
             $testValues[$test][] = $expectedResults[$test];
         }

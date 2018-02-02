@@ -16,7 +16,8 @@ class Autoloader
      * Register the Autoloader with SPL
      *
      */
-    public static function Register() {
+    public static function Register()
+    {
         if (function_exists('__autoload')) {
             //    Register any existing autoloader function with SPL, so we don't get any clashes
             spl_autoload_register('__autoload');
@@ -31,7 +32,8 @@ class Autoloader
      *
      * @param    string    $pClassName    Name of the object to load
      */
-    public static function Load($pClassName) {
+    public static function Load($pClassName)
+    {
         if ((class_exists($pClassName, FALSE)) || (strpos($pClassName, 'Complex\\') !== 0)) {
             // Either already loaded, or not a Complex class request
             return FALSE;

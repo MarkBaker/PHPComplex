@@ -88,7 +88,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     {
         $complexObject = new Complex(
             array(
-                2.3, 
+                2.3,
                 -4.5,
                 'J'
             )
@@ -177,7 +177,6 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $complexObject = new Complex(0.0);
         $format = $complexObject->format();
         $this->assertEquals('0.0', $format);
-
     }
 
     /**
@@ -337,7 +336,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     private function _formatOneArgumentTestResultArray($expectedResults)
     {
         $testValues = array();
-        foreach($this->_oneComplexValueDataSets as $test => $dataSet) {
+        foreach ($this->_oneComplexValueDataSets as $test => $dataSet) {
             $testValues[$test][] = $dataSet;
             $testValues[$test][] = $expectedResults[$test];
         }
@@ -357,9 +356,9 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     private function _formatTwoArgumentTestResultArray($expectedResults)
     {
         $testValues = array();
-        foreach($this->_twoComplexValueDataSets as $test => $dataSet) {
-            $testValues[$test][] = array_slice($dataSet,0,3);
-            $testValues[$test][] = array_slice($dataSet,3,3);
+        foreach ($this->_twoComplexValueDataSets as $test => $dataSet) {
+            $testValues[$test][] = array_slice($dataSet, 0, 3);
+            $testValues[$test][] = array_slice($dataSet, 3, 3);
             $testValues[$test][] = $expectedResults[$test];
         }
 
@@ -466,5 +465,4 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         return $this->_formatOneArgumentTestResultArray($expectedResults);
     }
-
 }

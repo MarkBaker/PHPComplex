@@ -11,6 +11,6 @@ $srcFolder = __DIR__ . DIRECTORY_SEPARATOR .
 $iterator = new FilesystemIterator($srcFolder);
 $filter = new RegexIterator($iterator, '/^.*\.php$/');
 
-foreach($filter as $file) {
+foreach ($filter as $file) {
     include_once($srcFolder . $file->getFilename());
 }
