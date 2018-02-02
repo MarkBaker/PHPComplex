@@ -7,14 +7,16 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - nightly
   - hhvm
- 
+
 matrix:
   include:
     - php: 5.3
       dist: precise
   allow_failures:
     - php: hhvm
+    - php: nightly
     - php: 5.3
 
 before_install:
