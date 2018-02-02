@@ -45,6 +45,9 @@ before_script:
 script:
   # Search for PHP syntax errors.
   - find -L . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+  # Validate the composer.json file.
+  # @link https://getcomposer.org/doc/03-cli.md#validate
+  - composer validate --no-check-all
   ## PHP_CodeSniffer
   - ./vendor/bin/phpcs ./classes/src/ --standard=PSR2 -n
   ## PHP Copy/Paste Detector
