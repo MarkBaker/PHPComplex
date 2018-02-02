@@ -20,13 +20,13 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
         ini_set('precision', $this->precision);
     }
 
-    public function setExpectedException($exception, $message=null) {
+    public function setExpectedException($exception, $message = '', $code = null) {
         if (!method_exists($this,'expectException')) {
             return parent::setExpectedException($exception, $message);
         }
 
         $this->expectException($exception);
-        if ($message !== null) {
+        if (!empty($message)) {
             $this->expectExceptionMessage($message);
         }
     }
