@@ -1,39 +1,38 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class sinhTest extends baseFunctionTest
+class sinhTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'sinh';
 
     /**
      * @dataProvider dataProvider
      */
-	public function testSinh()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = sinh($complex);
+    public function testSinh()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = sinh($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testSinhInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->sinh();
+    public function testSinhInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->sinh();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -41,8 +40,8 @@ class sinhTest extends baseFunctionTest
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			81377.3957064298542,
+        $expectedResults = array(
+            81377.3957064298542,
             114904.062428447249,
             0.123763800012602234,
             '100515.7791305250211+55673.3482788557751i',
@@ -61,9 +60,8 @@ class sinhTest extends baseFunctionTest
             '-0.841470984807896507i',
             '0.122690090024315336i',
             '-0.123310379193334229i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
-
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 }

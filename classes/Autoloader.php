@@ -16,7 +16,8 @@ class Autoloader
      * Register the Autoloader with SPL
      *
      */
-    public static function Register() {
+    public static function Register()
+    {
         if (function_exists('__autoload')) {
             //    Register any existing autoloader function with SPL, so we don't get any clashes
             spl_autoload_register('__autoload');
@@ -31,10 +32,11 @@ class Autoloader
      *
      * @param    string    $pClassName    Name of the object to load
      */
-    public static function Load($pClassName) {
-        if ((class_exists($pClassName, FALSE)) || (strpos($pClassName, 'Complex\\') !== 0)) {
+    public static function Load($pClassName)
+    {
+        if ((class_exists($pClassName, false)) || (strpos($pClassName, 'Complex\\') !== 0)) {
             // Either already loaded, or not a Complex class request
-            return FALSE;
+            return false;
         }
 
         $pClassFilePath = __DIR__ . DIRECTORY_SEPARATOR .
@@ -42,9 +44,9 @@ class Autoloader
                           str_replace('Complex\\', '', $pClassName) .
                           '.php';
 
-        if ((file_exists($pClassFilePath) === FALSE) || (is_readable($pClassFilePath) === FALSE)) {
+        if ((file_exists($pClassFilePath) === false) || (is_readable($pClassFilePath) === false)) {
             // Can't load
-            return FALSE;
+            return false;
         }
         require($pClassFilePath);
     }

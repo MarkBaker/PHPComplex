@@ -1,39 +1,38 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class sinTest extends baseFunctionTest
+class sinTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'sin';
 
     /**
      * @dataProvider dataProvider
      */
-	public function testSin()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = sin($complex);
+    public function testSin()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = sin($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testSinInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->sin();
+    public function testSinInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->sin();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -41,7 +40,7 @@ class sinTest extends baseFunctionTest
      */
     public function dataProvider()
     {
-		$expectedResults = array(
+        $expectedResults = array(
             -0.536572918000434972,
             -0.219566996737933121,
             0.123136677851332009,
@@ -61,9 +60,8 @@ class sinTest extends baseFunctionTest
             '-1.17520119364380146i',
             '0.123310379193334229i',
             '-0.1233103791933342i'
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
-
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 }

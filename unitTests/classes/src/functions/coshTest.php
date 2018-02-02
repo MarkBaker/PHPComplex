@@ -1,39 +1,38 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class coshTest extends baseFunctionTest
+class coshTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'cosh';
 
     /**
      * @dataProvider dataProvider
      */
-	public function testCosh()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = cosh($complex);
+    public function testCosh()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = cosh($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testCoshInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->cosh();
+    public function testCoshInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->cosh();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -41,8 +40,8 @@ class coshTest extends baseFunctionTest
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			81377.3957125740666,
+        $expectedResults = array(
+            81377.3957125740666,
             114904.062432798705,
             1.00762963344353832,
             '100515.7791343315882+55673.3482767474063i',
@@ -61,9 +60,8 @@ class coshTest extends baseFunctionTest
             0.540302305868139717,
             0.992445032135193570,
             0.992445032135193570,
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
-
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 }
