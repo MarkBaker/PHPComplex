@@ -20,6 +20,9 @@ abstract class baseFunctionTest extends \PHPUnit\Framework\TestCase
         ini_set('precision', $this->precision);
     }
 
+    // Overload the older setExpectedException() method from PHPUnit, converting to the newer
+    //    expectException() and expectExceptionMessage() methods if available
+    //    (for backward compatibility with PHPUnit when testing against PHP versions prior to PHP7)
     public function setExpectedException($exception, $message=null) {
         if (!method_exists($this,'expectException')) {
             return parent::setExpectedException($exception, $message);
