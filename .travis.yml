@@ -1,3 +1,7 @@
+sudo: false
+
+dist: trusty
+
 cache:
   apt: true
 
@@ -20,6 +24,7 @@ php:
   - hhvm
 
 matrix:
+  fast_finish: true
   include:
     - php: 7.1
       env: EXTRA_CHECKS=1
