@@ -309,7 +309,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    private $_oneComplexValueDataSets = array(
+    private $oneComplexValueDataSets = array(
         array(12,       null,       null),
         array(12.345,   null,       null),
         array(0.12345,  null,       null),
@@ -333,10 +333,10 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         array(0,        -0.123,     null),
     );
 
-    private function _formatOneArgumentTestResultArray($expectedResults)
+    private function formatOneArgumentTestResultArray($expectedResults)
     {
         $testValues = array();
-        foreach ($this->_oneComplexValueDataSets as $test => $dataSet) {
+        foreach ($this->oneComplexValueDataSets as $test => $dataSet) {
             $testValues[$test][] = $dataSet;
             $testValues[$test][] = $expectedResults[$test];
         }
@@ -344,7 +344,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         return $testValues;
     }
 
-    private $_twoComplexValueDataSets = array(
+    private $twoComplexValueDataSets = array(
         array(123,      null,   null,   456,        null,   null),
         array(123.456,  null,   null,   789.012,    null,   null),
         array(123.456,  78.90,  null,   -987.654,   -32.1,  null),
@@ -353,10 +353,10 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         array(-987.654, -32.1,  null,   0,          -1,     null),
     );
 
-    private function _formatTwoArgumentTestResultArray($expectedResults)
+    private function formatTwoArgumentTestResultArray($expectedResults)
     {
         $testValues = array();
-        foreach ($this->_twoComplexValueDataSets as $test => $dataSet) {
+        foreach ($this->twoComplexValueDataSets as $test => $dataSet) {
             $testValues[$test][] = array_slice($dataSet, 0, 3);
             $testValues[$test][] = array_slice($dataSet, 3, 3);
             $testValues[$test][] = $expectedResults[$test];
@@ -376,7 +376,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             '-987.654-33.1i',
         );
 
-        return $this->_formatTwoArgumentTestResultArray($expectedResults);
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerSubtract()
@@ -390,7 +390,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             '-987.654-31.1i',
         );
 
-        return $this->_formatTwoArgumentTestResultArray($expectedResults);
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerMultiply()
@@ -404,7 +404,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             '-32.1+987.654i',
         );
 
-        return $this->_formatTwoArgumentTestResultArray($expectedResults);
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerDivideBy()
@@ -418,7 +418,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             '32.1-987.654i',
         );
 
-        return $this->_formatTwoArgumentTestResultArray($expectedResults);
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerDivideInto()
@@ -432,7 +432,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             '3.287281241324573E-5+0.001011431921220928i',
         );
 
-        return $this->_formatTwoArgumentTestResultArray($expectedResults);
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     /*
@@ -463,6 +463,6 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             '0.123i',
         );
 
-        return $this->_formatOneArgumentTestResultArray($expectedResults);
+        return $this->formatOneArgumentTestResultArray($expectedResults);
     }
 }
