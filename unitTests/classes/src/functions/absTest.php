@@ -1,9 +1,8 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class absTest extends baseFunctionTest
+class absTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'abs';
 

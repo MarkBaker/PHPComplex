@@ -2,7 +2,7 @@
 
 namespace Complex;
 
-abstract class baseFunctionTest extends \PHPUnit\Framework\TestCase
+abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
 {
     // Saved php.ini precision, so that we can adjust the setting
     private $precision;

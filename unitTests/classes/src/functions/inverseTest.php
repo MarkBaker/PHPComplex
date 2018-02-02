@@ -1,9 +1,8 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class inverseTest extends baseFunctionTest
+class inverseTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'inverse';
 

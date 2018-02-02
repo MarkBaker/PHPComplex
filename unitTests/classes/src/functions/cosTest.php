@@ -1,9 +1,8 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class cosTest extends baseFunctionTest
+class cosTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'cos';
 

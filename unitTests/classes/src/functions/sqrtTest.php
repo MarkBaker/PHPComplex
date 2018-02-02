@@ -1,9 +1,8 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class sqrtTest extends baseFunctionTest
+class sqrtTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'sqrt';
 
