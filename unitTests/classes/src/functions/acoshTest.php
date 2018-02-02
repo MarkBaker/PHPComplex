@@ -9,30 +9,30 @@ class acoshTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAcosh()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = acosh($complex);
+    public function testAcosh()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = acosh($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAcoshInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->acosh();
+    public function testAcoshInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->acosh();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,16 +40,16 @@ class acoshTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			3.17631318059165577,
-			3.20475382161825604,
+        $expectedResults = array(
+            3.17631318059165577,
+            3.20475382161825604,
             '1.44703059570184200i',
-			'3.33784183956736074+0.50386235199241278i',
-			'3.33784183956736074-0.50386235199241278i',
-			'2.61399140081652779+1.55280848768351476i',
-			'2.61399140081652779-1.55280848768351476i',
-			'0.63823568781287892+1.46865136582657190i',
-			'0.63823568781287892-1.46865136582657190i',
+            '3.33784183956736074+0.50386235199241278i',
+            '3.33784183956736074-0.50386235199241278i',
+            '2.61399140081652779+1.55280848768351476i',
+            '2.61399140081652779-1.55280848768351476i',
+            '0.63823568781287892+1.46865136582657190i',
+            '0.63823568781287892-1.46865136582657190i',
             '2.98073255621495518+3.14159265358979324i',
             '2.98426811978550341i',
             '3.06941431940712748+2.72759273898886477i',
@@ -60,9 +60,9 @@ class acoshTest extends BaseFunctionTestAbstract
             '0.88137358701954303-1.57079632679489662i',
             '0.12269194815825956+1.57079632679489662i',
             '0.12269194815825956-1.57079632679489662i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

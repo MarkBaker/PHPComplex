@@ -9,30 +9,30 @@ class absTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAbs()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = abs($complex);
+    public function testAbs()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = abs($complex);
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAbsInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->abs();
+    public function testAbsInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->abs();
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,14 +40,14 @@ class absTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			12,
-			12.345,
+        $expectedResults = array(
+            12,
+            12.345,
             0.12345,
-			14.0886318001429791,
-			14.0886318001429791,
-			6.79012230394269113,
-			6.79012230394269113,
+            14.0886318001429791,
+            14.0886318001429791,
+            6.79012230394269113,
+            6.79012230394269113,
             0.690032689443043705,
             0.690032689443043705,
             9.8765,
@@ -56,12 +56,12 @@ class absTest extends BaseFunctionTestAbstract
             10.7803660999986452,
             1.07803660999986452,
             1.07803660999986452,
-			1,
-			1,
+            1,
+            1,
             0.123,
             0.123,
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 }

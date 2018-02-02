@@ -9,34 +9,34 @@ class atanTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAtan()
-	{
-		$args = func_get_args();
+    public function testAtan()
+    {
+        $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
-		$complex = new Complex($args[0]);
+        $complex = new Complex($args[0]);
         $result = atan($complex);
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAtanInvoker()
-	{
-		$args = func_get_args();
+    public function testAtanInvoker()
+    {
+        $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
-		$complex = new Complex($args[0]);
+        $complex = new Complex($args[0]);
         $result = $complex->atan();
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha utang
@@ -44,9 +44,9 @@ class atanTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			1.48765509490645539,
-			1.48996835348641902,
+        $expectedResults = array(
+            1.48765509490645539,
+            1.48996835348641902,
             0.122828550687415431,
             '1.50860933996675541+0.03408455783748144i',
             '1.50860933996675541-0.03408455783748144i',
@@ -64,9 +64,9 @@ class atanTest extends BaseFunctionTestAbstract
             'InvalidArgumentException',
             '0.123625981183130070i',
             '-0.1236259811831301i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

@@ -9,30 +9,30 @@ class secTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testSec()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = sec($complex);
+    public function testSec()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = sec($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testSecInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->sec();
+    public function testSecInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->sec();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,8 +40,8 @@ class secTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			1.18503917609398493,
+        $expectedResults = array(
+            1.18503917609398493,
             1.02501295645097987,
             1.00766863937283452,
             '0.00219722715877619811-0.00049450452915277163i',
@@ -60,9 +60,9 @@ class secTest extends BaseFunctionTestAbstract
             0.648054273663885400,
             0.992482893127170164,
             0.992482893127170164,
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

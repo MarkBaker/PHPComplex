@@ -9,36 +9,36 @@ class acotTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAcot()
-	{
-		$args = func_get_args();
+    public function testAcot()
+    {
+        $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
-		$complex = new Complex($args[0]);
+        $complex = new Complex($args[0]);
         $result = acot($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAcotInvoker()
-	{
-		$args = func_get_args();
+    public function testAcotInvoker()
+    {
+        $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
-		$complex = new Complex($args[0]);
-		$result = $complex->acot();
+        $complex = new Complex($args[0]);
+        $result = $complex->acot();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha ucotg
@@ -46,9 +46,9 @@ class acotTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			0.0831412318884412299,
-			0.0808279733084775996,
+        $expectedResults = array(
+            0.0831412318884412299,
+            0.0808279733084775996,
             1.44796777610748119,
             '0.0621869868281412105-0.0340845578374814375i',
             '0.0621869868281412105+0.0340845578374814375i',
@@ -66,9 +66,9 @@ class acotTest extends BaseFunctionTestAbstract
             'InvalidArgumentException',
             '-1.57079632679489662-0.12362598118313007i',
             '1.57079632679489662+0.12362598118313007i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

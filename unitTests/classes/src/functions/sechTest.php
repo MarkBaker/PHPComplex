@@ -9,30 +9,30 @@ class sechTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testSech()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = sech($complex);
+    public function testSech()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = sech($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testSechInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->sech();
+    public function testSechInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->sech();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,8 +40,8 @@ class sechTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			0.0000122884247061925150,
+        $expectedResults = array(
+            0.0000122884247061925150,
             8.70291248914586449E-6,
             0.992428137094912224,
             '7.61313404486084631E-6-4.21673757898906154E-6i',
@@ -60,8 +60,8 @@ class sechTest extends BaseFunctionTestAbstract
             1.85081571768092562,
             1.00761247990586674,
             1.00761247990586674,
-		);
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        );
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

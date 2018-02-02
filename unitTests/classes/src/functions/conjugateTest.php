@@ -9,30 +9,30 @@ class conjugateTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testConjugate()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = conjugate($complex);
+    public function testConjugate()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = conjugate($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testConjugateInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->conjugate();
+    public function testConjugateInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->conjugate();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,29 +40,29 @@ class conjugateTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			12,
-			12.345,
-			0.12345,
+        $expectedResults = array(
+            12,
+            12.345,
+            0.12345,
             '12.345-6.789i',
             '12.345+6.789i',
             '0.12345-6.789i',
             '0.12345+6.789i',
             '0.12345-0.6789i',
             '0.12345+0.6789i',
-			-9.8765,
+            -9.8765,
             -0.98765,
-			'-9.8765-4.321i',
-			'-9.8765+4.321i',
-			'-0.98765-0.4321i',
-			'-0.98765+0.4321i',
-			'-i',
-			'i',
+            '-9.8765-4.321i',
+            '-9.8765+4.321i',
+            '-0.98765-0.4321i',
+            '-0.98765+0.4321i',
+            '-i',
+            'i',
             '-0.123i',
             '0.123i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

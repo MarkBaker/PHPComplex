@@ -9,39 +9,39 @@ class log2Test extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testLog2()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = log2($complex);
+    public function testLog2()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = log2($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testLog2Invoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->log2();
+    public function testLog2Invoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->log2();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @expectedException InvalidArgumentException
      */
-	public function testLog2Zero()
-	{
-		$complex = new Complex(0);
-		$result = log2($complex);
-	}
+    public function testLog2Zero()
+    {
+        $complex = new Complex(0);
+        $result = log2($complex);
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -49,9 +49,9 @@ class log2Test extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			3.58496250072115618,
-			3.62585493136805716,
+        $expectedResults = array(
+            3.58496250072115618,
+            3.62585493136805716,
             -3.01800125840666753,
             '3.81645960781299948+0.72538211247550245i',
             '3.81645960781299948-0.72538211247550245i',
@@ -69,9 +69,9 @@ class log2Test extends BaseFunctionTestAbstract
             '-2.26618007091359690i',
             '-3.02326977932284717+2.26618007091359690i',
             '-3.02326977932284717-2.26618007091359690i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

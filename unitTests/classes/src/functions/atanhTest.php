@@ -9,28 +9,28 @@ class atanhTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAtanh()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
+    public function testAtanh()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
         $result = atanh($complex);
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAtanhInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
+    public function testAtanhInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
         $result = $complex->atanh();
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha utang
@@ -38,9 +38,9 @@ class atanhTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			'0.08352704233158310-1.57079632679489662i',
-			'0.08118233231234121-1.57079632679489662i',
+        $expectedResults = array(
+            '0.08352704233158310-1.57079632679489662i',
+            '0.08118233231234121-1.57079632679489662i',
             0.124082919526178230,
             '0.06220185236712153+1.53647383617240851i',
             '0.06220185236712153-1.53647383617240851i',
@@ -58,9 +58,9 @@ class atanhTest extends BaseFunctionTestAbstract
             '-0.785398163397448310i',
             '0.122385281471802660i',
             '-0.122385281471802660i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

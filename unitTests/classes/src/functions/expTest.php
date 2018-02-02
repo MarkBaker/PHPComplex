@@ -9,30 +9,30 @@ class expTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testExp()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = exp($complex);
+    public function testExp()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = exp($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testExpInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->exp();
+    public function testExpInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->exp();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,9 +40,9 @@ class expTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			162754.791419003921,
-			229808.124861245955,
+        $expectedResults = array(
+            162754.791419003921,
+            229808.124861245955,
             1.13139343345614055,
             '201031.558264856609+111346.696555603181i',
             '201031.558264856609-111346.696555603181i',
@@ -60,9 +60,9 @@ class expTest extends BaseFunctionTestAbstract
             '0.540302305868139717-0.841470984807896507i',
             '0.992445032135193570+0.122690090024315336i',
             '0.992445032135193570-0.122690090024315336i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

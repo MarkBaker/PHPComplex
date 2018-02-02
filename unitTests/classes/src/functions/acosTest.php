@@ -9,30 +9,30 @@ class acosTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAcos()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = acos($complex);
+    public function testAcos()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = acos($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAcosInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->acos();
+    public function testAcosInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->acos();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,16 +40,16 @@ class acosTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			'3.17631318059165577i',
-			'3.20475382161825604i',
+        $expectedResults = array(
+            '3.17631318059165577i',
+            '3.20475382161825604i',
             '1.44703059570184200',
-			'0.50386235199241278-3.33784183956736074i',
-			'0.50386235199241278+3.33784183956736074i',
-			'1.55280848768351476-2.61399140081652779i',
-			'1.55280848768351476+2.61399140081652779i',
-			'1.46865136582657190-0.63823568781287892i',
-			'1.46865136582657190+0.63823568781287892i',
+            '0.50386235199241278-3.33784183956736074i',
+            '0.50386235199241278+3.33784183956736074i',
+            '1.55280848768351476-2.61399140081652779i',
+            '1.55280848768351476+2.61399140081652779i',
+            '1.46865136582657190-0.63823568781287892i',
+            '1.46865136582657190+0.63823568781287892i',
             '3.14159265358979324-2.98073255621495518i',
             2.98426811978550341,
             '2.72759273898886477-3.06941431940712748i',
@@ -60,9 +60,9 @@ class acosTest extends BaseFunctionTestAbstract
             '1.57079632679489662+0.88137358701954303i',
             '1.57079632679489662-0.12269194815825956i',
             '1.57079632679489662+0.12269194815825956i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

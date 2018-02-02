@@ -9,30 +9,30 @@ class asinTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAsin()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = asin($complex);
+    public function testAsin()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = asin($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAsinInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->asin();
+    public function testAsinInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->asin();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,9 +40,9 @@ class asinTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			'1.57079632679489662-3.17631318059165577i',
-			'1.57079632679489662-3.20475382161825604i',
+        $expectedResults = array(
+            '1.57079632679489662-3.17631318059165577i',
+            '1.57079632679489662-3.20475382161825604i',
             0.123765731093054622,
             '1.06693397480248384+3.33784183956736074i',
             '1.06693397480248384-3.33784183956736074i',
@@ -60,9 +60,9 @@ class asinTest extends BaseFunctionTestAbstract
             '-0.881373587019543025i',
             '0.122691948158259558i',
             '-0.122691948158259558i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

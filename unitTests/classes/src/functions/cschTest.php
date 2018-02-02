@@ -9,30 +9,30 @@ class cschTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testCsch()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = csch($complex);
+    public function testCsch()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = csch($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testCschInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->csch();
+    public function testCschInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->csch();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,8 +40,8 @@ class cschTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			0.0000122884247071203241,
+        $expectedResults = array(
+            0.0000122884247071203241,
             8.70291248947544677E-6,
             8.07990704792657566,
             '7.61313404487842193E-6-4.21673757931817486E-6i',
@@ -60,9 +60,9 @@ class cschTest extends BaseFunctionTestAbstract
             '1.18839510577812122i',
             '-8.15061754214879942i',
             '8.1506175421488i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

@@ -9,30 +9,30 @@ class asecTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAsec()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = asec($complex);
+    public function testAsec()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = asec($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAsecInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->asec();
+    public function testAsecInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->asec();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,8 +40,8 @@ class asecTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			1.48736624018428161,
+        $expectedResults = array(
+            1.48736624018428161,
             1.48970302082660277,
             '2.78123430803937039i',
             '1.50859800830252214+0.03426287528025610i',
@@ -60,9 +60,9 @@ class asecTest extends BaseFunctionTestAbstract
             '1.57079632679489662-0.88137358701954303i',
             '1.57079632679489662+2.79247907463123116i',
             '1.57079632679489662-2.79247907463123116i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

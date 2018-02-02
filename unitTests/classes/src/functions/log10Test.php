@@ -9,39 +9,39 @@ class log10Test extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testLog10()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = log10($complex);
+    public function testLog10()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = log10($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testLog10Invoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->log10();
+    public function testLog10Invoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->log10();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @expectedException InvalidArgumentException
      */
-	public function testLog10Zero()
-	{
-		$complex = new Complex(0);
-		$result = log10($complex);
-	}
+    public function testLog10Zero()
+    {
+        $complex = new Complex(0);
+        $result = log10($complex);
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -49,10 +49,10 @@ class log10Test extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			1.07918124604762483,
-			1.09149109426795108,
-			-0.908508905732048918,
+        $expectedResults = array(
+            1.07918124604762483,
+            1.09149109426795108,
+            -0.908508905732048918,
             '1.148868819191706605+0.218361774173230021i',
             '1.148868819191706605-0.218361774173230021i',
             '0.831877596879774119+0.674291911518508134i',
@@ -69,9 +69,9 @@ class log10Test extends BaseFunctionTestAbstract
             '-0.682188176920920674i',
             '-0.910094888560602068+0.682188176920920674i',
             '-0.910094888560602068-0.682188176920920674i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

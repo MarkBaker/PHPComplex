@@ -9,30 +9,30 @@ class acscTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testAcsc()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = acsc($complex);
+    public function testAcsc()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = acsc($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testAcscInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->acsc();
+    public function testAcscInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->acsc();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,8 +40,8 @@ class acscTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			0.0834300866106150049,
+        $expectedResults = array(
+            0.0834300866106150049,
             0.0810933059682938455,
             '1.57079632679489662-2.78123430803937039i',
             '0.0621983184923744794-0.0342628752802560973i',
@@ -60,9 +60,9 @@ class acscTest extends BaseFunctionTestAbstract
             '0.88137358701954303i',
             '-2.79247907463123116i',
             '2.792479074631231i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

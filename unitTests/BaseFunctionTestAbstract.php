@@ -41,7 +41,7 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
     public function testInvalidArgument()
     {
         $invalidComplex = '*** INVALID ***';
-		$result = call_user_func('\\' . __NAMESPACE__ . '\\' . static::$functionName, $invalidComplex);
+        $result = call_user_func('\\' . __NAMESPACE__ . '\\' . static::$functionName, $invalidComplex);
     }
 
     protected function getAssertionPrecision($value)
@@ -61,37 +61,37 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
     }
 
     private $oneComplexValueDataSets = array(
-		array(12,		NULL,	    NULL),
-		array(12.345,	NULL,	    NULL),
-		array(0.12345,	NULL,	    NULL),
-		array(12.345,	6.789,	    NULL),
-		array(12.345,	-6.789,	    NULL),
-		array(0.12345,	6.789,	    NULL),
-		array(0.12345,	-6.789,	    NULL),
-		array(0.12345,	0.6789, 	NULL),
-		array(0.12345,	-0.6789,	NULL),
-		array(-9.8765,	NULL,	    NULL),
-		array(-0.98765,	NULL,	    NULL),
-		array(-9.8765,	+4.321,	    NULL),
-		array(-9.8765,	-4.321,	    NULL),
-		array(-0.98765,	0.4321,	    NULL),
-		array(-0.98765,	-0.4321,	NULL),
-		array(0,		1,		    NULL),
-		array(0,		-1,		    NULL),
-		array(0,		0.123,		NULL),
-		array(0,		-0.123,		NULL),
-	);
+        array(12,       NULL,       NULL),
+        array(12.345,   NULL,       NULL),
+        array(0.12345,  NULL,       NULL),
+        array(12.345,   6.789,      NULL),
+        array(12.345,   -6.789,     NULL),
+        array(0.12345,  6.789,      NULL),
+        array(0.12345,  -6.789,     NULL),
+        array(0.12345,  0.6789,     NULL),
+        array(0.12345,  -0.6789,    NULL),
+        array(-9.8765,  NULL,       NULL),
+        array(-0.98765, NULL,       NULL),
+        array(-9.8765,  +4.321,     NULL),
+        array(-9.8765,  -4.321,     NULL),
+        array(-0.98765, 0.4321,     NULL),
+        array(-0.98765, -0.4321,    NULL),
+        array(0,        1,          NULL),
+        array(0,        -1,         NULL),
+        array(0,        0.123,      NULL),
+        array(0,        -0.123,     NULL),
+    );
 
-	protected function formatOneArgumentTestResultArray($expectedResults)
-	{
-		$testValues = array();
-		foreach($this->oneComplexValueDataSets as $test => $dataSet) {
-			$testValues[$test][] = $dataSet;
-			$testValues[$test][] = $expectedResults[$test];
-		}
+    protected function formatOneArgumentTestResultArray($expectedResults)
+    {
+        $testValues = array();
+        foreach($this->oneComplexValueDataSets as $test => $dataSet) {
+            $testValues[$test][] = $dataSet;
+            $testValues[$test][] = $expectedResults[$test];
+        }
 
-		return $testValues;
-	}
+        return $testValues;
+    }
 
     abstract public function dataProvider();
 

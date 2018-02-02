@@ -9,30 +9,30 @@ class sqrtTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testSqrt()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = sqrt($complex);
+    public function testSqrt()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = sqrt($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testSqrtInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->sqrt();
+    public function testSqrtInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->sqrt();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,9 +40,9 @@ class sqrtTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			3.46410161513775459,
-			3.51354521815217286,
+        $expectedResults = array(
+            3.46410161513775459,
+            3.51354521815217286,
             0.351354521815217286,
             '3.63549390043106654+0.93371082250956562i',
             '3.63549390043106654-0.93371082250956562i',
@@ -60,9 +60,9 @@ class sqrtTest extends BaseFunctionTestAbstract
             '0.707106781186547524-0.707106781186547524i',
             '0.247991935352744888+0.247991935352744888i',
             '0.247991935352744888-0.247991935352744888i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }

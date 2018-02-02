@@ -9,30 +9,30 @@ class rhoTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-	public function testRho()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = rho($complex);
+    public function testRho()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = rho($complex);
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testRhoInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->rho();
+    public function testRhoInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->rho();
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -40,12 +40,12 @@ class rhoTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			12,
-			12.345,
+        $expectedResults = array(
+            12,
+            12.345,
             0.12345,
-			14.08863180014298,
-			14.08863180014298,
+            14.08863180014298,
+            14.08863180014298,
             6.790122303942691,
             6.790122303942691,
             0.6900326894430436,
@@ -60,9 +60,9 @@ class rhoTest extends BaseFunctionTestAbstract
             1.0,
             0.123,
             0.123,
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 
 }
