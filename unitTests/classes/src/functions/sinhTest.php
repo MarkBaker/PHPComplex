@@ -40,7 +40,7 @@ class sinhTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             81377.3957064298542,
             114904.062428447249,
             0.123763800012602234,
@@ -60,7 +60,7 @@ class sinhTest extends BaseFunctionTestAbstract
             '-0.841470984807896507i',
             '0.122690090024315336i',
             '-0.123310379193334229i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

@@ -40,7 +40,7 @@ class secTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             1.18503917609398493,
             1.02501295645097987,
             1.00766863937283452,
@@ -60,7 +60,7 @@ class secTest extends BaseFunctionTestAbstract
             0.648054273663885400,
             0.992482893127170164,
             0.992482893127170164,
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

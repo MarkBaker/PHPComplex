@@ -40,7 +40,7 @@ class rhoTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             12,
             12.345,
             0.12345,
@@ -60,7 +60,7 @@ class rhoTest extends BaseFunctionTestAbstract
             1.0,
             0.123,
             0.123,
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

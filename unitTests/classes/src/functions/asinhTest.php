@@ -40,7 +40,7 @@ class asinhTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             3.17978543769987883,
             3.20803471193308126,
             0.123138570086713762,
@@ -60,7 +60,7 @@ class asinhTest extends BaseFunctionTestAbstract
             '-1.57079632679489662i',
             '0.123312275191871996i',
             '-0.123312275191871996i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

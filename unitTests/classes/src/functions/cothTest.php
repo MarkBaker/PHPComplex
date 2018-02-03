@@ -46,7 +46,7 @@ class cothTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             1.00000000007550269,
             1.00000000003787034,
             8.14155377696011725,
@@ -66,7 +66,7 @@ class cothTest extends BaseFunctionTestAbstract
             '0.6420926159343307i',
             '-8.08903988853953767i',
             '8.08903988853954i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

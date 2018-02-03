@@ -40,7 +40,7 @@ class coshTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             81377.3957125740666,
             114904.062432798705,
             1.00762963344353832,
@@ -60,7 +60,7 @@ class coshTest extends BaseFunctionTestAbstract
             0.540302305868139717,
             0.992445032135193570,
             0.992445032135193570,
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

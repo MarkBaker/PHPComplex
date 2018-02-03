@@ -40,7 +40,7 @@ class sqrtTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             3.46410161513775459,
             3.51354521815217286,
             0.351354521815217286,
@@ -60,7 +60,7 @@ class sqrtTest extends BaseFunctionTestAbstract
             '0.707106781186547524-0.707106781186547524i',
             '0.247991935352744888+0.247991935352744888i',
             '0.247991935352744888-0.247991935352744888i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

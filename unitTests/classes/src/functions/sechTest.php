@@ -40,7 +40,7 @@ class sechTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.0000122884247061925150,
             8.70291248914586449E-6,
             0.992428137094912224,
@@ -60,7 +60,7 @@ class sechTest extends BaseFunctionTestAbstract
             1.85081571768092562,
             1.00761247990586674,
             1.00761247990586674,
-        );
+        ];
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }
 }

@@ -40,7 +40,7 @@ class asechTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             '1.48736624018428161i',
             '1.48970302082660277i',
             2.78123430803937039,
@@ -60,7 +60,7 @@ class asechTest extends BaseFunctionTestAbstract
             '0.88137358701954303+1.57079632679489662i',
             '2.79247907463123116-1.57079632679489662i',
             '2.79247907463123116+1.57079632679489662i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

@@ -23,7 +23,7 @@ class Autoloader
             spl_autoload_register('__autoload');
         }
         //    Register ourselves with SPL
-        return spl_autoload_register(array('Complex\Autoloader', 'Load'));
+        return spl_autoload_register(['Complex\Autoloader', 'Load']);
     }
 
 

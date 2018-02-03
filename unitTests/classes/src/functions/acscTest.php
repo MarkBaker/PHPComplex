@@ -40,7 +40,7 @@ class acscTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.0834300866106150049,
             0.0810933059682938455,
             '1.57079632679489662-2.78123430803937039i',
@@ -60,7 +60,7 @@ class acscTest extends BaseFunctionTestAbstract
             '0.88137358701954303i',
             '-2.79247907463123116i',
             '2.792479074631231i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

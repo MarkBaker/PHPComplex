@@ -40,7 +40,7 @@ class acosTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             '3.17631318059165577i',
             '3.20475382161825604i',
             '1.44703059570184200',
@@ -60,7 +60,7 @@ class acosTest extends BaseFunctionTestAbstract
             '1.57079632679489662+0.88137358701954303i',
             '1.57079632679489662-0.12269194815825956i',
             '1.57079632679489662+0.12269194815825956i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

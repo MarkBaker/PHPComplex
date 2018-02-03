@@ -49,7 +49,7 @@ class lnTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             2.48490664978800031,
             2.51325112279714283,
             -2.09191906319094854,
@@ -69,7 +69,7 @@ class lnTest extends BaseFunctionTestAbstract
             '-1.57079632679489662i',
             '-2.09557092360971956+1.57079632679489662i',
             '-2.09557092360971956-1.57079632679489662i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

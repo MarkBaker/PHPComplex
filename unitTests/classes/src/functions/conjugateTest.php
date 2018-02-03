@@ -40,7 +40,7 @@ class conjugateTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             12,
             12.345,
             0.12345,
@@ -60,7 +60,7 @@ class conjugateTest extends BaseFunctionTestAbstract
             'i',
             '-0.123i',
             '0.123i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

@@ -40,7 +40,7 @@ class asinTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             '1.57079632679489662-3.17631318059165577i',
             '1.57079632679489662-3.20475382161825604i',
             0.123765731093054622,
@@ -60,7 +60,7 @@ class asinTest extends BaseFunctionTestAbstract
             '-0.881373587019543025i',
             '0.122691948158259558i',
             '-0.122691948158259558i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

@@ -40,7 +40,7 @@ class cotTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             -1.57267340639768934,
             -4.44327899279559163,
             8.05925365559757284,
@@ -60,7 +60,7 @@ class cotTest extends BaseFunctionTestAbstract
             '1.3130352854993313i',
             '-8.17104000770619135i',
             '8.17104000770619i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

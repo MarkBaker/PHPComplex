@@ -40,7 +40,7 @@ class tanTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             -0.635859928661580792,
             -0.225059016465411481,
             0.124080968627342774,
@@ -60,7 +60,7 @@ class tanTest extends BaseFunctionTestAbstract
             '-0.76159415595576489i',
             '0.122383441894408763i',
             '-0.1223834418944088i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

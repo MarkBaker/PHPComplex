@@ -38,7 +38,7 @@ class atanhTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             '0.08352704233158310-1.57079632679489662i',
             '0.08118233231234121-1.57079632679489662i',
             0.124082919526178230,
@@ -58,7 +58,7 @@ class atanhTest extends BaseFunctionTestAbstract
             '-0.785398163397448310i',
             '0.122385281471802660i',
             '-0.122385281471802660i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

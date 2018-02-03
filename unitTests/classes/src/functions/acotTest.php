@@ -46,7 +46,7 @@ class acotTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.0831412318884412299,
             0.0808279733084775996,
             1.44796777610748119,
@@ -66,7 +66,7 @@ class acotTest extends BaseFunctionTestAbstract
             'InvalidArgumentException',
             '-1.57079632679489662-0.12362598118313007i',
             '1.57079632679489662+0.12362598118313007i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

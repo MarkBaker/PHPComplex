@@ -40,7 +40,7 @@ class cosTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.843853958732492105,
             0.975597424116876431,
             0.992389721111488176,
@@ -60,7 +60,7 @@ class cosTest extends BaseFunctionTestAbstract
             1.54308063481524378,
             1.00757404175415510,
             1.00757404175415510,
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

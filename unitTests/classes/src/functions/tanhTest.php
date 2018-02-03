@@ -46,7 +46,7 @@ class tanhTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.9999999999244973091172683731325,
             0.9999999999621296571024173850942,
             0.1228266774862941086554829621066,
@@ -66,7 +66,7 @@ class tanhTest extends BaseFunctionTestAbstract
             '-1.55740772465490223050697480745836i',
             '0.12362406586927441783085053209750i',
             '-0.12362406586927441783085053209750i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

@@ -40,7 +40,7 @@ class inverseTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.0833333333333333333,
             0.0810044552450384771,
             8.10044552450384771,
@@ -60,7 +60,7 @@ class inverseTest extends BaseFunctionTestAbstract
             '1.0i',
             '-8.13008130081300813i',
             '8.13008130081300813i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

@@ -40,7 +40,7 @@ class argumentTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.0,
             0.0,
             0.0,
@@ -60,7 +60,7 @@ class argumentTest extends BaseFunctionTestAbstract
             -M_PI / 2, // -1.57079632679489662
             M_PI / 2, // 1.57079632679489662
             -M_PI / 2, // -1.57079632679489662
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

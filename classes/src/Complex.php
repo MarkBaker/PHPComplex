@@ -48,13 +48,13 @@ class Complex
     {
         // Test for real number, with no imaginary part
         if (is_numeric($complexNumber)) {
-            return array($complexNumber, 0, null);
+            return [$complexNumber, 0, null];
         }
 
         // Fix silly human errors
         $complexNumber = str_replace(
-            array('+-', '-+', '++', '--'),
-            array('-', '-', '+', '+'),
+            ['+-', '-+', '++', '--'],
+            ['-', '-', '+', '+'],
             $complexNumber
         );
 
@@ -76,7 +76,7 @@ class Complex
             if ($complexParts[1] === '-') {
                 $imaginary = 0 - $imaginary;
             }
-            return array(0, $imaginary, $complexParts[2]);
+            return [0, $imaginary, $complexParts[2]];
         }
 
         // If we don't have an imaginary part, identify whether it should be +1 or -1...
@@ -95,11 +95,11 @@ class Complex
         }
 
         // Return real and imaginary parts and suffix as an array, and set a default suffix if user input lazily
-        return array(
+        return [
             $complexParts[1],
             $complexParts[4],
             !empty($complexParts[9]) ? $complexParts[9] : 'i'
-        );
+        ];
     }
 
 
@@ -108,7 +108,7 @@ class Complex
         if ($imaginaryPart === null) {
             if (is_array($realPart)) {
                 // We have an array of (potentially) real and imaginary parts, and any suffix
-                list ($realPart, $imaginaryPart, $suffix) = array_values($realPart) + array(0.0, 0.0, 'i');
+                list ($realPart, $imaginaryPart, $suffix) = array_values($realPart) + [0.0, 0.0, 'i'];
                 if ($suffix === null) {
                     $suffix = 'i';
                 }
@@ -212,6 +212,7 @@ class Complex
 
         $this->realPart += $complex->getReal();
         $this->imaginaryPart += $complex->getImaginary();
+        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
 
         return $this;
     }
@@ -228,6 +229,7 @@ class Complex
 
         $this->realPart -= $complex->getReal();
         $this->imaginaryPart -= $complex->getImaginary();
+        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
 
         return $this;
     }
@@ -248,6 +250,7 @@ class Complex
             ($this->getImaginary() * $complex->getReal());
         $this->realPart = $realPart;
         $this->imaginaryPart = $imaginaryPart;
+        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
 
         return $this;
     }
@@ -276,6 +279,7 @@ class Complex
 
         $this->realPart = $delta1 / $delta3;
         $this->imaginaryPart = $delta2 / $delta3;
+        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
 
         return $this;
     }
@@ -304,6 +308,7 @@ class Complex
 
         $this->realPart = $delta1 / $delta3;
         $this->imaginaryPart = $delta2 / $delta3;
+        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
 
         return $this;
     }
@@ -344,7 +349,7 @@ class Complex
         $this->realPart *= -1;
     }
 
-    protected static $functions = array(
+    protected static $functions = [
         'abs',
         'acos',
         'acosh',
@@ -380,7 +385,7 @@ class Complex
         'tan',
         'tanh',
         'theta',
-    );
+    ];
 
     public function __call($functionName, $arguments)
     {

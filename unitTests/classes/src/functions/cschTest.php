@@ -40,7 +40,7 @@ class cschTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.0000122884247071203241,
             8.70291248947544677E-6,
             8.07990704792657566,
@@ -60,7 +60,7 @@ class cschTest extends BaseFunctionTestAbstract
             '1.18839510577812122i',
             '-8.15061754214879942i',
             '8.1506175421488i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

@@ -49,7 +49,7 @@ class log2Test extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             3.58496250072115618,
             3.62585493136805716,
             -3.01800125840666753,
@@ -69,7 +69,7 @@ class log2Test extends BaseFunctionTestAbstract
             '-2.26618007091359690i',
             '-3.02326977932284717+2.26618007091359690i',
             '-3.02326977932284717-2.26618007091359690i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

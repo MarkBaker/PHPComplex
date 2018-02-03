@@ -44,7 +44,7 @@ class atanTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             1.48765509490645539,
             1.48996835348641902,
             0.122828550687415431,
@@ -64,7 +64,7 @@ class atanTest extends BaseFunctionTestAbstract
             'InvalidArgumentException',
             '0.123625981183130070i',
             '-0.1236259811831301i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

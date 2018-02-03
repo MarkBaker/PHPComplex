@@ -97,11 +97,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     public function testInstantiateWithArray()
     {
         $complexObject = new Complex(
-            array(
-                2.3,
-                -4.5,
-                'J'
-            )
+            [2.3, -4.5, 'J']
         );
 
         $defaultComplexReal = $complexObject->getReal();
@@ -319,33 +315,33 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    private $oneComplexValueDataSets = array(
-        array(12,       null,       null),
-        array(12.345,   null,       null),
-        array(0.12345,  null,       null),
-        array(12.345,   6.789,      null),
-        array(12.345,   -6.789,     null),
-        array(0.12345,  6.789,      null),
-        array(0.12345,  -6.789,     null),
-        array(0.12345,  0.6789,     null),
-        array(0.12345,  -0.6789,    null),
-        array(-9.8765,  null,       null),
-        array(-0.98765, null,       null),
-        array(-9.8765,  +4.321,     null),
-        array(-9.8765,  -4.321,     null),
-        array(-0.98765, 0.4321,     null),
-        array(-0.98765, -0.4321,    null),
-        array(0,        M_PI,       null),
-        array(0,        -3.14159265358979324,   null),  // Shame we can't yet have dynamic expressions in property definitions
-        array(0,        1,          null),
-        array(0,        -1,         null),
-        array(0,        0.123,      null),
-        array(0,        -0.123,     null),
-    );
+    private $oneComplexValueDataSets = [
+        [12,       null,       null],
+        [12.345,   null,       null],
+        [0.12345,  null,       null],
+        [12.345,   6.789,      null],
+        [12.345,   -6.789,     null],
+        [0.12345,  6.789,      null],
+        [0.12345,  -6.789,     null],
+        [0.12345,  0.6789,     null],
+        [0.12345,  -0.6789,    null],
+        [-9.8765,  null,       null],
+        [-0.98765, null,       null],
+        [-9.8765,  +4.321,     null],
+        [-9.8765,  -4.321,     null],
+        [-0.98765, 0.4321,     null],
+        [-0.98765, -0.4321,    null],
+        [0,        M_PI,       null],
+        [0,        -M_PI,      null],
+        [0,        1,          null],
+        [0,        -1,         null],
+        [0,        0.123,      null],
+        [0,        -0.123,     null],
+    ];
 
     private function formatOneArgumentTestResultArray($expectedResults)
     {
-        $testValues = array();
+        $testValues = [];
         foreach ($this->oneComplexValueDataSets as $test => $dataSet) {
             $testValues[$test][] = $dataSet;
             $testValues[$test][] = $expectedResults[$test];
@@ -354,18 +350,18 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         return $testValues;
     }
 
-    private $twoComplexValueDataSets = array(
-        array(123,      null,   null,   456,        null,   null),
-        array(123.456,  null,   null,   789.012,    null,   null),
-        array(123.456,  78.90,  null,   -987.654,   -32.1,  null),
-        array(123.456,  78.90,  null,   -987.654,   null,   null),
-        array(-987.654, -32.1,  null,   0,          1,      null),
-        array(-987.654, -32.1,  null,   0,          -1,     null),
-    );
+    private $twoComplexValueDataSets = [
+        [123,      null,   null,   456,        null,   null],
+        [123.456,  null,   null,   789.012,    null,   null],
+        [123.456,  78.90,  null,   -987.654,   -32.1,  null],
+        [123.456,  78.90,  null,   -987.654,   null,   null],
+        [-987.654, -32.1,  null,   0,          1,      null],
+        [-987.654, -32.1,  null,   0,          -1,     null],
+    ];
 
     private function formatTwoArgumentTestResultArray($expectedResults)
     {
-        $testValues = array();
+        $testValues = [];
         foreach ($this->twoComplexValueDataSets as $test => $dataSet) {
             $testValues[$test][] = array_slice($dataSet, 0, 3);
             $testValues[$test][] = array_slice($dataSet, 3, 3);
@@ -377,70 +373,70 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
     public function providerAdd()
     {
-        $expectedResults = array(
+        $expectedResults = [
             579,
             912.468,
             '-864.198+46.8i',
             '-864.198+78.9i',
             '-987.654-31.1i',
             '-987.654-33.1i',
-        );
+        ];
 
         return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerSubtract()
     {
-        $expectedResults = array(
+        $expectedResults = [
             -333,
             -665.556,
             '1111.11+111i',
             '1111.11+78.9i',
             '-987.654-33.1i',
             '-987.654-31.1i',
-        );
+        ];
 
         return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerMultiply()
     {
-        $expectedResults = array(
+        $expectedResults = [
             56088,
             97408.265472,
             '-119399.122224-81888.8382i',
             '-121931.812224-77925.9006i',
             '32.1-987.654i',
             '-32.1+987.654i',
-        );
+        ];
 
         return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerDivideBy()
     {
-        $expectedResults = array(
+        $expectedResults = [
             0.26973684210526,
             0.15646910313151,
             '-0.127461004165656-0.07574363265504158i',
             '-0.1249992406247532-0.0798862759630397i',
             '-32.1+987.654i',
             '32.1-987.654i',
-        );
+        ];
 
         return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
 
     public function providerDivideInto()
     {
-        $expectedResults = array(
+        $expectedResults = [
             3.7073170731707,
             6.3910381026439,
             '-5.798055462132258+3.44549131643853i',
             '-5.680072608981408+3.630100836319281i',
             '-3.287281241324573E-5-0.001011431921220928i',
             '3.287281241324573E-5+0.001011431921220928i',
-        );
+        ];
 
         return $this->formatTwoArgumentTestResultArray($expectedResults);
     }
@@ -449,7 +445,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
      */
     public function providerNegative()
     {
-        $expectedResults = array(
+        $expectedResults = [
             -12,
             -12.345,
             -0.12345,
@@ -471,7 +467,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             'i',
             '-0.123i',
             '0.123i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

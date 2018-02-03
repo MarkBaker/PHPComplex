@@ -40,7 +40,7 @@ class expTest extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             162754.791419003921,
             229808.124861245955,
             1.13139343345614055,
@@ -60,7 +60,7 @@ class expTest extends BaseFunctionTestAbstract
             '0.540302305868139717-0.841470984807896507i',
             '0.992445032135193570+0.122690090024315336i',
             '0.992445032135193570-0.122690090024315336i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

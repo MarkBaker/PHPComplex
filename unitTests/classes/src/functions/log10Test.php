@@ -49,7 +49,7 @@ class log10Test extends BaseFunctionTestAbstract
      */
     public function dataProvider()
     {
-        $expectedResults = array(
+        $expectedResults = [
             1.07918124604762483,
             1.09149109426795108,
             -0.908508905732048918,
@@ -69,7 +69,7 @@ class log10Test extends BaseFunctionTestAbstract
             '-0.682188176920920674i',
             '-0.910094888560602068+0.682188176920920674i',
             '-0.910094888560602068-0.682188176920920674i',
-        );
+        ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }
