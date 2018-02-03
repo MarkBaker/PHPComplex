@@ -22,7 +22,7 @@ function asin($complex)
 
     $square = multiply($complex, $complex);
     $invsqrt = new Complex(1.0);
-    $invsqrt = subtract($invsqrt,$square);
+    $invsqrt = subtract($invsqrt, $square);
     $invsqrt = sqrt($invsqrt);
     $adjust = new Complex(
         $invsqrt->getReal() - $complex->getImaginary(),
