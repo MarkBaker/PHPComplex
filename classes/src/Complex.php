@@ -42,7 +42,7 @@ class Complex
      *
      * @param     mixed    $complexNumber   The value to parse
      * @return    array
-     * @throws    \Exception    If the argument isn't a Complex number or cannot be converted to one
+     * @throws    Exception    If the argument isn't a Complex number or cannot be converted to one
      */
     private static function parseComplex($complexNumber)
     {
@@ -69,7 +69,7 @@ class Complex
             // Neither real nor imaginary part, so test to see if we actually have a suffix
             $validComplex = preg_match('/^([\-\+]?)([ij])$/ui', $complexNumber, $complexParts);
             if (!$validComplex) {
-                throw new \Exception('COMPLEX: Invalid complex number');
+                throw new Exception('Invalid complex number');
             }
             // We have a suffix, so set the real to 0, the imaginary to either 1 or -1 (as defined by the sign)
             $imaginary = 1;
@@ -187,80 +187,25 @@ class Complex
      *
      * @param     mixed    $complex   The value to validate
      * @return    Complex
-     * @throws    \Exception    If the argument isn't a Complex number or cannot be converted to one
+     * @throws    Exception    If the argument isn't a Complex number or cannot be converted to one
      */
     public static function validateComplexArgument($complex)
     {
         if (is_scalar($complex) || is_array($complex)) {
             $complex = new Complex($complex);
         } elseif (!is_object($complex) || !($complex instanceof Complex)) {
-            throw new \Exception('COMPLEX: Value is not a valid complex number');
+            throw new Exception('Value is not a valid complex number');
         }
 
         return $complex;
     }
 
     /**
-     * Adds a value to this complex number, modifying the value of this instance
-     *
-     * @param    string|integer|float|Complex    $complex   The number to add
-     * @return    Complex
-     */
-    public function add($complex = 0.0)
-    {
-        $complex = self::validateComplexArgument($complex);
-
-        $this->realPart += $complex->getReal();
-        $this->imaginaryPart += $complex->getImaginary();
-        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
-
-        return $this;
-    }
-
-    /**
-     * Subtracts a value from this complex number, modifying the value of this instance
-     *
-     * @param    string|integer|float|Complex    $complex   The number to subtract
-     * @return    Complex
-     */
-    public function subtract($complex = 0.0)
-    {
-        $complex = self::validateComplexArgument($complex);
-
-        $this->realPart -= $complex->getReal();
-        $this->imaginaryPart -= $complex->getImaginary();
-        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
-
-        return $this;
-    }
-
-    /**
-     * Multiplies this complex number by a value, modifying the value of this instance
-     *
-     * @param    string|integer|float|Complex    $complex   The number to multiply by
-     * @return    Complex
-     */
-    public function multiply($complex = 1.0)
-    {
-        $complex = self::validateComplexArgument($complex);
-
-        $realPart = ($this->getReal() * $complex->getReal()) -
-            ($this->getImaginary() * $complex->getImaginary());
-        $imaginaryPart = ($this->getReal() * $complex->getImaginary()) +
-            ($this->getImaginary() * $complex->getReal());
-        $this->realPart = $realPart;
-        $this->imaginaryPart = $imaginaryPart;
-        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
-
-        return $this;
-    }
-
-    /**
      * Divides this complex number by a value, modifying the value of this instance
      *
      * @param    string|integer|float|Complex    $complex   The number to divide by
-     * @return    Complex
-     * @throws    \InvalidArgumentException    If function would result in a division by zero
+     * @return   Complex
+     * @throws   \InvalidArgumentException    If function would result in a division by zero
      */
     public function divideBy($complex = 1.0)
     {
@@ -288,8 +233,8 @@ class Complex
      * Divides this complex number into a value, modifying the value of this instance
      *
      * @param    string|integer|float|Complex    $complex   The number to divide into
-     * @return    Complex
-     * @throws    \InvalidArgumentException    If function would result in a division by zero
+     * @return   Complex
+     * @throws   \InvalidArgumentException    If function would result in a division by zero
      */
     public function divideInto($complex = 1.0)
     {
@@ -387,11 +332,29 @@ class Complex
         'theta',
     ];
 
+    protected static $operations = [
+        'add',
+        'subtract',
+        'multiply',
+    ];
+
+    /**
+     * Returns the result of the function call or operation
+     *
+     * @return    Complex|float
+     * @throws    Exception|\InvalidArgumentException
+     */
     public function __call($functionName, $arguments)
     {
+        // Test for function calls
         if (in_array($functionName, self::$functions)) {
             $functionName = "\\" . __NAMESPACE__ . "\\{$functionName}";
             return $functionName($this);
+        }
+        // Test for operation calls
+        if (in_array($functionName, self::$operations)) {
+            $functionName = "\\" . __NAMESPACE__ . "\\{$functionName}";
+            return $functionName($this, ...$arguments);
         }
     }
 }

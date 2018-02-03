@@ -4,8 +4,8 @@
  *
  * Function code for the complex rho() function
  *
- * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @copyright  Copyright (c) 2013-2018 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    https://www.gnu.org/licenses/lgpl-3.0.html    LGPL 3.0
  */
 namespace Complex;
 
@@ -14,8 +14,8 @@ namespace Complex;
  * This is the distance/radius from the centrepoint to the representation of the number in polar coordinates.
  *
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
- * @return    \real            The rho value of the complex argument.
- * @throws    \Exception       If argument isn't a valid real or complex number.
+ * @return    float            The rho value of the complex argument.
+ * @throws    Exception        If argument isn't a valid real or complex number.
  */
 function rho($complex)
 {

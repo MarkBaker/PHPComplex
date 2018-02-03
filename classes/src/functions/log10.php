@@ -4,8 +4,8 @@
  *
  * Function code for the complex log10() function
  *
- * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @copyright  Copyright (c) 2013-2018 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    https://www.gnu.org/licenses/lgpl-3.0.html    LGPL 3.0
  */
 namespace Complex;
 
@@ -14,7 +14,7 @@ namespace Complex;
  *
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
  * @return    Complex          The common logarithm (base 10) of the complex argument.
- * @throws    \Exception       If argument isn't a valid real or complex number.
+ * @throws    Exception        If argument isn't a valid real or complex number.
  * @throws    \InvalidArgumentException  If the real and the imaginary parts are both zero
  */
 function log10($complex)

@@ -200,13 +200,16 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $complex->add(
+        $result = $complex->add(
             new Complex($args[1])
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $complex->getReal());
-        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
+        $this->assertEquals($expected->getReal(), $result->getReal());
+        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /**
@@ -216,13 +219,16 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $complex->subtract(
+        $result = $complex->subtract(
             new Complex($args[1])
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $complex->getReal());
-        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
+        $this->assertEquals($expected->getReal(), $result->getReal());
+        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /**
@@ -232,13 +238,16 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $complex->multiply(
+        $result = $complex->multiply(
             new Complex($args[1])
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $complex->getReal());
-        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
+        $this->assertEquals($expected->getReal(), $result->getReal());
+        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /**
@@ -248,13 +257,16 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $complex->divideBy(
+        $result = $complex->divideBy(
             new Complex($args[1])
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $complex->getReal());
-        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
+        $this->assertEquals($expected->getReal(), $result->getReal());
+        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+
+//        // Verify that the original complex value remains unchanged
+//        $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /**
@@ -273,13 +285,16 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $complex->divideInto(
+        $result = $complex->divideInto(
             new Complex($args[1])
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $complex->getReal());
-        $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
+        $this->assertEquals($expected->getReal(), $result->getReal());
+        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+
+//        // Verify that the original complex value remains unchanged
+//        $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /**

@@ -4,8 +4,8 @@
  *
  * Function code for the complex atan() function
  *
- * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @copyright  Copyright (c) 2013-2018 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    https://www.gnu.org/licenses/lgpl-3.0.html    LGPL 3.0
  */
 namespace Complex;
 
@@ -17,7 +17,7 @@ namespace Complex;
  *
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
  * @return    Complex          The inverse tangent of the complex argument.
- * @throws    \Exception       If argument isn't a valid real or complex number.
+ * @throws    Exception        If argument isn't a valid real or complex number.
  * @throws    \InvalidArgumentException    If function would result in a division by zero
  */
 function atan($complex)
@@ -32,8 +32,8 @@ function atan($complex)
     $uValue = new Complex(1, 0);
 
     $d1Value = clone $uValue;
-    $d1Value->subtract($t1Value);
-    $d2Value = $t1Value->add($uValue);
+    $d1Value = subtract($d1Value, $t1Value);
+    $d2Value = add($t1Value, $uValue);
     $uResult = $d1Value->divideBy($d2Value);
     $uResult = ln($uResult);
 

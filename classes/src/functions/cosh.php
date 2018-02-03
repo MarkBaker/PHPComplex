@@ -4,8 +4,8 @@
  *
  * Function code for the complex cosh() function
  *
- * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @copyright  Copyright (c) 2013-2018 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    https://www.gnu.org/licenses/lgpl-3.0.html    LGPL 3.0
  */
 namespace Complex;
 
@@ -14,7 +14,7 @@ namespace Complex;
  *
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
  * @return    Complex          The hyperbolic cosine of the complex argument.
- * @throws    \Exception       If argument isn't a valid real or complex number.
+ * @throws    Exception        If argument isn't a valid real or complex number.
  */
 function cosh($complex)
 {

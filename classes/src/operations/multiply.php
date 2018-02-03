@@ -2,7 +2,7 @@
 
 /**
  *
- * Function code for the complex addition operation
+ * Function code for the complex multiplication operation
  *
  * @copyright  Copyright (c) 2013-2018 Mark Baker (https://github.com/MarkBaker/PHPComplex)
  * @license    https://www.gnu.org/licenses/lgpl-3.0.html    LGPL 3.0
@@ -10,9 +10,9 @@
 namespace Complex;
 
     /**
-     * Adds two or more complex numbers
+     * Multiplies two or more complex numbers
      *
-     * @param     array of string|integer|float|Complex    $complexValues   The numbers to add
+     * @param     array of string|integer|float|Complex    $complexValues   The numbers to multiply
      * @return    Complex
      */
 function multiply(...$complexValues)
@@ -22,9 +22,21 @@ function multiply(...$complexValues)
     }
 
     $base = array_shift($complexValues);
-    $result = clone $base;
+    $result = clone Complex::validateComplexArgument($base);
+
     foreach ($complexValues as $complex) {
-        $result->multiply($complex);
+        $complex = Complex::validateComplexArgument($complex);
+        $real = ($result->getReal() * $complex->getReal()) -
+            ($result->getImaginary() * $complex->getImaginary());
+        $imaginary = ($result->getReal() * $complex->getImaginary()) +
+            ($result->getImaginary() * $complex->getReal());
+
+        $result = new Complex(
+            $real,
+            $imaginary,
+            ($imaginary == 0.0) ? null : max($result->getSuffix(), $complex->getSuffix())
+        );
     }
+
     return $result;
 }

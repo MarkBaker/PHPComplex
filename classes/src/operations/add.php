@@ -22,9 +22,19 @@ function add(...$complexValues)
     }
 
     $base = array_shift($complexValues);
-    $result = clone $base;
+    $result = clone Complex::validateComplexArgument($base);
+
     foreach ($complexValues as $complex) {
-        $result->add($complex);
+        $complex = Complex::validateComplexArgument($complex);
+        $real = $result->getReal() + $complex->getReal();
+        $imaginary = $result->getImaginary() + $complex->getImaginary();
+
+        $result = new Complex(
+            $real,
+            $imaginary,
+            ($imaginary == 0.0) ? null : max($result->getSuffix(), $complex->getSuffix())
+        );
     }
+
     return $result;
 }

@@ -4,8 +4,8 @@
  *
  * Function code for the complex acos() function
  *
- * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @copyright  Copyright (c) 2013-2018 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    https://www.gnu.org/licenses/lgpl-3.0.html    LGPL 3.0
  */
 namespace Complex;
 
@@ -14,16 +14,16 @@ namespace Complex;
  *
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
  * @return    Complex          The inverse cosine of the complex argument.
- * @throws    \Exception       If argument isn't a valid real or complex number.
+ * @throws    Exception        If argument isn't a valid real or complex number.
  */
 function acos($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
     $square = clone $complex;
-    $square = $square->multiply($complex);
+    $square = multiply($square, $complex);
     $invsqrt = new Complex(1.0);
-    $invsqrt = $invsqrt->subtract($square);
+    $invsqrt = subtract($invsqrt, $square);
     $invsqrt = sqrt($invsqrt);
     $adjust = new Complex(
         $complex->getReal() - $invsqrt->getImaginary(),

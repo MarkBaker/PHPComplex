@@ -4,8 +4,8 @@
  *
  * Function code for the complex argument() function
  *
- * @copyright  Copyright (c) 2013-2015 Mark Baker (https://github.com/MarkBaker/PHPComplex)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @copyright  Copyright (c) 2013-2018 Mark Baker (https://github.com/MarkBaker/PHPComplex)
+ * @license    https://www.gnu.org/licenses/lgpl-3.0.html    LGPL 3.0
  */
 namespace Complex;
 
@@ -17,8 +17,8 @@ namespace Complex;
  * This function is a synonym for theta()
  *
  * @param     Complex|mixed    $complex    Complex number or a numeric value.
- * @return    \real            The argument (or theta) value of the complex argument.
- * @throws    \Exception       If argument isn't a valid real or complex number.
+ * @return    float            The argument (or theta) value of the complex argument.
+ * @throws    Exception        If argument isn't a valid real or complex number.
  *
  * @see    theta
  */
