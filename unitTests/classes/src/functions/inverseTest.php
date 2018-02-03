@@ -1,39 +1,38 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class inverseTest extends baseFunctionTest
+class inverseTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'inverse';
 
     /**
      * @dataProvider dataProvider
      */
-	public function testInverse()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = inverse($complex);
+    public function testInverse()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = inverse($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testInverseInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->inverse();
+    public function testInverseInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->inverse();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -41,7 +40,7 @@ class inverseTest extends baseFunctionTest
      */
     public function dataProvider()
     {
-		$expectedResults = array(
+        $expectedResults = array(
             0.0833333333333333333,
             0.0810044552450384771,
             8.10044552450384771,
@@ -61,9 +60,8 @@ class inverseTest extends baseFunctionTest
             '1.0i',
             '-8.13008130081300813i',
             '8.13008130081300813i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
-
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 }

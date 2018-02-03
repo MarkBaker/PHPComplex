@@ -33,8 +33,18 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals($expected, (string) $result, null, $this->getAssertionPrecision($expected));
         } else {
             $expected = new Complex($expected);
-            $this->assertEquals($expected->getReal(), $result->getReal(), 'Real Component', $this->getAssertionPrecision($expected->getReal()));
-            $this->assertEquals($expected->getImaginary(), $result->getImaginary(), 'Imaginary Component', $this->getAssertionPrecision($expected->getImaginary()));
+            $this->assertEquals(
+                $expected->getReal(),
+                $result->getReal(),
+                'Real Component',
+                $this->getAssertionPrecision($expected->getReal())
+            );
+            $this->assertEquals(
+                $expected->getImaginary(),
+                $result->getImaginary(),
+                'Imaginary Component',
+                $this->getAssertionPrecision($expected->getImaginary())
+            );
         }
     }
 
@@ -54,7 +64,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('', $defaultComplexSuffix);
-	}
+    }
 
     public function testInstantiateWithArgument()
     {
@@ -68,7 +78,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('', $defaultComplexSuffix);
-	}
+    }
 
     public function testInstantiateWithArguments()
     {
@@ -82,17 +92,17 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('i', $defaultComplexSuffix);
-	}
+    }
 
     public function testInstantiateWithArray()
     {
         $complexObject = new Complex(
-			array(
-				2.3, 
-				-4.5,
-				'J'
-			)
-		);
+            array(
+                2.3,
+                -4.5,
+                'J'
+            )
+        );
 
         $defaultComplexReal = $complexObject->getReal();
         $this->assertEquals(2.3, $defaultComplexReal);
@@ -102,7 +112,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('j', $defaultComplexSuffix);
-	}
+    }
 
     public function testInstantiateWithString()
     {
@@ -116,7 +126,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('i', $defaultComplexSuffix);
-	}
+    }
 
     public function testInstantiateImaginary1()
     {
@@ -130,7 +140,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('i', $defaultComplexSuffix);
-	}
+    }
 
     public function testInstantiateImaginary2()
     {
@@ -144,7 +154,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('i', $defaultComplexSuffix);
-	}
+    }
 
     public function testInstantiateImaginary3()
     {
@@ -158,7 +168,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         $defaultComplexSuffix = $complexObject->getSuffix();
         $this->assertEquals('i', $defaultComplexSuffix);
-	}
+    }
 
     public function testFormat()
     {
@@ -177,294 +187,292 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $complexObject = new Complex(0.0);
         $format = $complexObject->format();
         $this->assertEquals('0.0', $format);
-
-	}
+    }
 
     /**
      * @expectedException Exception
      */
-	public function testInvalidComplex()
-	{
-		$complex = new Complex('ABCDEFGHI');
-	}
+    public function testInvalidComplex()
+    {
+        $complex = new Complex('ABCDEFGHI');
+    }
 
     /**
      * @dataProvider providerAdd
      */
-	public function testAdd()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$complex->add(
-			new Complex($args[1])
-		);
+    public function testAdd()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $complex->add(
+            new Complex($args[1])
+        );
 
         $expected = new Complex($args[2]);
         $this->assertEquals($expected->getReal(), $complex->getReal());
         $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
-	}
+    }
 
     /**
      * @dataProvider providerSubtract
      */
-	public function testSubtract()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$complex->subtract(
-			new Complex($args[1])
-		);
+    public function testSubtract()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $complex->subtract(
+            new Complex($args[1])
+        );
 
         $expected = new Complex($args[2]);
         $this->assertEquals($expected->getReal(), $complex->getReal());
         $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
-	}
+    }
 
     /**
      * @dataProvider providerMultiply
      */
-	public function testMultiply()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$complex->multiply(
-			new Complex($args[1])
-		);
+    public function testMultiply()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $complex->multiply(
+            new Complex($args[1])
+        );
 
         $expected = new Complex($args[2]);
         $this->assertEquals($expected->getReal(), $complex->getReal());
         $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
-	}
+    }
 
     /**
      * @dataProvider providerDivideBy
      */
-	public function testDivideBy()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$complex->divideBy(
-			new Complex($args[1])
-		);
+    public function testDivideBy()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $complex->divideBy(
+            new Complex($args[1])
+        );
 
         $expected = new Complex($args[2]);
         $this->assertEquals($expected->getReal(), $complex->getReal());
         $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
-	}
+    }
 
     /**
      * @expectedException Exception
      */
-	public function testDivideByZero()
-	{
+    public function testDivideByZero()
+    {
         $complex = new Complex('2.5-i');
-		$complex->divideBy(0.0);
-	}
+        $complex->divideBy(0.0);
+    }
 
     /**
      * @dataProvider providerDivideInto
      */
-	public function testDivideInto()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$complex->divideInto(
-			new Complex($args[1])
-		);
+    public function testDivideInto()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $complex->divideInto(
+            new Complex($args[1])
+        );
 
         $expected = new Complex($args[2]);
         $this->assertEquals($expected->getReal(), $complex->getReal());
         $this->assertEquals($expected->getImaginary(), $complex->getImaginary());
-	}
+    }
 
     /**
      * @expectedException Exception
      */
-	public function testDivideIntoByZero()
-	{
+    public function testDivideIntoByZero()
+    {
         $complex = new Complex(0.0);
-		$complex->divideInto(
+        $complex->divideInto(
             new Complex('2.5-i')
         );
-	}
+    }
 
     /**
      * @dataProvider providerNegative
      */
-	public function testNegative()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->negative();
+    public function testNegative()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->negative();
 
         $this->complexNumberAssertions($args[1], $result);
-	}
+    }
 
     /**
      * @expectedException Exception
      */
-	public function testValidateComplexArgument()
-	{
+    public function testValidateComplexArgument()
+    {
         $nonComplex = new \stdClass();
-		Complex::validateComplexArgument($nonComplex);
-	}
+        Complex::validateComplexArgument($nonComplex);
+    }
 
 
-    private $_oneComplexValueDataSets = array(
-		array(12,		NULL,	    NULL),
-		array(12.345,	NULL,	    NULL),
-		array(0.12345,	NULL,	    NULL),
-		array(12.345,	6.789,	    NULL),
-		array(12.345,	-6.789,	    NULL),
-		array(0.12345,	6.789,	    NULL),
-		array(0.12345,	-6.789,	    NULL),
-		array(0.12345,	0.6789, 	NULL),
-		array(0.12345,	-0.6789,	NULL),
-		array(-9.8765,	NULL,	    NULL),
-		array(-0.98765,	NULL,	    NULL),
-		array(-9.8765,	+4.321,	    NULL),
-		array(-9.8765,	-4.321,	    NULL),
-		array(-0.98765,	0.4321,	    NULL),
-		array(-0.98765,	-0.4321,	NULL),
-		array(0,		M_PI,		NULL),
-		array(0,		-3.14159265358979324,   NULL),  // Shame we can't yet have dynamic expressions in property definitions
-		array(0,		1,		    NULL),
-		array(0,		-1,		    NULL),
-		array(0,		0.123,		NULL),
-		array(0,		-0.123,		NULL),
-	);
+    private $oneComplexValueDataSets = array(
+        array(12,       null,       null),
+        array(12.345,   null,       null),
+        array(0.12345,  null,       null),
+        array(12.345,   6.789,      null),
+        array(12.345,   -6.789,     null),
+        array(0.12345,  6.789,      null),
+        array(0.12345,  -6.789,     null),
+        array(0.12345,  0.6789,     null),
+        array(0.12345,  -0.6789,    null),
+        array(-9.8765,  null,       null),
+        array(-0.98765, null,       null),
+        array(-9.8765,  +4.321,     null),
+        array(-9.8765,  -4.321,     null),
+        array(-0.98765, 0.4321,     null),
+        array(-0.98765, -0.4321,    null),
+        array(0,        M_PI,       null),
+        array(0,        -3.14159265358979324,   null),  // Shame we can't yet have dynamic expressions in property definitions
+        array(0,        1,          null),
+        array(0,        -1,         null),
+        array(0,        0.123,      null),
+        array(0,        -0.123,     null),
+    );
 
-	private function _formatOneArgumentTestResultArray($expectedResults)
-	{
-		$testValues = array();
-		foreach($this->_oneComplexValueDataSets as $test => $dataSet) {
-			$testValues[$test][] = $dataSet;
-			$testValues[$test][] = $expectedResults[$test];
-		}
+    private function formatOneArgumentTestResultArray($expectedResults)
+    {
+        $testValues = array();
+        foreach ($this->oneComplexValueDataSets as $test => $dataSet) {
+            $testValues[$test][] = $dataSet;
+            $testValues[$test][] = $expectedResults[$test];
+        }
 
-		return $testValues;
-	}
+        return $testValues;
+    }
 
-    private $_twoComplexValueDataSets = array(
-		array(123,		NULL,	NULL,	456,		NULL,	NULL),
-		array(123.456,	NULL,	NULL,	789.012,	NULL,	NULL),
-		array(123.456,	78.90,	NULL,	-987.654,	-32.1,	NULL),
-		array(123.456,	78.90,	NULL,	-987.654,	NULL,	NULL),
-		array(-987.654,	-32.1,	NULL,	0,			1,		NULL),
-		array(-987.654,	-32.1,	NULL,	0,			-1,		NULL),
-	);
+    private $twoComplexValueDataSets = array(
+        array(123,      null,   null,   456,        null,   null),
+        array(123.456,  null,   null,   789.012,    null,   null),
+        array(123.456,  78.90,  null,   -987.654,   -32.1,  null),
+        array(123.456,  78.90,  null,   -987.654,   null,   null),
+        array(-987.654, -32.1,  null,   0,          1,      null),
+        array(-987.654, -32.1,  null,   0,          -1,     null),
+    );
 
-	private function _formatTwoArgumentTestResultArray($expectedResults)
-	{
-		$testValues = array();
-		foreach($this->_twoComplexValueDataSets as $test => $dataSet) {
-			$testValues[$test][] = array_slice($dataSet,0,3);
-			$testValues[$test][] = array_slice($dataSet,3,3);
-			$testValues[$test][] = $expectedResults[$test];
-		}
+    private function formatTwoArgumentTestResultArray($expectedResults)
+    {
+        $testValues = array();
+        foreach ($this->twoComplexValueDataSets as $test => $dataSet) {
+            $testValues[$test][] = array_slice($dataSet, 0, 3);
+            $testValues[$test][] = array_slice($dataSet, 3, 3);
+            $testValues[$test][] = $expectedResults[$test];
+        }
 
-		return $testValues;
-	}
+        return $testValues;
+    }
 
     public function providerAdd()
     {
-		$expectedResults = array(
-			579,
-			912.468,
-			'-864.198+46.8i',
-			'-864.198+78.9i',
-			'-987.654-31.1i',
-			'-987.654-33.1i',
-		);
+        $expectedResults = array(
+            579,
+            912.468,
+            '-864.198+46.8i',
+            '-864.198+78.9i',
+            '-987.654-31.1i',
+            '-987.654-33.1i',
+        );
 
-		return $this->_formatTwoArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
+    }
 
     public function providerSubtract()
     {
-		$expectedResults = array(
-			-333,
-			-665.556,
-			'1111.11+111i',
-			'1111.11+78.9i',
-			'-987.654-33.1i',
-			'-987.654-31.1i',
-		);
+        $expectedResults = array(
+            -333,
+            -665.556,
+            '1111.11+111i',
+            '1111.11+78.9i',
+            '-987.654-33.1i',
+            '-987.654-31.1i',
+        );
 
-		return $this->_formatTwoArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
+    }
 
     public function providerMultiply()
     {
-		$expectedResults = array(
-			56088,
-			97408.265472,
-			'-119399.122224-81888.8382i',
-			'-121931.812224-77925.9006i',
-			'32.1-987.654i',
-			'-32.1+987.654i',
-		);
+        $expectedResults = array(
+            56088,
+            97408.265472,
+            '-119399.122224-81888.8382i',
+            '-121931.812224-77925.9006i',
+            '32.1-987.654i',
+            '-32.1+987.654i',
+        );
 
-		return $this->_formatTwoArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
+    }
 
     public function providerDivideBy()
     {
-		$expectedResults = array(
-			0.26973684210526,
-			0.15646910313151,
-			'-0.127461004165656-0.07574363265504158i',
-			'-0.1249992406247532-0.0798862759630397i',
-			'-32.1+987.654i',
-			'32.1-987.654i',
-		);
+        $expectedResults = array(
+            0.26973684210526,
+            0.15646910313151,
+            '-0.127461004165656-0.07574363265504158i',
+            '-0.1249992406247532-0.0798862759630397i',
+            '-32.1+987.654i',
+            '32.1-987.654i',
+        );
 
-		return $this->_formatTwoArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
+    }
 
     public function providerDivideInto()
     {
-		$expectedResults = array(
-			3.7073170731707,
-			6.3910381026439,
-			'-5.798055462132258+3.44549131643853i',
-			'-5.680072608981408+3.630100836319281i',
-			'-3.287281241324573E-5-0.001011431921220928i',
-			'3.287281241324573E-5+0.001011431921220928i',
-		);
+        $expectedResults = array(
+            3.7073170731707,
+            6.3910381026439,
+            '-5.798055462132258+3.44549131643853i',
+            '-5.680072608981408+3.630100836319281i',
+            '-3.287281241324573E-5-0.001011431921220928i',
+            '3.287281241324573E-5+0.001011431921220928i',
+        );
 
-		return $this->_formatTwoArgumentTestResultArray($expectedResults);
-	}
+        return $this->formatTwoArgumentTestResultArray($expectedResults);
+    }
 
     /*
      */
     public function providerNegative()
     {
-		$expectedResults = array(
-			-12,
-			-12.345,
-			-0.12345,
+        $expectedResults = array(
+            -12,
+            -12.345,
+            -0.12345,
             '-12.345-6.789i',
             '-12.345+6.789i',
             '-0.12345-6.789i',
             '-0.12345+6.789i',
             '-0.12345-0.6789i',
             '-0.12345+0.6789i',
-			9.8765,
+            9.8765,
             0.98765,
-			'9.8765-4.321i',
-			'9.8765+4.321i',
-			'0.98765-0.4321i',
-			'0.98765+0.4321i',
+            '9.8765-4.321i',
+            '9.8765+4.321i',
+            '0.98765-0.4321i',
+            '0.98765+0.4321i',
             '-3.14159265358979324i',
             '3.14159265358979324i',
-			'-i',
-			'i',
+            '-i',
+            'i',
             '-0.123i',
             '0.123i',
-		);
+        );
 
-		return $this->_formatOneArgumentTestResultArray($expectedResults);
-	}
-
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 }

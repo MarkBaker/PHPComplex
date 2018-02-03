@@ -1,39 +1,38 @@
 <?php
 
 namespace Complex;
-include_once __DIR__ . '/baseFunctionTest.php';
 
-class cscTest extends baseFunctionTest
+class cscTest extends BaseFunctionTestAbstract
 {
     protected static $functionName = 'csc';
 
     /**
      * @dataProvider dataProvider
      */
-	public function testCsc()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = csc($complex);
+    public function testCsc()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = csc($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /**
      * @dataProvider dataProviderInvoker
      */
-	public function testCscInvoker()
-	{
-		$args = func_get_args();
-		$complex = new Complex($args[0]);
-		$result = $complex->csc();
+    public function testCscInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->csc();
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-	}
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -41,8 +40,8 @@ class cscTest extends baseFunctionTest
      */
     public function dataProvider()
     {
-		$expectedResults = array(
-			-1.86367959778243849,
+        $expectedResults = array(
+            -1.86367959778243849,
             -4.55441853674194147,
             8.12105716549654890,
             '-0.00049450804976921878-0.00219723165673293340i',
@@ -61,9 +60,8 @@ class cscTest extends baseFunctionTest
             '0.85091812823932155i',
             '-8.10961742670609559i',
             '8.1096174267061i',
-		);
+        );
 
-		return $this->formatOneArgumentTestResultArray($expectedResults);
-	}
-
+        return $this->formatOneArgumentTestResultArray($expectedResults);
+    }
 }

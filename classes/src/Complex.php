@@ -344,7 +344,7 @@ class Complex
         $this->realPart *= -1;
     }
 
-    protected static $functions = [
+    protected static $functions = array(
         'abs',
         'acos',
         'acosh',
@@ -380,7 +380,7 @@ class Complex
         'tan',
         'tanh',
         'theta',
-    ];
+    );
 
     public function __call($functionName, $arguments)
     {

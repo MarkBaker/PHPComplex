@@ -17,7 +17,7 @@ defined('APPLICATION_PATH')
 
 // Define path to application tests directory
 defined('APPLICATION_TESTS_PATH')
-    || define('APPLICATION_TESTS_PATH', realpath(dirname(__FILE__) ));
+    || define('APPLICATION_TESTS_PATH', realpath(dirname(__FILE__)));
 
 // Define application environment
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', 'ci');
@@ -35,14 +35,19 @@ set_include_path(implode(PATH_SEPARATOR, array(
  */
 echo "Complex tests beginning\n";
 
-if(extension_loaded('xdebug')) {
+if (extension_loaded('xdebug')) {
     echo "Xdebug extension loaded and running\n";
     xdebug_enable();
 } else {
-    echo 'Xdebug not found, you should run the following at the command line: echo "zend_extension=/usr/lib64/php/modules/xdebug.so" > /etc/php.d/xdebug.ini' . "\n";
+    echo 'Xdebug not found, you should run the following at the command line:',
+        'echo "zend_extension=/usr/lib64/php/modules/xdebug.so" > /etc/php.d/xdebug.ini',
+        "\n";
 }
 
 
 require_once(APPLICATION_PATH . '/Bootstrap.php');
 // Unset non-serializable resources used in the Complex bootstrap for loading function files
 unset($file, $iterator);
+
+// Load abstract base function test class.
+require_once APPLICATION_TESTS_PATH . '/BaseFunctionTestAbstract.php';
