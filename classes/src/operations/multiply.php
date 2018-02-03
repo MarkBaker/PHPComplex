@@ -17,13 +17,13 @@ namespace Complex;
      */
 function multiply(...$complexValues)
 {
-    if(count($complexValues) < 2) {
+    if (count($complexValues) < 2) {
         throw new \Exception('This function requires at least 2 arguments');
     }
 
     $base = array_shift($complexValues);
     $result = clone $base;
-    foreach($complexValues as $complex) {
+    foreach ($complexValues as $complex) {
         $result->multiply($complex);
     }
     return $result;
