@@ -16,7 +16,6 @@ cache:
     - $HOME/.cache/composer/files
 
 php:
-  - 5.6
   - 7.0
   - nightly
   - hhvm
@@ -60,7 +59,7 @@ script:
   # @link https://getcomposer.org/doc/03-cli.md#validate
   - composer validate --no-check-all
   ## PHP_CodeSniffer
-  - if [[ "$EXTRA_CHECKS" == "1" ]]; then ./vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1; fi
+  - if [[ "$EXTRA_CHECKS" == "1" ]]; then ./vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1 ./classes/src/ --standard=PSR2; fi
   ## PHP Copy/Paste Detector
   # - if [[ "$EXTRA_CHECKS" == "1" ]]; then ./vendor/bin/phpcpd ./classes/src/; fi
   ## PHP Mess Detector
