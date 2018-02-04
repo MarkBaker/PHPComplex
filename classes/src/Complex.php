@@ -259,20 +259,6 @@ class Complex
     }
 
     /**
-     * Returns the negative of this complex number
-     *
-     * @return    Complex
-     */
-    public function negative()
-    {
-        return new Complex(
-            -1 * $this->realPart,
-            -1 * $this->imaginaryPart,
-            $this->suffix
-        );
-    }
-
-    /**
      * Returns the reverse of this complex number
      *
      * @return    Complex
@@ -321,6 +307,7 @@ class Complex
         'ln',
         'log2',
         'log10',
+        'negative',
         'rho',
         'sec',
         'sech',

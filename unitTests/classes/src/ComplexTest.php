@@ -318,7 +318,10 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $result = $complex->negative();
 
         $this->complexNumberAssertions($args[1], $result);
-    }
+
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+     }
 
     /**
      * @expectedException Exception
