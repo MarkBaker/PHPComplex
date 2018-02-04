@@ -25,5 +25,5 @@ function inverse($complex)
         throw new \InvalidArgumentException('Division by zero');
     }
 
-    return $complex->divideInto();
+    return $complex->divideInto(1.0);
 }

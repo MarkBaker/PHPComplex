@@ -265,8 +265,8 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expected->getReal(), $result->getReal());
         $this->assertEquals($expected->getImaginary(), $result->getImaginary());
 
-//        // Verify that the original complex value remains unchanged
-//        $this->assertEquals(new Complex($args[0]), $complex);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /**
@@ -293,8 +293,8 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($expected->getReal(), $result->getReal());
         $this->assertEquals($expected->getImaginary(), $result->getImaginary());
 
-//        // Verify that the original complex value remains unchanged
-//        $this->assertEquals(new Complex($args[0]), $complex);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /**

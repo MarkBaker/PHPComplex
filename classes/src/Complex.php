@@ -201,64 +201,6 @@ class Complex
     }
 
     /**
-     * Divides this complex number by a value, modifying the value of this instance
-     *
-     * @param    string|integer|float|Complex    $complex   The number to divide by
-     * @return   Complex
-     * @throws   \InvalidArgumentException    If function would result in a division by zero
-     */
-    public function divideBy($complex = 1.0)
-    {
-        $complex = self::validateComplexArgument($complex);
-
-        if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
-            throw new \InvalidArgumentException('Division by zero');
-        }
-
-        $delta1 = ($this->getReal() * $complex->getReal()) +
-            ($this->getImaginary() * $complex->getImaginary());
-        $delta2 = ($this->getImaginary() * $complex->getReal()) -
-            ($this->getReal() * $complex->getImaginary());
-        $delta3 = ($complex->getReal() * $complex->getReal()) +
-            ($complex->getImaginary() * $complex->getImaginary());
-
-        $this->realPart = $delta1 / $delta3;
-        $this->imaginaryPart = $delta2 / $delta3;
-        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
-
-        return $this;
-    }
-
-    /**
-     * Divides this complex number into a value, modifying the value of this instance
-     *
-     * @param    string|integer|float|Complex    $complex   The number to divide into
-     * @return   Complex
-     * @throws   \InvalidArgumentException    If function would result in a division by zero
-     */
-    public function divideInto($complex = 1.0)
-    {
-        if ($this->getReal() == 0.0 && $this->getImaginary() == 0.0) {
-            throw new \InvalidArgumentException('Division by zero');
-        }
-
-        $complex = self::validateComplexArgument($complex);
-
-        $delta1 = ($complex->getReal() * $this->getReal()) +
-            ($complex->getImaginary() * $this->getImaginary());
-        $delta2 = ($complex->getImaginary() * $this->getReal()) -
-            ($complex->getReal() * $this->getImaginary());
-        $delta3 = ($this->getReal() * $this->getReal()) +
-            ($this->getImaginary() * $this->getImaginary());
-
-        $this->realPart = $delta1 / $delta3;
-        $this->imaginaryPart = $delta2 / $delta3;
-        $this->suffix = ($this->imaginaryPart == 0.0) ? null : max($this->suffix, $complex->getSuffix());
-
-        return $this;
-    }
-
-    /**
      * Returns the reverse of this complex number
      *
      * @return    Complex
@@ -323,6 +265,8 @@ class Complex
         'add',
         'subtract',
         'multiply',
+        'divideby',
+        'divideinto',
     ];
 
     /**
@@ -333,6 +277,8 @@ class Complex
      */
     public function __call($functionName, $arguments)
     {
+        $functionName = strtolower(str_replace('_', '', $functionName));
+
         // Test for function calls
         if (in_array($functionName, self::$functions)) {
             $functionName = "\\" . __NAMESPACE__ . "\\{$functionName}";

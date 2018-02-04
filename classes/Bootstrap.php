@@ -29,7 +29,7 @@ $srcFolder = __DIR__ . DIRECTORY_SEPARATOR . 'src';
 $srcDirectory = new RecursiveDirectoryIterator($srcFolder);
 
 $filteredFileList = new FilenameFilter($srcDirectory, '/(?:php)$/i');
-$filteredFileList = new FilenameFilter($filteredFileList, '/^(?!.*Complex\.php).*$/i');
+$filteredFileList = new FilenameFilter($filteredFileList, '/^(?!.*(Complex|Exception)\.php).*$/i');
 
 foreach (new RecursiveIteratorIterator($filteredFileList) as $file) {
     if ($file->isFile()) {

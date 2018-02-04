@@ -26,6 +26,7 @@ function add(...$complexValues)
 
     foreach ($complexValues as $complex) {
         $complex = Complex::validateComplexArgument($complex);
+
         $real = $result->getReal() + $complex->getReal();
         $imaginary = $result->getImaginary() + $complex->getImaginary();
 
