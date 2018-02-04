@@ -31,10 +31,9 @@ function atanh($complex)
     }
 
     $iComplex = clone $complex;
-    $iComplex->invertImaginary();
-    $iComplex->reverse();
-    $result = atan($iComplex);
-    $result->invertReal();
-    $result->reverse();
-    return $result;
+    $iComplex = $iComplex->invertImaginary()
+        ->reverse();
+    return atan($iComplex)
+        ->invertReal()
+        ->reverse();
 }

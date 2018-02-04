@@ -207,19 +207,29 @@ class Complex
      */
     public function reverse()
     {
-        $swap = $this->realPart;
-        $this->realPart = $this->imaginaryPart;
-        $this->imaginaryPart = $swap;
+        return new Complex(
+            $this->imaginaryPart,
+            $this->realPart,
+            ($this->realPart == 0.0) ? null : $this->suffix
+        );
     }
 
     public function invertImaginary()
     {
-        $this->imaginaryPart *= -1;
+        return new Complex(
+            $this->realPart,
+            $this->imaginaryPart * -1,
+            ($this->imaginaryPart == 0.0) ? null : $this->suffix
+        );
     }
 
     public function invertReal()
     {
-        $this->realPart *= -1;
+        return new Complex(
+            $this->realPart * -1,
+            $this->imaginaryPart,
+            ($this->imaginaryPart == 0.0) ? null : $this->suffix
+        );
     }
 
     protected static $functions = [

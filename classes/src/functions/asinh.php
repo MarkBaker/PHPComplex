@@ -25,11 +25,9 @@ function asinh($complex)
     }
 
     $asinh = clone $complex;
-    $asinh->reverse();
-    $asinh->invertReal();
+    $asinh = $asinh->reverse()
+        ->invertReal();
     $asinh = asin($asinh);
-    $asinh->reverse();
-    $asinh->invertImaginary();
-
-    return $asinh;
+    return $asinh->reverse()
+        ->invertImaginary();
 }

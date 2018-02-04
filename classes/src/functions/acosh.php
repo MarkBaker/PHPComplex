@@ -24,10 +24,10 @@ function acosh($complex)
         return new Complex(\acosh($complex->getReal()), 0.0, $complex->getSuffix());
     }
 
-    $acosh = acos($complex);
-    $acosh->reverse();
+    $acosh = acos($complex)
+        ->reverse();
     if ($acosh->getReal() < 0.0) {
-        $acosh->invertReal();
+        $acosh = $acosh->invertReal();
     }
 
     return $acosh;
