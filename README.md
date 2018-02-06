@@ -12,7 +12,7 @@ Develop: [![Build Status](https://travis-ci.org/MarkBaker/PHPComplex.png?branch=
 
 ---
 
-Currently provides methods for:
+Currently provides the following operations:
 
  - addition
  - subtraction
@@ -57,10 +57,15 @@ together with functions for
  - ln (natural log)
  - log10 (base-10 log)
  - log2 (base-2 log)
+ - negative (reverse signs of both real and imaginary values)
  
 ---
 
 Planned additional functionality, but still to implement
 
  * pow (power)
+ - haversine (haversine)
+ - inversehaversine (inverse haversine)
+ - gudermannian (gudermannian)
+ - inversegudermannian (inverse gudermannian)
  
