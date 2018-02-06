@@ -55,6 +55,7 @@
             "classes/src/functions/ln.php",
             "classes/src/functions/log2.php",
             "classes/src/functions/log10.php",
+            "classes/src/functions/negative.php",
             "classes/src/functions/rho.php",
             "classes/src/functions/sec.php",
             "classes/src/functions/sech.php",
@@ -63,7 +64,12 @@
             "classes/src/functions/sqrt.php",
             "classes/src/functions/tan.php",
             "classes/src/functions/tanh.php",
-            "classes/src/functions/theta.php"
+            "classes/src/functions/theta.php",
+            "classes/src/operations/add.php",
+            "classes/src/operations/subtract.php",
+            "classes/src/operations/multiply.php",
+            "classes/src/operations/divideby.php",
+            "classes/src/operations/divideinto.php"
         ]
     },
     "minimum-stability": "dev"
