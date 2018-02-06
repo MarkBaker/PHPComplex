@@ -34,7 +34,7 @@
     -->
 
     <!-- ##### Check PHP cross-version compatibility ##### -->
-    <config name="testVersion" value="5.3-"/>
+    <config name="testVersion" value="5.6-"/>
     <rule ref="PHPCompatibility"/>
 
 
@@ -68,8 +68,14 @@
         <exclude-pattern>/classes/Autoloader\.php$</exclude-pattern>
     </rule>
 
+    <rule ref="PSR1.Classes.ClassDeclaration">
+        <!-- Don't break BC for integrations by renaming the autoloader methods. Not worth it. -->
+        <exclude-pattern>/classes/Bootstrap\.php$</exclude-pattern>
+    </rule>
+
     <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
-        <!-- Exempt the test bootstrap file from the side-effects rule. -->
+        <!-- Exempt the bootstrap files from the side-effects rule. -->
+        <exclude-pattern>/classes/Bootstrap\.php$</exclude-pattern>
         <exclude-pattern>/unitTests/bootstrap\.php$</exclude-pattern>
     </rule>
 

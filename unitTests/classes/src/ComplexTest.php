@@ -321,7 +321,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
-     }
+    }
 
     /**
      * @expectedException Exception
