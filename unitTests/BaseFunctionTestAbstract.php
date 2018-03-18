@@ -57,7 +57,7 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
     protected function complexNumberAssertions($expected, $result)
     {
         if (is_numeric($expected)) {
-            $this->assertEquals($expected, (string) $result, null, $this->getAssertionPrecision($expected));
+            $this->assertEquals($expected, (string) $result, 'Numeric Assertion', $this->getAssertionPrecision($expected));
         } else {
             $expected = new Complex($expected);
             $this->assertEquals(
