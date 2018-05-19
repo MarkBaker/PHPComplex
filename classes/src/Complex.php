@@ -22,6 +22,25 @@ class Complex
     const EULER = 2.7182818284590452353602874713526624977572;
 
     /**
+     * @constant    Regexp to split an input string into real and imaginary components and suffix
+     */
+    const NUMBER_SPLIT_REGEXP =
+        '` ^
+            (                                   # Real part
+                [-+]?(\d+\.?\d*|\d*\.?\d+)          # Real value (integer or float)
+                ([Ee][-+]?[0-2]?\d{1,3})?           # Optional real exponent for scientific format
+            )
+            (                                   # Imaginary part
+                [-+]?(\d+\.?\d*|\d*\.?\d+)          # Imaginary value (integer or float)
+                ([Ee][-+]?[0-2]?\d{1,3})?           # Optional imaginary exponent for scientific format
+            )?
+            (                                   # Imaginary part is optional
+                ([-+]?)                             # Imaginary (implicit 1 or -1) only
+                ([ij]?)                             # Imaginary i or j - depending on whether mathematical or engineering
+            )
+        $`uix';
+
+    /**
      * @var    float    $realPart    The value of of this complex number on the real plane.
      */
     protected $realPart = 0.0;
@@ -60,7 +79,7 @@ class Complex
 
         // Basic validation of string, to parse out real and imaginary parts, and any suffix
         $validComplex = preg_match(
-            '/^([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)([\-\+]?(\d+\.?\d*|\d*\.?\d+)([Ee][\-\+]?[0-2]?\d{1,3})?)?(([\-\+]?)([ij]?))$/ui',
+            self::NUMBER_SPLIT_REGEXP,
             $complexNumber,
             $complexParts
         );
