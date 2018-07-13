@@ -30,7 +30,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     public function complexNumberAssertions($expected, $result)
     {
         if (is_numeric($expected)) {
-            $this->assertEquals($expected, (string) $result, 'Numeric Assertion', $this->getAssertionPrecision($expected));
+            $this->assertEquals($expected, (string) $result, 'Numeric Assertion');
         } else {
             $expected = new Complex($expected);
             $this->assertEquals(
@@ -332,6 +332,15 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         Complex::validateComplexArgument($nonComplex);
     }
 
+
+    /**
+     * @expectedException Exception
+     */
+    public function testInvalidInvocation()
+    {
+        $complex = new Complex('1.2+3.4i');
+        $complex->someInvalidFunction();
+    }
 
     private $oneComplexValueDataSets = [
         [12,       null,       null],
