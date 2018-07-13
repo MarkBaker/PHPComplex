@@ -28,6 +28,6 @@ function ln($complex)
     return new Complex(
         \log(rho($complex)),
         theta($complex),
-        $complex->getSuffix()
+        (($complex->getReal() < 0.0) && ($complex->getImaginary() == 0.0) && empty($complex->getSuffix())) ? 'i' : $complex->getSuffix()
     );
 }

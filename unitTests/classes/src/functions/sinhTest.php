@@ -60,6 +60,7 @@ class sinhTest extends BaseFunctionTestAbstract
             '-0.841470984807896507i',
             '0.122690090024315336i',
             '-0.123310379193334229i',
+            -1.17520119364380146,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

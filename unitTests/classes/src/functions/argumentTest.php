@@ -60,6 +60,7 @@ class argumentTest extends BaseFunctionTestAbstract
             -M_PI / 2, // -1.57079632679489662
             M_PI / 2, // 1.57079632679489662
             -M_PI / 2, // -1.57079632679489662
+            M_PI, // 3.141592653589793
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

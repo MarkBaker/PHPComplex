@@ -59,7 +59,8 @@ class sinTest extends BaseFunctionTestAbstract
             '1.17520119364380146i',
             '-1.17520119364380146i',
             '0.123310379193334229i',
-            '-0.1233103791933342i'
+            '-0.1233103791933342i',
+            -0.841470984807896507,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

@@ -75,7 +75,7 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
         }
     }
 
-    private $oneComplexValueDataSets = array(
+    private $oneComplexValueDataSets = [
         array(12,       null,       null),
         array(12.345,   null,       null),
         array(0.12345,  null,       null),
@@ -95,7 +95,8 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
         array(0,        -1,         null),
         array(0,        0.123,      null),
         array(0,        -0.123,     null),
-    );
+        array(-1,       null,       null),
+    ];
 
     protected function formatOneArgumentTestResultArray($expectedResults)
     {

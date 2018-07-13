@@ -69,6 +69,7 @@ class log10Test extends BaseFunctionTestAbstract
             '-0.682188176920920674i',
             '-0.910094888560602068+0.682188176920920674i',
             '-0.910094888560602068-0.682188176920920674i',
+            '1.36437635384184135i',
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

@@ -14,7 +14,6 @@ class lnTest extends BaseFunctionTestAbstract
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = ln($complex);
-
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -69,6 +68,7 @@ class lnTest extends BaseFunctionTestAbstract
             '-1.57079632679489662i',
             '-2.09557092360971956+1.57079632679489662i',
             '-2.09557092360971956-1.57079632679489662i',
+            '3.14159265358979324i',
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

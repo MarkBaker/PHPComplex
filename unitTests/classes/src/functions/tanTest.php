@@ -60,6 +60,7 @@ class tanTest extends BaseFunctionTestAbstract
             '-0.76159415595576489i',
             '0.122383441894408763i',
             '-0.1223834418944088i',
+            -1.55740772465490223,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

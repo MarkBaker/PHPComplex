@@ -60,6 +60,7 @@ class asinTest extends BaseFunctionTestAbstract
             '-0.881373587019543025i',
             '0.122691948158259558i',
             '-0.122691948158259558i',
+            -1.57079632679489662,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

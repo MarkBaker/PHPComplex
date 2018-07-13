@@ -60,6 +60,7 @@ class absTest extends BaseFunctionTestAbstract
             1,
             0.123,
             0.123,
+            1,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

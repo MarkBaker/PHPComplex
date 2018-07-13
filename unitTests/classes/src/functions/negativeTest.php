@@ -60,6 +60,7 @@ class negativeTest extends BaseFunctionTestAbstract
             'i',
             '-0.123i',
             '0.123i',
+            1.0
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

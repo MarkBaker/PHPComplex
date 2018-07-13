@@ -60,6 +60,7 @@ class secTest extends BaseFunctionTestAbstract
             0.648054273663885400,
             0.992482893127170164,
             0.992482893127170164,
+            1.85081571768092562,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

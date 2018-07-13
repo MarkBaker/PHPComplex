@@ -60,6 +60,7 @@ class sqrtTest extends BaseFunctionTestAbstract
             '0.707106781186547524-0.707106781186547524i',
             '0.247991935352744888+0.247991935352744888i',
             '0.247991935352744888-0.247991935352744888i',
+            '1.0i',
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

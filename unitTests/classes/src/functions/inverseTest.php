@@ -60,6 +60,7 @@ class inverseTest extends BaseFunctionTestAbstract
             '1.0i',
             '-8.13008130081300813i',
             '8.13008130081300813i',
+            -1.0,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

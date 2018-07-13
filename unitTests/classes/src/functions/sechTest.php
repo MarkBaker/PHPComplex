@@ -60,6 +60,7 @@ class sechTest extends BaseFunctionTestAbstract
             1.85081571768092562,
             1.00761247990586674,
             1.00761247990586674,
+            0.648054273663885400,
         ];
         return $this->formatOneArgumentTestResultArray($expectedResults);
     }

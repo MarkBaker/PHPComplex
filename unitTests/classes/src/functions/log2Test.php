@@ -69,6 +69,7 @@ class log2Test extends BaseFunctionTestAbstract
             '-2.26618007091359690i',
             '-3.02326977932284717+2.26618007091359690i',
             '-3.02326977932284717-2.26618007091359690i',
+            '4.53236014182719381i',
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

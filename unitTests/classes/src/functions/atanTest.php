@@ -64,6 +64,7 @@ class atanTest extends BaseFunctionTestAbstract
             'InvalidArgumentException',
             '0.123625981183130070i',
             '-0.1236259811831301i',
+            -0.785398163397448310,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

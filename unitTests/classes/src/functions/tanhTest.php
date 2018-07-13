@@ -66,6 +66,7 @@ class tanhTest extends BaseFunctionTestAbstract
             '-1.55740772465490223050697480745836i',
             '0.12362406586927441783085053209750i',
             '-0.12362406586927441783085053209750i',
+            -0.7615941559557648881194582826048,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

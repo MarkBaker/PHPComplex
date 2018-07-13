@@ -318,5 +318,6 @@ class Complex
             $functionName = "\\" . __NAMESPACE__ . "\\{$functionName}";
             return $functionName($this, ...$arguments);
         }
+        throw new Exception('Function or Operation does not exist');
     }
 }

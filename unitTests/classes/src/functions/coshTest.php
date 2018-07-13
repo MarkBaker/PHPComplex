@@ -60,6 +60,7 @@ class coshTest extends BaseFunctionTestAbstract
             0.540302305868139717,
             0.992445032135193570,
             0.992445032135193570,
+            1.54308063481524378,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

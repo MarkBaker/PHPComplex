@@ -60,6 +60,7 @@ class expTest extends BaseFunctionTestAbstract
             '0.540302305868139717-0.841470984807896507i',
             '0.992445032135193570+0.122690090024315336i',
             '0.992445032135193570-0.122690090024315336i',
+            0.367879441171442322,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

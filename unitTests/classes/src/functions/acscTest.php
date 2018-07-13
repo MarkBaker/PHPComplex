@@ -60,6 +60,7 @@ class acscTest extends BaseFunctionTestAbstract
             '0.88137358701954303i',
             '-2.79247907463123116i',
             '2.792479074631231i',
+            -M_PI / 2, // -1.57079632679489662
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

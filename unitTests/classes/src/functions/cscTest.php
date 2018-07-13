@@ -60,6 +60,7 @@ class cscTest extends BaseFunctionTestAbstract
             '0.85091812823932155i',
             '-8.10961742670609559i',
             '8.1096174267061i',
+            -1.18839510577812122,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

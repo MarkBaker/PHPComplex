@@ -60,6 +60,7 @@ class acoshTest extends BaseFunctionTestAbstract
             '0.88137358701954303-1.57079632679489662i',
             '0.12269194815825956+1.57079632679489662i',
             '0.12269194815825956-1.57079632679489662i',
+            '3.14159265358979324i'
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

@@ -58,6 +58,7 @@ class atanhTest extends BaseFunctionTestAbstract
             '-0.785398163397448310i',
             '0.122385281471802660i',
             '-0.122385281471802660i',
+            -INF,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

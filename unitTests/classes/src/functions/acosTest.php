@@ -60,6 +60,7 @@ class acosTest extends BaseFunctionTestAbstract
             '1.57079632679489662+0.88137358701954303i',
             '1.57079632679489662-0.12269194815825956i',
             '1.57079632679489662+0.12269194815825956i',
+            M_PI, // 3.141592653589793
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

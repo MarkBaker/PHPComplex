@@ -60,6 +60,7 @@ class cosTest extends BaseFunctionTestAbstract
             1.54308063481524378,
             1.00757404175415510,
             1.00757404175415510,
+            0.540302305868139717,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

@@ -60,6 +60,7 @@ class cotTest extends BaseFunctionTestAbstract
             '1.3130352854993313i',
             '-8.17104000770619135i',
             '8.17104000770619i',
+            -0.642092615934330703,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

@@ -60,6 +60,7 @@ class cschTest extends BaseFunctionTestAbstract
             '1.18839510577812122i',
             '-8.15061754214879942i',
             '8.1506175421488i',
+            -0.850918128239321545,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

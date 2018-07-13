@@ -60,6 +60,7 @@ class asecTest extends BaseFunctionTestAbstract
             '1.57079632679489662-0.88137358701954303i',
             '1.57079632679489662+2.79247907463123116i',
             '1.57079632679489662-2.79247907463123116i',
+            M_PI, // 3.141592653589793
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);

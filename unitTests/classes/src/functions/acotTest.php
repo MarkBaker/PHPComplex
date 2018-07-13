@@ -66,6 +66,7 @@ class acotTest extends BaseFunctionTestAbstract
             'InvalidArgumentException',
             '-1.57079632679489662-0.12362598118313007i',
             '1.57079632679489662+0.12362598118313007i',
+            -0.785398163397448310,
         ];
 
         return $this->formatOneArgumentTestResultArray($expectedResults);
