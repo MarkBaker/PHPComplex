@@ -57,10 +57,6 @@ together with functions for
  - ln (natural log)
  - log10 (base-10 log)
  - log2 (base-2 log)
+ - pow (raised to the power of a real number)
  
----
-
-Planned additional functionality, but still to implement
-
- * pow (power)
  
