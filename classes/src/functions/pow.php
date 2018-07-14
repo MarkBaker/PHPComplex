@@ -25,8 +25,8 @@ function pow($complex, $power)
         throw new Exception('Power argument must be a real number');
     }
 
-    $r = \sqrt(($complex->getReal() * $complex->getReal()) + ($complex->getImaginary() * $complex->getImaginary()));
-    $rPower = \pow($r, $power);
+    $rValue = \sqrt(($complex->getReal() * $complex->getReal()) + ($complex->getImaginary() * $complex->getImaginary()));
+    $rPower = \pow($rValue, $power);
     $theta = $complex->argument() * $power;
     if ($theta == 0) {
         return new Complex(1);
