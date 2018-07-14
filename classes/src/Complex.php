@@ -279,6 +279,7 @@ class Complex
         'log2',
         'log10',
         'negative',
+        'pow',
         'rho',
         'sec',
         'sech',
@@ -311,7 +312,7 @@ class Complex
         // Test for function calls
         if (in_array($functionName, self::$functions)) {
             $functionName = "\\" . __NAMESPACE__ . "\\{$functionName}";
-            return $functionName($this);
+            return $functionName($this, ...$arguments);
         }
         // Test for operation calls
         if (in_array($functionName, self::$operations)) {

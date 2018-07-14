@@ -51,7 +51,7 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
 
     protected function getAssertionPrecision($value)
     {
-        return pow(10, floor(\log10($value)) - $this->significantDigits + 1);
+        return \pow(10, floor(\log10($value)) - $this->significantDigits + 1);
     }
 
     protected function complexNumberAssertions($expected, $result)

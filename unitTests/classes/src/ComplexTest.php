@@ -24,13 +24,13 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
     protected function getAssertionPrecision($value)
     {
-        return pow(10, floor(\log10($value)) - $this->significantDigits + 1);
+        return \pow(10, floor(\log10($value)) - $this->significantDigits + 1);
     }
 
     public function complexNumberAssertions($expected, $result)
     {
         if (is_numeric($expected)) {
-            $this->assertEquals($expected, (string) $result, 'Numeric Assertion');
+            $this->assertEquals($expected, $result->getReal(), 'Numeric Assertion', $this->getAssertionPrecision($expected));
         } else {
             $expected = new Complex($expected);
             $this->assertEquals(
