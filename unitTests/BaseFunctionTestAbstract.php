@@ -46,7 +46,7 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
     public function testInvalidArgument()
     {
         $invalidComplex = '*** INVALID ***';
-        $result = call_user_func('\\' . __NAMESPACE__ . '\\' . static::$functionName, $invalidComplex);
+        $result = call_user_func('\\' . __NAMESPACE__ . '\\' . static::$functionName, $invalidComplex, 1);
     }
 
     protected function getAssertionPrecision($value)
@@ -76,26 +76,26 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
     }
 
     private $oneComplexValueDataSets = [
-        array(12,       null,       null),
-        array(12.345,   null,       null),
-        array(0.12345,  null,       null),
-        array(12.345,   6.789,      null),
-        array(12.345,   -6.789,     null),
-        array(0.12345,  6.789,      null),
-        array(0.12345,  -6.789,     null),
-        array(0.12345,  0.6789,     null),
-        array(0.12345,  -0.6789,    null),
-        array(-9.8765,  null,       null),
-        array(-0.98765, null,       null),
-        array(-9.8765,  +4.321,     null),
-        array(-9.8765,  -4.321,     null),
-        array(-0.98765, 0.4321,     null),
-        array(-0.98765, -0.4321,    null),
-        array(0,        1,          null),
-        array(0,        -1,         null),
-        array(0,        0.123,      null),
-        array(0,        -0.123,     null),
-        array(-1,       null,       null),
+        [12,       null,       null],
+        [12.345,   null,       null],
+        [0.12345,  null,       null],
+        [12.345,   6.789,      null],
+        [12.345,   -6.789,     null],
+        [0.12345,  6.789,      null],
+        [0.12345,  -6.789,     null],
+        [0.12345,  0.6789,     null],
+        [0.12345,  -0.6789,    null],
+        [-9.8765,  null,       null],
+        [-0.98765, null,       null],
+        [-9.8765,  +4.321,     null],
+        [-9.8765,  -4.321,     null],
+        [-0.98765, 0.4321,     null],
+        [-0.98765, -0.4321,    null],
+        [0,        1,          null],
+        [0,        -1,         null],
+        [0,        0.123,      null],
+        [0,        -0.123,     null],
+        [-1,       null,       null],
     ];
 
     protected function formatOneArgumentTestResultArray($expectedResults)
