@@ -4,7 +4,7 @@
     "description": "PHP Class for working with complex numbers",
     "keywords": ["complex"],
     "homepage": "https://github.com/MarkBaker/PHPComplex",
-    "license": "LGPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mark Baker",
@@ -56,6 +56,7 @@
             "classes/src/functions/log2.php",
             "classes/src/functions/log10.php",
             "classes/src/functions/negative.php",
+            "classes/src/functions/pow.php",
             "classes/src/functions/rho.php",
             "classes/src/functions/sec.php",
             "classes/src/functions/sech.php",
