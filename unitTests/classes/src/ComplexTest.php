@@ -185,12 +185,41 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('0.0', $format);
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testInvalidComplex()
     {
+        $this->expectException(Exception::class);
+
         $complex = new Complex('ABCDEFGHI');
+    }
+
+    public function testReal()
+    {
+        $complex = new Complex('0.0');
+        $this->assertTrue($complex->isReal());
+
+        $complex = new Complex('-i');
+        $this->assertFalse($complex->isReal());
+
+        $complex = new Complex('2.5i');
+        $this->assertFalse($complex->isReal());
+
+        $complex = new Complex('1.5E64+2.5E-128i');
+        $this->assertFalse($complex->isReal());
+    }
+
+    public function testComplex()
+    {
+        $complex = new Complex('0.0');
+        $this->assertFalse($complex->isComplex());
+
+        $complex = new Complex('-i');
+        $this->assertTrue($complex->isComplex());
+
+        $complex = new Complex('2.5i');
+        $this->assertTrue($complex->isComplex());
+
+        $complex = new Complex('1.5E64+2.5E-128i');
+        $this->assertTrue($complex->isComplex());
     }
 
     /**
@@ -212,6 +241,18 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
+    public function testAddInvalid()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Suffix Mismatch');
+
+        $complex = new Complex('12.34+56.78i');
+        $result = $complex->add(
+            new Complex(23),
+            new Complex('34.56-78.90j')
+        );
+    }
+
     /**
      * @dataProvider providerSubtract
      */
@@ -229,6 +270,18 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
 
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
+    }
+
+    public function testSubtractInvalid()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Suffix Mismatch');
+
+        $complex = new Complex('12.34+56.78i');
+        $result = $complex->subtract(
+            new Complex(23),
+            new Complex('34.56-78.90j')
+        );
     }
 
     /**
@@ -250,6 +303,18 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
+    public function testMultiplyInvalid()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Suffix Mismatch');
+
+        $complex = new Complex('12.34+56.78i');
+        $result = $complex->multiply(
+            new Complex(23),
+            new Complex('34.56-78.90j')
+        );
+    }
+
     /**
      * @dataProvider providerDivideBy
      */
@@ -269,13 +334,24 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testDivideByZero()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $complex = new Complex('2.5-i');
         $complex->divideBy(0.0);
+    }
+
+    public function testDivideByInvalid()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Suffix Mismatch');
+
+        $complex = new Complex('12.34+56.78i');
+        $result = $complex->divideBy(
+            new Complex(23),
+            new Complex('34.56-78.90j')
+        );
     }
 
     /**
@@ -297,14 +373,25 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testDivideIntoByZero()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $complex = new Complex(0.0);
         $complex->divideInto(
             new Complex('2.5-i')
+        );
+    }
+
+    public function testDivideIntoInvalid()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Suffix Mismatch');
+
+        $complex = new Complex('12.34+56.78i');
+        $result = $complex->divideInto(
+            new Complex(23),
+            new Complex('34.56-78.90j')
         );
     }
 
@@ -323,21 +410,19 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testValidateComplexArgument()
     {
+        $this->expectException(Exception::class);
+
         $nonComplex = new \stdClass();
         Complex::validateComplexArgument($nonComplex);
     }
 
 
-    /**
-     * @expectedException Exception
-     */
     public function testInvalidInvocation()
     {
+        $this->expectException(Exception::class);
+
         $complex = new Complex('1.2+3.4i');
         $complex->someInvalidFunction();
     }

@@ -20,11 +20,10 @@ function atanh($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
-    $imaginary = $complex->getImaginary();
-    if ($imaginary == 0.0) {
+    if ($complex->isReal()) {
         $real = $complex->getReal();
         if ($real >= -1.0 && $real <= 1.0) {
-            return new Complex(\atanh($real), 0.0, $complex->getSuffix());
+            return new Complex(\atanh($real));
         } else {
             return new Complex(\atanh(1 / $real), (($real < 0.0) ? M_PI_2 : -1 * M_PI_2));
         }

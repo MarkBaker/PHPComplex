@@ -24,8 +24,8 @@ function atan($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->getImaginary() == 0.0) {
-        return new Complex(\atan($complex->getReal()), 0.0, $complex->getSuffix());
+    if ($complex->isReal()) {
+        return new Complex(\atan($complex->getReal()));
     }
 
     $t1Value = new Complex(-1 * $complex->getImaginary(), $complex->getReal());

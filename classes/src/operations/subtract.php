@@ -27,6 +27,11 @@ function subtract(...$complexValues)
     foreach ($complexValues as $complex) {
         $complex = Complex::validateComplexArgument($complex);
 
+        if ($result->isComplex() && $complex->isComplex() &&
+            $result->getSuffix() !== $complex->getSuffix()) {
+            throw new Exception('Suffix Mismatch');
+        }
+
         $real = $result->getReal() - $complex->getReal();
         $imaginary = $result->getImaginary() - $complex->getImaginary();
 

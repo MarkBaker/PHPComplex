@@ -173,6 +173,26 @@ class Complex
         return $this->suffix;
     }
 
+    /**
+     * Returns true if this is a real value, false if a complex value
+     *
+     * @return Bool
+     */
+    public function isReal()
+    {
+        return $this->imaginaryPart == 0.0;
+    }
+
+    /**
+     * Returns true if this is a complex value, false if a real value
+     *
+     * @return Bool
+     */
+    public function isComplex()
+    {
+        return !$this->isReal();
+    }
+
     public function format()
     {
         $str = "";

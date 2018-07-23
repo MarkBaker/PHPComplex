@@ -20,8 +20,8 @@ function cosh($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->getImaginary() == 0.0) {
-        return new Complex(\cosh($complex->getReal()), 0.0, $complex->getSuffix());
+    if ($complex->isReal()) {
+        return new Complex(\cosh($complex->getReal()));
     }
 
     return new Complex(

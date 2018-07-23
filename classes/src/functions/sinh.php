@@ -20,8 +20,8 @@ function sinh($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->getImaginary() == 0.0) {
-        return new Complex(\sinh($complex->getReal()), 0.0, $complex->getSuffix());
+    if ($complex->isReal()) {
+        return new Complex(\sinh($complex->getReal()));
     }
 
     return new Complex(

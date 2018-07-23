@@ -20,8 +20,8 @@ function asinh($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
-    if (($complex->getImaginary() == 0.0) && ($complex->getReal() > 1)) {
-        return new Complex(\asinh($complex->getReal()), 0.0, $complex->getSuffix());
+    if ($complex->isReal() && ($complex->getReal() > 1)) {
+        return new Complex(\asinh($complex->getReal()));
     }
 
     $asinh = clone $complex;

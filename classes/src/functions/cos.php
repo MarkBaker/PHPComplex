@@ -20,8 +20,8 @@ function cos($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->getImaginary() == 0.0) {
-        return new Complex(\cos($complex->getReal()), 0.0, $complex->getSuffix());
+    if ($complex->isReal()) {
+        return new Complex(\cos($complex->getReal()));
     }
 
     return conjugate(

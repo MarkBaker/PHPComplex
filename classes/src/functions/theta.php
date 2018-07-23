@@ -22,7 +22,7 @@ function theta($complex)
     $complex = Complex::validateComplexArgument($complex);
 
     if ($complex->getReal() == 0.0) {
-        if ($complex->getImaginary() == 0.0) {
+        if ($complex->isReal()) {
             return 0.0;
         } elseif ($complex->getImaginary() < 0.0) {
             return M_PI / -2;

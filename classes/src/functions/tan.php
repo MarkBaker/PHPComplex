@@ -21,8 +21,8 @@ function tan($complex)
 {
     $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->getImaginary() == 0.0) {
-        return new Complex(\tan($complex->getReal()), 0.0, $complex->getSuffix());
+    if ($complex->isReal()) {
+        return new Complex(\tan($complex->getReal()));
     }
 
     $real = $complex->getReal();

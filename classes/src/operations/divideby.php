@@ -27,6 +27,10 @@ function divideby(...$complexValues)
     foreach ($complexValues as $complex) {
         $complex = Complex::validateComplexArgument($complex);
 
+        if ($result->isComplex() && $complex->isComplex() &&
+            $result->getSuffix() !== $complex->getSuffix()) {
+            throw new Exception('Suffix Mismatch');
+        }
         if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
             throw new \InvalidArgumentException('Division by zero');
         }
