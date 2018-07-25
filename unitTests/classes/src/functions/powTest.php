@@ -23,16 +23,16 @@ class powTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProviderInvoker
      */
-//    public function testPowInvoker()
-//    {
-//        $args = func_get_args();
-//        $complex = new Complex($args[0]);
-//        $result = $complex->pow($args[1]);
-//
-//        $this->complexNumberAssertions($args[2], $result);
-//        // Verify that the original complex value remains unchanged
-//        $this->assertEquals(new Complex($args[0]), $complex);
-//    }
+    public function testPowInvoker()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = $complex->pow($args[1]);
+
+        $this->complexNumberAssertions($args[2], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+    }
 
     /*
      * Results derived from Wolfram Alpha using
@@ -41,6 +41,7 @@ class powTest extends BaseFunctionTestAbstract
     public function dataProvider()
     {
         return [
+            // phpcs:disable Generic.Files.LineLength
             [ 'complex' => [12,       null,       null], 'power' => -5,  'expected' => 4.01877572016460905E-6],
             [ 'complex' => [12.345,   null,       null], 'power' => -5,  'expected' => 3.48774342494342341E-6],
             [ 'complex' => [0.12345,  null,       null], 'power' => -5,  'expected' => 34877.4342494342341],
@@ -95,6 +96,7 @@ class powTest extends BaseFunctionTestAbstract
             [ 'complex' => [0,        0.123,      null], 'power' => 2.5,  'expected' => '-0.00375186998995167742-0.00375186998995167742i'],
             [ 'complex' => [0,        -0.123,     null], 'power' => 2.5,  'expected' => '-0.00375186998995167742+0.00375186998995167742i'],
             [ 'complex' => [-1,       null,       null], 'power' => 3.5,  'expected' => '-1i'],
+            // phpcs:enable
         ];
     }
 }

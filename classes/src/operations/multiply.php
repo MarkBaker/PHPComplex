@@ -9,12 +9,12 @@
  */
 namespace Complex;
 
-    /**
-     * Multiplies two or more complex numbers
-     *
-     * @param     array of string|integer|float|Complex    $complexValues   The numbers to multiply
-     * @return    Complex
-     */
+/**
+ * Multiplies two or more complex numbers
+ *
+ * @param     array of string|integer|float|Complex    $complexValues   The numbers to multiply
+ * @return    Complex
+ */
 function multiply(...$complexValues)
 {
     if (count($complexValues) < 2) {

@@ -9,12 +9,12 @@
  */
 namespace Complex;
 
-    /**
-     * Adds two or more complex numbers
-     *
-     * @param     array of string|integer|float|Complex    $complexValues   The numbers to add
-     * @return    Complex
-     */
+/**
+ * Adds two or more complex numbers
+ *
+ * @param     array of string|integer|float|Complex    $complexValues   The numbers to add
+ * @return    Complex
+ */
 function add(...$complexValues)
 {
     if (count($complexValues) < 2) {

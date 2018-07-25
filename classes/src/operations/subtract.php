@@ -9,12 +9,12 @@
  */
 namespace Complex;
 
-    /**
-     * Subtracts two or more complex numbers
-     *
-     * @param     array of string|integer|float|Complex    $complexValues   The numbers to subtract
-     * @return    Complex
-     */
+/**
+ * Subtracts two or more complex numbers
+ *
+ * @param     array of string|integer|float|Complex    $complexValues   The numbers to subtract
+ * @return    Complex
+ */
 function subtract(...$complexValues)
 {
     if (count($complexValues) < 2) {

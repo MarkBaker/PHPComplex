@@ -9,12 +9,12 @@
  */
 namespace Complex;
 
-    /**
-     * Divides two or more complex numbers
-     *
-     * @param     array of string|integer|float|Complex    $complexValues   The numbers to divide
-     * @return    Complex
-     */
+/**
+ * Divides two or more complex numbers
+ *
+ * @param     array of string|integer|float|Complex    $complexValues   The numbers to divide
+ * @return    Complex
+ */
 function divideby(...$complexValues)
 {
     if (count($complexValues) < 2) {
