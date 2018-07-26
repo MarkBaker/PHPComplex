@@ -14,9 +14,6 @@ namespace Complex;
  *
  * @package Complex
  *
- * @method string getString()
- * @method void setInteger(integer $integer)
- * @method setString(integer $integer)
  * @method float abs()
  * @method Complex acos()
  * @method Complex acosh()
@@ -44,7 +41,7 @@ namespace Complex;
  * @method Complex log2()
  * @method Complex log10()
  * @method Complex negative()
- * @method Complex pow($power)
+ * @method Complex pow(int|float $power)
  * @method float rho()
  * @method Complex sec()
  * @method Complex sech()
