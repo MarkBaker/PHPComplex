@@ -10,7 +10,7 @@ $values = [
     new Complex(0.0, 456),
 ];
 
-foreach($values as $value) {
+foreach ($values as $value) {
     echo $value, PHP_EOL;
 }
 
