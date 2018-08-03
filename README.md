@@ -9,6 +9,7 @@ Master: [![Build Status](https://travis-ci.org/MarkBaker/PHPComplex.png?branch=m
 
 Develop: [![Build Status](https://travis-ci.org/MarkBaker/PHPComplex.png?branch=develop)](http://travis-ci.org/MarkBaker/PHPComplex)
 
+[![Complex Numbers](https://imgs.xkcd.com/comics/complex_numbers_2x.png)](https://xkcd.com/2028/)
 
 ---
 

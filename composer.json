@@ -73,5 +73,19 @@
             "classes/src/operations/divideinto.php"
         ]
     },
+    "scripts": {
+        "style": [
+            "phpcs --report-width=200 --report-summary  --report-full classes/src/ --standard=PSR2 -n"
+        ],
+        "mess": [
+            "phpmd classes/src/ xml codesize,unusedcode,design,naming -n"
+        ],
+        "lines": [
+            "phploc classes/src/ -n"
+        ],
+        "cpd": [
+            "phpcpd classes/src/ -n"
+        ]
+    },
     "minimum-stability": "dev"
 }
