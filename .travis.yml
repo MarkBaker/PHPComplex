@@ -18,6 +18,7 @@ cache:
 php:
   - 7.0
   - 7.1
+  - 7.4snapshot
   - nightly
   - hhvm
 
