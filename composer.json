@@ -85,6 +85,9 @@
         ],
         "cpd": [
             "phpcpd classes/src/ -n"
+        ],
+        "versions": [
+            "phpcs --report-width=200 --report-summary  --report-full classes/src/ --standard=PHPCompatibility --runtime-set testVersion 5.6- -n"
         ]
     },
     "minimum-stability": "dev"

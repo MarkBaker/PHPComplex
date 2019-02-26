@@ -17,22 +17,23 @@ cache:
 
 php:
   - 7.0
-  - 7.2
+  - 7.1
   - nightly
   - hhvm
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.1
+    - php: 7.2
       env: EXTRA_CHECKS=1
     - php: 7.3
       env: COVERAGE=1
     - php: 5.6
       env: COVERAGE=1
-      dist: precise
+      dist: xenial
   allow_failures:
     - php: hhvm
+    - php: 7.4snapshot
     - php: nightly
 
 before_install:
