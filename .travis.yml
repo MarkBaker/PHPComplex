@@ -30,6 +30,7 @@ matrix:
     - php: 7.3
       env: COVERAGE=1
     - php: 5.6
+      php_memory_limit: "2G"
       env: COVERAGE=1
       dist: xenial
   allow_failures:
