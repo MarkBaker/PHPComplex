@@ -27,7 +27,7 @@ matrix:
       env: COVERAGE=1
     - php: 5.6
       env: COVERAGE=1
-      dist: precise
+      dist: trusty
   allow_failures:
     - php: nightly
 
