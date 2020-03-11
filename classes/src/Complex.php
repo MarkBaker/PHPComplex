@@ -179,7 +179,7 @@ class Complex
 
         if ($imaginaryPart != 0.0 && empty($suffix)) {
             $suffix = 'i';
-        } elseif($imaginaryPart == 0.0 && !empty($suffix)) {
+        } elseif ($imaginaryPart == 0.0 && !empty($suffix)) {
             $suffix = '';
         }
 
