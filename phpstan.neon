@@ -1,0 +1,13 @@
+parameters:
+  level: 5
+  paths:
+    - classes/src
+    - unitTests
+  excludes_analyse:
+    - src/PhpSpreadsheet/Chart/Renderer/JpGraph.php
+    - tests/data
+
+  ignoreErrors:
+    - 
+      message: '#^Property .*\$complexAssert .* does not accept null#'
+      path: ./tests/PhpSpreadsheetTests/Calculation/Functions/Engineering/*
