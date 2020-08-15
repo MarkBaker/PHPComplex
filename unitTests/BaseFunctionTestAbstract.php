@@ -23,7 +23,7 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
      */
     public static function resetPrecision()
     {
-        $precision = ini_set('precision', self::$precision);
+        ini_set('precision', self::$precision);
     }
 
     // Overload the older setExpectedException() method from PHPUnit, converting to the newer

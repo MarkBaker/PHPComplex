@@ -12,14 +12,20 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     // Number of significant digits used for assertEquals
     private $significantDigits = 12;
 
-    protected function setUp()
+    /**
+     * @beforeClass
+     */
+    public static function setPrecision()
     {
-        $this->precision = ini_set('precision', 16);
+        self::$precision = ini_set('precision', 16);
     }
 
-    protected function tearDown()
+    /**
+     * @afterClass
+     */
+    public static function resetPrecision()
     {
-        ini_set('precision', $this->precision);
+        ini_set('precision', self::$precision);
     }
 
     protected function getAssertionPrecision($value)
