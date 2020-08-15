@@ -7,7 +7,7 @@ use Complex\Complex as Complex;
 class ComplexTest extends \PHPUnit\Framework\TestCase
 {
     // Saved php.ini precision, so that we can adjust the setting
-    private $precision;
+    private static $precision;
 
     // Number of significant digits used for assertEquals
     private $significantDigits = 12;
