@@ -40,7 +40,8 @@ before_install:
 before_script:
   ## Composer
   - composer self-update
-  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --prefer-dist
+  - if [[ $TRAVIS_PHP_VERSION != "nightly" ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --prefer-dist; fi
+  - if [[ $TRAVIS_PHP_VERSION == "nightly" ]]; then COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --ignore-platform-reqs; fi
   ## PHPDocumentor
   ## - mkdir -p build/docs
   ## - mkdir -p build/coverage
