@@ -33,13 +33,12 @@ class lnTest extends BaseFunctionTestAbstract
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testLnZero()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $complex = new Complex(0);
-        $result = ln($complex);
+        ln($complex);
     }
 
     /*

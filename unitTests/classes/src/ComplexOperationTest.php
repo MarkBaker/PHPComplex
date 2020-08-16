@@ -36,20 +36,20 @@ class ComplexOperationTest extends \PHPUnit\Framework\TestCase
     public function complexNumberAssertions($expected, $result)
     {
         if (is_numeric($expected)) {
-            $this->assertEquals($expected, $result->getReal(), 'Numeric Assertion', $this->getAssertionPrecision($expected));
+            $this->assertEqualsWithDelta($expected, $result->getReal(), $this->getAssertionPrecision($expected), 'Numeric Assertion');
         } else {
             $expected = new Complex($expected);
-            $this->assertEquals(
+            $this->assertEqualsWithDelta(
                 $expected->getReal(),
                 $result->getReal(),
-                'Real Component',
-                $this->getAssertionPrecision($expected->getReal())
+                $this->getAssertionPrecision($expected->getReal()),
+                'Real Component'
             );
-            $this->assertEquals(
+            $this->assertEqualsWithDelta(
                 $expected->getImaginary(),
                 $result->getImaginary(),
-                'Imaginary Component',
-                $this->getAssertionPrecision($expected->getImaginary())
+                $this->getAssertionPrecision($expected->getImaginary()),
+                'Imaginary Component'
             );
         }
     }

@@ -46,13 +46,12 @@ abstract class BaseFunctionTestAbstract extends \PHPUnit\Framework\TestCase
         $this->assertTrue(function_exists('\\' . __NAMESPACE__ . '\\' . static::$functionName));
     }
 
-    /**
-     * @expectedException \Exception
-     */
     public function testInvalidArgument()
     {
+        $this->expectException(\Exception::class);
+
         $invalidComplex = '*** INVALID ***';
-        $result = call_user_func('\\' . __NAMESPACE__ . '\\' . static::$functionName, $invalidComplex, 1);
+        call_user_func('\\' . __NAMESPACE__ . '\\' . static::$functionName, $invalidComplex, 1);
     }
 
     protected function getAssertionPrecision($value)

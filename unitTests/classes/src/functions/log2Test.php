@@ -34,13 +34,12 @@ class log2Test extends BaseFunctionTestAbstract
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testLog2Zero()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $complex = new Complex(0);
-        $result = log2($complex);
+        log2($complex);
     }
 
     /*
