@@ -16,7 +16,6 @@ php:
   - 7.0
   - 7.1
   - 7.4
-  - nightly
 
 matrix:
   fast_finish: true
@@ -28,8 +27,6 @@ matrix:
     - php: 5.6
       env: COVERAGE=1
       dist: trusty
-  allow_failures:
-    - php: nightly
 
 before_install:
   # Speed up build time by disabling Xdebug when its not needed.

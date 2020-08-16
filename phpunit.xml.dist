@@ -6,9 +6,7 @@
     convertNoticesToExceptions="true" 
     convertWarningsToExceptions="true" 
     processIsolation="false" 
-    syntaxCheck="true" 
     verbose="true" 
-    strict="true"
     stopOnError="false"
     stopOnFailure="false"
     stopOnIncomplete="false"
@@ -25,8 +23,7 @@
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-html" target="./unitTests/codeCoverage" charset="UTF-8"
-             yui="true" highlight="false"
+        <log type="coverage-html" target="./unitTests/codeCoverage"
              lowUpperBound="35" highLowerBound="70"/>
         <log type="coverage-clover" target="./unitTests/codeCoverage/codeCoverage.xml"/>
         <log type="metrics-xml" target="./unitTests/metrics/metrics.xml"/>
