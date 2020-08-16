@@ -15,15 +15,14 @@ cache:
 php:
   - 7.0
   - 7.1
-  - 7.4
+  - 7.2
+  - 7.3
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.2
-      env: EXTRA_CHECKS=1
-    - php: 7.3
-      env: COVERAGE=1
+    - php: 7.4
+      env: EXTRA_CHECKS=1 COVERAGE=1
     - php: 5.6
       env: COVERAGE=1
       dist: trusty
