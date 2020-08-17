@@ -4,7 +4,7 @@ namespace Complex;
 
 use Complex\Complex as Complex;
 
-class CompparisonTest extends \PHPUnit\Framework\TestCase
+class ComparisonTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider providerCompare
