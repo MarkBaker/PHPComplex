@@ -22,7 +22,7 @@ function acsc($complex)
     $complex = Complex::validateComplexArgument($complex);
 
     if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
-        return INF;
+        return new Complex(INF);
     }
 
     return asin(inverse($complex));
