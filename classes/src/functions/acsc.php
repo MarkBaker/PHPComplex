@@ -9,6 +9,8 @@
  */
 namespace Complex;
 
+use Complex\Complex;
+
 /**
  * Returns the inverse cosecant of a complex number.
  *
@@ -17,7 +19,7 @@ namespace Complex;
  * @throws    Exception        If argument isn't a valid real or complex number.
  * @throws    \InvalidArgumentException    If function would result in a division by zero
  */
-function acsc($complex)
+function acsc($complex): Complex
 {
     $complex = Complex::validateComplexArgument($complex);
 

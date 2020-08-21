@@ -30,7 +30,8 @@ class ComparisonTest extends \PHPUnit\Framework\TestCase
             'Mis-matched real numbers, one with a suffix' => [[-1], [-2, 0, 'i'], false],
             'Matched real numbers, both with irrelevant suffixes' => [[-2, 0, 'j'], [-2, 0, 'i'], true],
             'Mis-matched complex numbers (matched values but mis-matched suffixes)' => [[-2, 1, 'j'], [-2, 1, 'i'], false],
-            'Matched real numbers, one with an empty suffix, the other with an irrelevant suffix' => [[-2, 0, ''], [-2, 0, 'i'], true],
+            'Matched real numbers, one with an empty suffix, the other with an irrelevant suffix'
+                => [[-2, 0, ''], [-2, 0, 'i'], true],
             'Matched complex numbers with default suffix' => [[-2, 1], [-2, 1], true],
             'Mis-matched complex numbers with default suffix' => [[-1, 2], [-2, 1], false],
             'Matched complex numbers with default suffix, and zero value real part' =>[[0, -2], [0, -2], true],
