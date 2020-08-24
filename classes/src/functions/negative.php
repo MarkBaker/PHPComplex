@@ -19,7 +19,7 @@ namespace Complex;
  * @see    rho
  *
  */
-function negative($complex)
+function negative($complex): Complex
 {
     $complex = Complex::validateComplexArgument($complex);
 

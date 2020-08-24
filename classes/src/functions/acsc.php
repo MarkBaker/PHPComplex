@@ -9,8 +9,6 @@
  */
 namespace Complex;
 
-use Complex\Complex;
-
 /**
  * Returns the inverse cosecant of a complex number.
  *
