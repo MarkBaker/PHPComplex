@@ -9,21 +9,23 @@
  */
 namespace Complex;
 
-/**
- * Returns the inverse of a complex number.
- *
- * @param     Complex|mixed    $complex    Complex number or a numeric value.
- * @return    Complex          The inverse of the complex argument.
- * @throws    Exception        If argument isn't a valid real or complex number.
- * @throws    \InvalidArgumentException    If function would result in a division by zero
- */
-function inverse($complex): Complex
-{
-    $complex = clone Complex::validateComplexArgument($complex);
+if (!function_exists('Complex\inverse')) {
+    /**
+     * Returns the inverse of a complex number.
+     *
+     * @param Complex|mixed $complex Complex number or a numeric value.
+     * @return    Complex          The inverse of the complex argument.
+     * @throws    Exception        If argument isn't a valid real or complex number.
+     * @throws    \InvalidArgumentException    If function would result in a division by zero
+     */
+    function inverse($complex): Complex
+    {
+        $complex = clone Complex::validateComplexArgument($complex);
 
-    if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
-        throw new \InvalidArgumentException('Division by zero');
+        if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
+            throw new \InvalidArgumentException('Division by zero');
+        }
+
+        return $complex->divideInto(1.0);
     }
-
-    return $complex->divideInto(1.0);
 }
