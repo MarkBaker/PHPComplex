@@ -18,7 +18,7 @@
         "phpunit/phpunit": "^7.0 || ^8.0 || ^9.3",
         "phpdocumentor/phpdocumentor": "2.*",
         "phpmd/phpmd": "2.*",
-        "sebastian/phpcpd": "^4.0",
+        "sebastian/phpcpd": "^4.0 || ^5.0 || ^6.0",
         "phploc/phploc": "^4.0",
         "squizlabs/php_codesniffer": "^3.4",
         "phpcompatibility/php-compatibility": "^9.0",
