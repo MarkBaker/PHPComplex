@@ -16,19 +16,21 @@ namespace Complex;
  * @return    Complex          The cosine of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function cos($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\cos')) {
+    function cos($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->isReal()) {
-        return new Complex(\cos($complex->getReal()));
+        if ($complex->isReal()) {
+            return new Complex(\cos($complex->getReal()));
+        }
+
+        return conjugate(
+            new Complex(
+                \cos($complex->getReal()) * \cosh($complex->getImaginary()),
+                \sin($complex->getReal()) * \sinh($complex->getImaginary()),
+                $complex->getSuffix()
+            )
+        );
     }
-
-    return conjugate(
-        new Complex(
-            \cos($complex->getReal()) * \cosh($complex->getImaginary()),
-            \sin($complex->getReal()) * \sinh($complex->getImaginary()),
-            $complex->getSuffix()
-        )
-    );
 }

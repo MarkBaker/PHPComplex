@@ -16,17 +16,19 @@ namespace Complex;
  * @return    Complex          The hyperbolic cosine of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function cosh($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\cosh')) {
+    function cosh($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->isReal()) {
-        return new Complex(\cosh($complex->getReal()));
+        if ($complex->isReal()) {
+            return new Complex(\cosh($complex->getReal()));
+        }
+
+        return new Complex(
+            \cosh($complex->getReal()) * \cos($complex->getImaginary()),
+            \sinh($complex->getReal()) * \sin($complex->getImaginary()),
+            $complex->getSuffix()
+        );
     }
-
-    return new Complex(
-        \cosh($complex->getReal()) * \cos($complex->getImaginary()),
-        \sinh($complex->getReal()) * \sin($complex->getImaginary()),
-        $complex->getSuffix()
-    );
 }

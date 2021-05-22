@@ -17,9 +17,11 @@ namespace Complex;
  * @throws    Exception        If argument isn't a valid real or complex number.
  * @throws    \InvalidArgumentException    If function would result in a division by zero
  */
-function acoth($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\acoth')) {
+    function acoth($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    return atanh(inverse($complex));
+        return atanh(inverse($complex));
+    }
 }

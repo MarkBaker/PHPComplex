@@ -16,13 +16,15 @@ namespace Complex;
  * @return    Complex          The conjugate of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function conjugate($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\conjugate')) {
+    function conjugate($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    return new Complex(
-        $complex->getReal(),
-        -1 * $complex->getImaginary(),
-        $complex->getSuffix()
-    );
+        return new Complex(
+            $complex->getReal(),
+            -1 * $complex->getImaginary(),
+            $complex->getSuffix()
+        );
+    }
 }

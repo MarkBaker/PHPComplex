@@ -16,17 +16,19 @@ namespace Complex;
  * @return    Complex          The sine of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function sin($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\sin')) {
+    function sin($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->isReal()) {
-        return new Complex(\sin($complex->getReal()));
+        if ($complex->isReal()) {
+            return new Complex(\sin($complex->getReal()));
+        }
+
+        return new Complex(
+            \sin($complex->getReal()) * \cosh($complex->getImaginary()),
+            \cos($complex->getReal()) * \sinh($complex->getImaginary()),
+            $complex->getSuffix()
+        );
     }
-
-    return new Complex(
-        \sin($complex->getReal()) * \cosh($complex->getImaginary()),
-        \cos($complex->getReal()) * \sinh($complex->getImaginary()),
-        $complex->getSuffix()
-    );
 }

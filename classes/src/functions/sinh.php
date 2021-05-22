@@ -16,17 +16,19 @@ namespace Complex;
  * @return    Complex          The hyperbolic sine of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function sinh($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\sinh')) {
+    function sinh($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->isReal()) {
-        return new Complex(\sinh($complex->getReal()));
+        if ($complex->isReal()) {
+            return new Complex(\sinh($complex->getReal()));
+        }
+
+        return new Complex(
+            \sinh($complex->getReal()) * \cos($complex->getImaginary()),
+            \cosh($complex->getReal()) * \sin($complex->getImaginary()),
+            $complex->getSuffix()
+        );
     }
-
-    return new Complex(
-        \sinh($complex->getReal()) * \cos($complex->getImaginary()),
-        \cosh($complex->getReal()) * \sin($complex->getImaginary()),
-        $complex->getSuffix()
-    );
 }

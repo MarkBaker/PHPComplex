@@ -16,22 +16,24 @@ namespace Complex;
  * @return    Complex          The inverse sine of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function asin($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\asin')) {
+    function asin($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    $square = multiply($complex, $complex);
-    $invsqrt = new Complex(1.0);
-    $invsqrt = subtract($invsqrt, $square);
-    $invsqrt = sqrt($invsqrt);
-    $adjust = new Complex(
-        $invsqrt->getReal() - $complex->getImaginary(),
-        $invsqrt->getImaginary() + $complex->getReal()
-    );
-    $log = ln($adjust);
+        $square = multiply($complex, $complex);
+        $invsqrt = new Complex(1.0);
+        $invsqrt = subtract($invsqrt, $square);
+        $invsqrt = sqrt($invsqrt);
+        $adjust = new Complex(
+            $invsqrt->getReal() - $complex->getImaginary(),
+            $invsqrt->getImaginary() + $complex->getReal()
+        );
+        $log = ln($adjust);
 
-    return new Complex(
-        $log->getImaginary(),
-        -1 * $log->getReal()
-    );
+        return new Complex(
+            $log->getImaginary(),
+            -1 * $log->getReal()
+        );
+    }
 }

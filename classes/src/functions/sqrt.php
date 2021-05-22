@@ -16,14 +16,16 @@ namespace Complex;
  * @return    Complex          The Square root of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function sqrt($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\sqrt')) {
+    function sqrt($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    $theta = theta($complex);
-    $delta1 = \cos($theta / 2);
-    $delta2 = \sin($theta / 2);
-    $rho = \sqrt(rho($complex));
+        $theta = theta($complex);
+        $delta1 = \cos($theta / 2);
+        $delta2 = \sin($theta / 2);
+        $rho = \sqrt(rho($complex));
 
-    return new Complex($delta1 * $rho, $delta2 * $rho, $complex->getSuffix());
+        return new Complex($delta1 * $rho, $delta2 * $rho, $complex->getSuffix());
+    }
 }
