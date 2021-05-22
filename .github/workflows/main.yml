@@ -44,7 +44,6 @@ jobs:
         id: composer-lock
         if: ${{ matrix.php-version == '8.1' }}
         run: |
-          rm composer.lock
           echo "::set-output name=flags::--ignore-platform-reqs"
 
       - name: Install dependencies
