@@ -88,7 +88,7 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Code style with PHP_CodeSniffer
-        run: ./vendor/bin/phpcs -q --report=checkstyle | cs2pr
+        run: ./vendor/bin/phpcs -q --report=checkstyle classes/src/ | cs2pr
 
   versions:
     runs-on: ubuntu-latest
@@ -118,7 +118,7 @@ jobs:
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
       - name: Code Version Compatibility check with PHP_CodeSniffer
-        run: ./vendor/bin/phpcs -q --report-width=200 --report=summary,full src/ --standard=PHPCompatibility --runtime-set testVersion 7.2-
+        run: ./vendor/bin/phpcs -q --report-width=200 --report=summary,full classes/src/ --standard=PHPCompatibility --runtime-set testVersion 7.2-
 
   coverage:
     runs-on: ubuntu-latest

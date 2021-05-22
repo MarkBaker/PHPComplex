@@ -71,9 +71,6 @@
     },
     "scripts": {
         "style": "phpcs --report-width=200 --standard=PSR2 --report=summary,full classes/src/ unitTests/classes/src -n",
-        "mess": "phpmd classes/src/ xml codesize,unusedcode,design,naming -n",
-        "lines": "phploc classes/src/ -n",
-        "cpd": "phpcpd classes/src/ -n",
         "versions": "phpcs --report-width=200 --standard=PHPCompatibility --report=summary,full classes/src/ --runtime-set testVersion 7.2- -n"
     },
     "minimum-stability": "dev"
