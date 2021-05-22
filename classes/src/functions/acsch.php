@@ -17,13 +17,15 @@ namespace Complex;
  * @throws    Exception        If argument isn't a valid real or complex number.
  * @throws    \InvalidArgumentException    If function would result in a division by zero
  */
-function acsch($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\acsch')) {
+    function acsch($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
-        return new Complex(INF);
+        if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
+            return new Complex(INF);
+        }
+
+        return asinh(inverse($complex));
     }
-
-    return asinh(inverse($complex));
 }

@@ -22,7 +22,9 @@ namespace Complex;
  *
  * @see    theta
  */
-function argument($complex): float
-{
-    return theta($complex);
+if (!function_exists(__NAMESPACE__ . '\\argument')) {
+    function argument($complex): float
+    {
+        return theta($complex);
+    }
 }

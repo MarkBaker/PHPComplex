@@ -16,19 +16,21 @@ namespace Complex;
  * @return    Complex          The inverse hyperbolic cosine of the complex argument.
  * @throws    Exception        If argument isn't a valid real or complex number.
  */
-function acosh($complex)
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\acosh')) {
+    function acosh($complex)
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    if ($complex->isReal() && ($complex->getReal() > 1)) {
-        return new Complex(\acosh($complex->getReal()));
+        if ($complex->isReal() && ($complex->getReal() > 1)) {
+            return new Complex(\acosh($complex->getReal()));
+        }
+
+        $acosh = acos($complex)
+            ->reverse();
+        if ($acosh->getReal() < 0.0) {
+            $acosh = $acosh->invertReal();
+        }
+
+        return $acosh;
     }
-
-    $acosh = acos($complex)
-        ->reverse();
-    if ($acosh->getReal() < 0.0) {
-        $acosh = $acosh->invertReal();
-    }
-
-    return $acosh;
 }

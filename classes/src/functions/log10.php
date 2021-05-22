@@ -17,16 +17,18 @@ namespace Complex;
  * @throws    Exception        If argument isn't a valid real or complex number.
  * @throws    \InvalidArgumentException  If the real and the imaginary parts are both zero
  */
-function log10($complex): Complex
-{
-    $complex = Complex::validateComplexArgument($complex);
+if (!function_exists(__NAMESPACE__ . '\\log10')) {
+    function log10($complex): Complex
+    {
+        $complex = Complex::validateComplexArgument($complex);
 
-    if (($complex->getReal() == 0.0) && ($complex->getImaginary() == 0.0)) {
-        throw new \InvalidArgumentException();
-    } elseif (($complex->getReal() > 0.0) && ($complex->getImaginary() == 0.0)) {
-        return new Complex(\log10($complex->getReal()), 0.0, $complex->getSuffix());
+        if (($complex->getReal() == 0.0) && ($complex->getImaginary() == 0.0)) {
+            throw new \InvalidArgumentException();
+        } elseif (($complex->getReal() > 0.0) && ($complex->getImaginary() == 0.0)) {
+            return new Complex(\log10($complex->getReal()), 0.0, $complex->getSuffix());
+        }
+
+        return ln($complex)
+            ->multiply(\log10(Complex::EULER));
     }
-
-    return ln($complex)
-        ->multiply(\log10(Complex::EULER));
 }
