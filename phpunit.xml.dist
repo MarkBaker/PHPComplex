@@ -17,11 +17,6 @@
     <testsuite name="Complex Unit Test Suite">
         <directory suffix="Test.php">./unitTests/classes</directory>
     </testsuite>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">../unitTests/classes</directory>
-        </whitelist>
-    </filter>
 
     <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
         <include>
