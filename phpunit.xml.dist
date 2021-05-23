@@ -22,6 +22,13 @@
             <directory suffix=".php">../unitTests/classes</directory>
         </whitelist>
     </filter>
+
+    <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">classes/src</directory>
+        </include>
+    </coverage>
+
     <logging>
         <log type="coverage-html" target="./unitTests/codeCoverage" lowUpperBound="35" highLowerBound="70"/>
         <log type="coverage-clover" target="./unitTests/codeCoverage/codeCoverage.xml"/>
