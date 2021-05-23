@@ -146,6 +146,5 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - name: Coverage
-        run: |
-          ./vendor/bin/phpunit --coverage-clover coverage-clover.xml
+      - name: Test Coverage
+        run: ./vendor/bin/phpunit --verbose --coverage-text

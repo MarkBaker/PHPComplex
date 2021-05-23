@@ -17,13 +17,16 @@
     <testsuite name="Complex Unit Test Suite">
         <directory suffix="Test.php">./unitTests/classes</directory>
     </testsuite>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">../unitTests/classes</directory>
-        </whitelist>
-    </filter>
+
+    <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">classes/src</directory>
+        </include>
+    </coverage>
+
     <logging>
-        <log type="coverage-html" target="./unitTests/codeCoverage" lowUpperBound="35" highLowerBound="70"/>
-        <log type="coverage-clover" target="./unitTests/codeCoverage/codeCoverage.xml"/>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+        <log type="coverage-clover" target="coverage/phpunit/clover.xml" showUncoveredFiles="true"/>
+        <log type="coverage-html" target="coverage/phpunit/html" lowUpperBound="35" highLowerBound="70"/>
     </logging>
 </phpunit> 
