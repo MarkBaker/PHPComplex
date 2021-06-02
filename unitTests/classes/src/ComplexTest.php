@@ -105,6 +105,36 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('i', $defaultComplexSuffix);
     }
 
+    /**
+     * @dataProvider providerArguments
+     */
+    public function testInstantiateWithEmptyArguments($expected, $arguments)
+    {
+        $complexObject = new Complex(...$arguments);
+
+        $defaultComplexReal = $complexObject->getReal();
+        $this->assertEquals($expected[0], $defaultComplexReal);
+
+        $defaultComplexImaginary = $complexObject->getImaginary();
+        $this->assertEquals($expected[1], $defaultComplexImaginary);
+
+        $defaultComplexSuffix = $complexObject->getSuffix();
+        $this->assertEquals($expected[2], $defaultComplexSuffix);
+    }
+
+    public function providerArguments()
+    {
+        return [
+            'Imaginary with suffix' => [[0.0, 2.34, 'j'], [null, 2.34, 'j']],
+            'Imaginary without suffix' => [[0.0, 2.34, 'i'], [null, 2.34]],
+            'Imaginary with empty suffix' => [[0.0, 2.34, 'i'], [null, 2.34, '']],
+            'Imaginary with null suffix' => [[0.0, 2.34, 'i'], [null, 2.34, null]],
+            'Real with suffix' => [[1.23, 0.0, ''], [1.23, null, 'j']],
+            'Complex with empty suffix' => [[1.23, 2.34, 'i'], [1.23, 2.34, '']],
+            'Complex with null suffix' => [[1.23, 2.34, 'i'], [1.23, 2.34, null]],
+        ];
+    }
+
     public function testInstantiateWithArray()
     {
         $complexObject = new Complex(
