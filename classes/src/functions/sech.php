@@ -20,8 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\sech')) {
     function sech($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        return inverse(cosh($complex));
+        return Functions::sech($complex);
     }
 }

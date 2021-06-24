@@ -20,12 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\cot')) {
     function cot($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
-            return new Complex(INF);
-        }
-
-        return inverse(tan($complex));
+        return Functions::cot($complex);
     }
 }

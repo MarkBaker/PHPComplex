@@ -9,6 +9,11 @@ class FunctionLoadTest extends \PHPUnit\Framework\TestCase
      */
     public function testOnlyLoadFunctionOnce(string $filename): void
     {
+        $functionName = basename($filename, '.php');
+        if (!function_exists(__NAMESPACE__ . '\\' . $functionName)) {
+            include $filename;
+        }
+
         include $filename;
         self::assertIsString($filename);
     }
@@ -32,6 +37,11 @@ class FunctionLoadTest extends \PHPUnit\Framework\TestCase
      */
     public function testOnlyLoadOperationOnce(string $filename): void
     {
+        $operationName = basename($filename, '.php');
+        if (!function_exists(__NAMESPACE__ . '\\' . $operationName)) {
+            include $filename;
+        }
+
         include $filename;
         self::assertIsString($filename);
     }

@@ -25,6 +25,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\argument')) {
     function argument($complex): float
     {
-        return theta($complex);
+        return Functions::argument($complex);
     }
 }

@@ -9,11 +9,29 @@ class cschTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testCsch()
+    public function testCschFunction()
     {
+        if (!function_exists(__NAMESPACE__ . '\\' . self::$functionName)) {
+            include_once(APPLICATION_PATH . '/src/functions/' . self::$functionName . '.php');
+        }
+
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = csch($complex);
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testCschStatic()
+    {
+        $args = func_get_args();
+        $complex = new Complex($args[0]);
+        $result = Functions::csch($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

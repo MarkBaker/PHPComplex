@@ -4,13 +4,17 @@ namespace Complex;
 
 class acothTest extends BaseFunctionTestAbstract
 {
-    protected static $functionName = 'acot';
+    protected static $functionName = 'acoth';
 
     /**
      * @dataProvider dataProvider
      */
-    public function testAcotH()
+    public function testAcothFunction()
     {
+        if (!function_exists(__NAMESPACE__ . '\\' . self::$functionName)) {
+            include_once(APPLICATION_PATH . '/src/functions/' . self::$functionName . '.php');
+        }
+
         $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
@@ -24,9 +28,26 @@ class acothTest extends BaseFunctionTestAbstract
     }
 
     /**
+     * @dataProvider dataProvider
+     */
+    public function testAcothStatic()
+    {
+        $args = func_get_args();
+        if (strpos($args[1], 'Exception') !== false) {
+            $this->setExpectedException($args[1]);
+        }
+        $complex = new Complex($args[0]);
+        $result = Functions::acoth($complex);
+
+        $this->complexNumberAssertions($args[1], $result);
+        // Verify that the original complex value remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex);
+    }
+
+    /**
      * @dataProvider dataProviderInvoker
      */
-    public function testAcotInvoker()
+    public function testAcothInvoker()
     {
         $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {

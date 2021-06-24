@@ -24,7 +24,6 @@ class FilenameFilter extends FilesystemRegexFilter
     }
 }
 
-
 $srcFolder = __DIR__ . DIRECTORY_SEPARATOR . 'src';
 $srcDirectory = new RecursiveDirectoryIterator($srcFolder);
 

@@ -20,8 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\acoth')) {
     function acoth($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        return atanh(inverse($complex));
+        return Functions::acoth($complex);
     }
 }

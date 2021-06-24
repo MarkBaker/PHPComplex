@@ -20,11 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\rho')) {
     function rho($complex): float
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        return \sqrt(
-            ($complex->getReal() * $complex->getReal()) +
-            ($complex->getImaginary() * $complex->getImaginary())
-        );
+        return Functions::rho($complex);
     }
 }

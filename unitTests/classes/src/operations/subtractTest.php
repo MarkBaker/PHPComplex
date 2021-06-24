@@ -9,12 +9,32 @@ class subtractTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testSubtract()
+    public function testSubtractFunction()
     {
+        if (!function_exists(__NAMESPACE__ . '\\' . self::$functionName)) {
+            include_once(APPLICATION_PATH . '/src/operations/' . self::$functionName . '.php');
+        }
+
         $args = func_get_args();
         $complex1 = new Complex($args[0]);
         $complex2 = new Complex($args[1]);
         $result = subtract($complex1, $complex2);
+
+        $this->complexNumberAssertions($args[2], $result);
+        // Verify that the original complex values remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex1);
+        $this->assertEquals(new Complex($args[1]), $complex2);
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testSubtractStatic()
+    {
+        $args = func_get_args();
+        $complex1 = new Complex($args[0]);
+        $complex2 = new Complex($args[1]);
+        $result = Operations::subtract($complex1, $complex2);
 
         $this->complexNumberAssertions($args[2], $result);
         // Verify that the original complex values remains unchanged

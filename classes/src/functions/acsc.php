@@ -20,12 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\acsc')) {
     function acsc($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
-            return new Complex(INF);
-        }
-
-        return asin(inverse($complex));
+        return Functions::acsc($complex);
     }
 }

@@ -20,12 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\asech')) {
     function asech($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        if ($complex->getReal() == 0.0 && $complex->getImaginary() == 0.0) {
-            return new Complex(INF);
-        }
-
-        return acosh(inverse($complex));
+        return Functions::asech($complex);
     }
 }

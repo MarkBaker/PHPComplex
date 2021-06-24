@@ -19,17 +19,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\asinh')) {
     function asinh($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        if ($complex->isReal() && ($complex->getReal() > 1)) {
-            return new Complex(\asinh($complex->getReal()));
-        }
-
-        $asinh = clone $complex;
-        $asinh = $asinh->reverse()
-            ->invertReal();
-        $asinh = asin($asinh);
-        return $asinh->reverse()
-            ->invertImaginary();
+        return Functions::asinh($complex);
     }
 }

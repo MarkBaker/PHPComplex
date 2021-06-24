@@ -2,7 +2,8 @@
 
 namespace Complex;
 
-include('../classes/Bootstrap.php');
+include(__DIR__ . '/../vendor/autoload.php');
+include(__DIR__ . '/../classes/Bootstrap.php');
 
 echo 'Function Examples', PHP_EOL;
 

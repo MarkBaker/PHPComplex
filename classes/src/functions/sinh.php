@@ -19,16 +19,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\sinh')) {
     function sinh($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        if ($complex->isReal()) {
-            return new Complex(\sinh($complex->getReal()));
-        }
-
-        return new Complex(
-            \sinh($complex->getReal()) * \cos($complex->getImaginary()),
-            \cosh($complex->getReal()) * \sin($complex->getImaginary()),
-            $complex->getSuffix()
-        );
+        return Functions::sinh($complex);
     }
 }

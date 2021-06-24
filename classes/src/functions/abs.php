@@ -26,6 +26,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\abs')) {
     function abs($complex): float
     {
-        return rho($complex);
+        return Functions::abs($complex);
     }
 }

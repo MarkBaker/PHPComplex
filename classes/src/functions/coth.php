@@ -20,7 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\coth')) {
     function coth($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-        return inverse(tanh($complex));
+        return Functions::coth($complex);
     }
 }

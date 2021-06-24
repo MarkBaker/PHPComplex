@@ -20,8 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\sec')) {
     function sec($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        return inverse(cos($complex));
+        return Functions::sec($complex);
     }
 }

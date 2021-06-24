@@ -9,12 +9,32 @@ class addTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAdd()
+    public function testAddFunction()
     {
+        if (!function_exists(__NAMESPACE__ . '\\' . self::$functionName)) {
+            include_once(APPLICATION_PATH . '/src/operations/' . self::$functionName . '.php');
+        }
+
         $args = func_get_args();
         $complex1 = new Complex($args[0]);
         $complex2 = new Complex($args[1]);
         $result = add($complex1, $complex2);
+
+        $this->complexNumberAssertions($args[2], $result);
+        // Verify that the original complex values remains unchanged
+        $this->assertEquals(new Complex($args[0]), $complex1);
+        $this->assertEquals(new Complex($args[1]), $complex2);
+    }
+
+    /**
+     * @dataProvider dataProvider
+     */
+    public function testAddStatic()
+    {
+        $args = func_get_args();
+        $complex1 = new Complex($args[0]);
+        $complex2 = new Complex($args[1]);
+        $result = Operations::add($complex1, $complex2);
 
         $this->complexNumberAssertions($args[2], $result);
         // Verify that the original complex values remains unchanged

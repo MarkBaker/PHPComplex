@@ -22,12 +22,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\negative')) {
     function negative($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        return new Complex(
-            -1 * $complex->getReal(),
-            -1 * $complex->getImaginary(),
-            $complex->getSuffix()
-        );
+        return Functions::negative($complex);
     }
 }

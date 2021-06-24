@@ -20,8 +20,6 @@ namespace Complex;
 if (!function_exists(__NAMESPACE__ . '\\acot')) {
     function acot($complex): Complex
     {
-        $complex = Complex::validateComplexArgument($complex);
-
-        return atan(inverse($complex));
+        return Functions::acot($complex);
     }
 }
