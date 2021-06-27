@@ -5,9 +5,11 @@ PHPComplex
 
 PHP Class for handling Complex numbers
 
-Master: [![Build Status](https://travis-ci.org/MarkBaker/PHPComplex.png?branch=master)](http://travis-ci.org/MarkBaker/PHPComplex)
+[![Build Status](https://github.com/MarkBaker/PHPComplex/workflows/main/badge.svg)](https://github.com/MarkBaker/PHPComplex/actions)
+[![Total Downloads](https://img.shields.io/packagist/dt/markbaker/complex)](https://packagist.org/packages/markbaker/complex)
+[![Latest Stable Version](https://img.shields.io/github/v/release/MarkBaker/PHPComplex)](https://packagist.org/packages/markbaker/complex)
+[![License](https://img.shields.io/github/license/MarkBaker/PHPComplex)](https://packagist.org/packages/markbaker/complex)
 
-Develop: [![Build Status](https://travis-ci.org/MarkBaker/PHPComplex.png?branch=develop)](http://travis-ci.org/MarkBaker/PHPComplex)
 
 [![Complex Numbers](https://imgs.xkcd.com/comics/complex_numbers_2x.png)](https://xkcd.com/2028/)
 
