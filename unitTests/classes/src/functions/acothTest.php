@@ -9,27 +9,6 @@ class acothTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAcothFunction()
-    {
-        if (!function_exists(__NAMESPACE__ . '\\' . self::$functionName)) {
-            include_once(APPLICATION_PATH . '/src/functions/' . self::$functionName . '.php');
-        }
-
-        $args = func_get_args();
-        if (strpos($args[1], 'Exception') !== false) {
-            $this->setExpectedException($args[1]);
-        }
-        $complex = new Complex($args[0]);
-        $result = acoth($complex);
-
-        $this->complexNumberAssertions($args[1], $result);
-        // Verify that the original complex value remains unchanged
-        $this->assertEquals(new Complex($args[0]), $complex);
-    }
-
-    /**
-     * @dataProvider dataProvider
-     */
     public function testAcothStatic()
     {
         $args = func_get_args();

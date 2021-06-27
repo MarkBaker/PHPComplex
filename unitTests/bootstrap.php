@@ -9,7 +9,7 @@
  */
 
 // PHP 5.3 Compatibility
-date_default_timezone_set('Europe/London');
+date_default_timezone_set('Europe/Amsterdam');
 
 // Define path to application directory
 defined('APPLICATION_PATH')
@@ -48,4 +48,6 @@ if (extension_loaded('xdebug')) {
 require_once(APPLICATION_TESTS_PATH . '/../vendor/autoload.php');
 
 // Load abstract base function test class.
+require_once APPLICATION_TESTS_PATH . '/BaseTestAbstract.php';
 require_once APPLICATION_TESTS_PATH . '/BaseFunctionTestAbstract.php';
+require_once APPLICATION_TESTS_PATH . '/BaseOperationTestAbstract.php';

@@ -9,23 +9,6 @@ class lnTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testLnFunction()
-    {
-        if (!function_exists(__NAMESPACE__ . '\\' . self::$functionName)) {
-            include_once(APPLICATION_PATH . '/src/functions/' . self::$functionName . '.php');
-        }
-
-        $args = func_get_args();
-        $complex = new Complex($args[0]);
-        $result = ln($complex);
-        $this->complexNumberAssertions($args[1], $result);
-        // Verify that the original complex value remains unchanged
-        $this->assertEquals(new Complex($args[0]), $complex);
-    }
-
-    /**
-     * @dataProvider dataProvider
-     */
     public function testLnStatic()
     {
         $args = func_get_args();
@@ -55,7 +38,7 @@ class lnTest extends BaseFunctionTestAbstract
         $this->expectException(\InvalidArgumentException::class);
 
         $complex = new Complex(0);
-        ln($complex);
+        Functions::ln($complex);
     }
 
     /*

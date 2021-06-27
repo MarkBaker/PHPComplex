@@ -2,13 +2,13 @@
 
 namespace Complex;
 
-abstract class BaseFunctionTestAbstract extends BaseTestAbstract
+abstract class BaseOperationTestAbstract extends BaseTestAbstract
 {
     public function testInvalidArgument()
     {
         $this->expectException(\Exception::class);
 
         $invalidComplex = '*** INVALID ***';
-        call_user_func([ __NAMESPACE__ . '\\Functions', static::$functionName], $invalidComplex, 1);
+        call_user_func([ __NAMESPACE__ . '\\Operations', static::$functionName], $invalidComplex, 1);
     }
 }

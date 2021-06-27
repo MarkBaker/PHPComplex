@@ -9,24 +9,6 @@ class log10Test extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testLog10Function()
-    {
-        if (!function_exists(__NAMESPACE__ . '\\' . self::$functionName)) {
-            include_once(APPLICATION_PATH . '/src/functions/' . self::$functionName . '.php');
-        }
-
-        $args = func_get_args();
-        $complex = new Complex($args[0]);
-        $result = log10($complex);
-
-        $this->complexNumberAssertions($args[1], $result);
-        // Verify that the original complex value remains unchanged
-        $this->assertEquals(new Complex($args[0]), $complex);
-    }
-
-    /**
-     * @dataProvider dataProvider
-     */
     public function testLog10Static()
     {
         $args = func_get_args();
@@ -57,7 +39,7 @@ class log10Test extends BaseFunctionTestAbstract
         $this->expectException(\InvalidArgumentException::class);
 
         $complex = new Complex(0);
-        log10($complex);
+        Functions::log10($complex);
     }
 
     /*

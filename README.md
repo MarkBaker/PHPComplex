@@ -74,7 +74,7 @@ $suffix = 'i';
 
 $complexObject = new Complex\Complex($real, $imaginary, $suffix);
 ```
-or
+or as an array
 ```php
 $real = 1.23;
 $imaginary = -4.56;
@@ -84,7 +84,7 @@ $arguments = [$real, $imaginary, $suffix];
 
 $complexObject = new Complex\Complex($arguments);
 ```
-or
+or as a string
 ```php
 $complexString = '1.23-4.56i';
 
@@ -113,14 +113,6 @@ $complexString2 = '2.34+5.67i';
 
 echo Complex\Operations::add($complexString1, $complexString2);
 ```
-
-or procedurally, you can pass all values to the appropriate (namespaced) function
-```php
-$complexString1 = '1.23-4.56i';
-$complexString2 = '2.34+5.67i';
-
-echo Complex\add($complexString1, $complexString2);
-```
 If you want to perform the same operation against multiple values (e.g. to add three or more complex numbers), then you can pass multiple arguments to any of the operations.
 
 You can pass these arguments as Complex objects, or as an array or string that will parse to a complex object.
@@ -142,28 +134,13 @@ $complexString = '1.23-4.56i';
 echo Complex\Functions::sinh($complexString);
 ```
 
-or you can call the function as you would in procedural code, passing the Complex object as an argument 
-```php
-$complexString = '1.23-4.56i';
-
-$complexObject = new Complex\Complex($complexString);
-echo Complex\sinh($complexObject);
-```
-
-When called procedurally using the function, you can pass in the argument as a Complex object, or as an array or string that will parse to a complex object.
-```php
-$complexString = '1.23-4.56i';
-
-echo Complex\sinh($complexString);
-```
-
-In the case of the `pow()` function (the only implemented function that requires an additional argument) you need to pass both arguments when calling the function procedurally
+In the case of the `pow()` function (the only implemented function that requires an additional argument) you need to pass both arguments when calling the function
 
 ```php
 $complexString = '1.23-4.56i';
 
 $complexObject = new Complex\Complex($complexString);
-echo Complex\pow($complexObject, 2);
+echo Complex\Functions::pow($complexObject, 2);
 ```
 or pass the additional argument when calling the method
 ```php
