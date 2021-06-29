@@ -9,14 +9,14 @@ class tanhTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testTanh()
+    public function testTanhStatic()
     {
         $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
         $complex = new Complex($args[0]);
-        $result = tanh($complex);
+        $result = Functions::tanh($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

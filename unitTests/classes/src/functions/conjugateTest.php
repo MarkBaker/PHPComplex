@@ -9,11 +9,11 @@ class conjugateTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testConjugate()
+    public function testConjugateStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = conjugate($complex);
+        $result = Functions::conjugate($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

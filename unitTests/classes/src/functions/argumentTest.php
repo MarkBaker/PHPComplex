@@ -9,11 +9,11 @@ class argumentTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testArgument()
+    public function testArgumentStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = argument($complex);
+        $result = Functions::argument($complex);
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged

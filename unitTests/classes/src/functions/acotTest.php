@@ -9,14 +9,14 @@ class acotTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAcot()
+    public function testAcotStatic()
     {
         $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
         $complex = new Complex($args[0]);
-        $result = acot($complex);
+        $result = Functions::acot($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

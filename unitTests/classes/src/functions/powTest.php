@@ -9,11 +9,11 @@ class powTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testPow()
+    public function testPowStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = pow($complex, $args[1]);
+        $result = Functions::pow($complex, $args[1]);
 
         $this->complexNumberAssertions($args[2], $result);
         // Verify that the original complex value remains unchanged

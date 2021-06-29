@@ -9,14 +9,14 @@ class cothTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testCoth()
+    public function testCothStatic()
     {
         $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
         $complex = new Complex($args[0]);
-        $result = coth($complex);
+        $result = Functions::coth($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

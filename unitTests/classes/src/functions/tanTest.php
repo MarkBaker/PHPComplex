@@ -9,11 +9,11 @@ class tanTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testTan()
+    public function testTanStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = tan($complex);
+        $result = Functions::tan($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

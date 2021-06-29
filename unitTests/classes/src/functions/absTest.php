@@ -9,11 +9,11 @@ class absTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAbs()
+    public function testAbsStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = abs($complex);
+        $result = Functions::abs($complex);
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged

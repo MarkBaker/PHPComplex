@@ -9,11 +9,11 @@ class rhoTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testRho()
+    public function testRhoStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = rho($complex);
+        $result = Functions::rho($complex);
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged

@@ -9,11 +9,11 @@ class lnTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testLn()
+    public function testLnStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = ln($complex);
+        $result = Functions::ln($complex);
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -38,7 +38,7 @@ class lnTest extends BaseFunctionTestAbstract
         $this->expectException(\InvalidArgumentException::class);
 
         $complex = new Complex(0);
-        ln($complex);
+        Functions::ln($complex);
     }
 
     /*

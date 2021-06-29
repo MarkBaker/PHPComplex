@@ -83,6 +83,7 @@
 
     <rule ref="Squiz.Classes.ValidClassName.NotCamelCaps">
         <exclude-pattern>/unitTests/classes/src/functions/*Test\.php$</exclude-pattern>
+        <exclude-pattern>/unitTests/classes/src/operations/*Test\.php$</exclude-pattern>
     </rule>
 
 </ruleset>

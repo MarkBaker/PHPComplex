@@ -9,11 +9,11 @@ class log2Test extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testLog2()
+    public function testLog2Static()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = log2($complex);
+        $result = Functions::log2($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
@@ -39,7 +39,7 @@ class log2Test extends BaseFunctionTestAbstract
         $this->expectException(\InvalidArgumentException::class);
 
         $complex = new Complex(0);
-        log2($complex);
+        Functions::log2($complex);
     }
 
     /*

@@ -9,11 +9,11 @@ class inverseTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testInverse()
+    public function testInverseStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = inverse($complex);
+        $result = Functions::inverse($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

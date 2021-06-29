@@ -2,19 +2,19 @@
 
 namespace Complex;
 
-class multiplyTest extends BaseFunctionTestAbstract
+class multiplyTest extends BaseOperationTestAbstract
 {
     protected static $functionName = 'multiply';
 
     /**
      * @dataProvider dataProvider
      */
-    public function testMultiply()
+    public function testMultiplyStatic()
     {
         $args = func_get_args();
         $complex1 = new Complex($args[0]);
         $complex2 = new Complex($args[1]);
-        $result = multiply($complex1, $complex2);
+        $result = Operations::multiply($complex1, $complex2);
 
         $this->complexNumberAssertions($args[2], $result);
         // Verify that the original complex values remains unchanged

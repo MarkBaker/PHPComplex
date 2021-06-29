@@ -9,11 +9,11 @@ class sinhTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testSinh()
+    public function testSinhStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = sinh($complex);
+        $result = Functions::sinh($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

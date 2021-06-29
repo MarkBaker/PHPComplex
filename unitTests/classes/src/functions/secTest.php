@@ -9,11 +9,11 @@ class secTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testSec()
+    public function testSecStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = sec($complex);
+        $result = Functions::sec($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

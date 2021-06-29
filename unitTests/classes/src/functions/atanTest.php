@@ -9,14 +9,14 @@ class atanTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAtan()
+    public function testAtanStatic()
     {
         $args = func_get_args();
         if (strpos($args[1], 'Exception') !== false) {
             $this->setExpectedException($args[1]);
         }
         $complex = new Complex($args[0]);
-        $result = atan($complex);
+        $result = Functions::atan($complex);
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);

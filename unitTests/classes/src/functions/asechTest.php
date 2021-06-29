@@ -9,11 +9,11 @@ class asechTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAcsch()
+    public function testAsechStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = asech($complex);
+        $result = Functions::asech($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
@@ -23,7 +23,7 @@ class asechTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProviderInvoker
      */
-    public function testAcschInvoker()
+    public function testAsechInvoker()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);

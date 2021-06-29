@@ -9,11 +9,11 @@ class sinTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testSin()
+    public function testSinStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = sin($complex);
+        $result = Functions::sin($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

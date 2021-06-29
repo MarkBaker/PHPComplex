@@ -2,19 +2,19 @@
 
 namespace Complex;
 
-class subtractTest extends BaseFunctionTestAbstract
+class subtractTest extends BaseOperationTestAbstract
 {
     protected static $functionName = 'subtract';
 
     /**
      * @dataProvider dataProvider
      */
-    public function testSubtract()
+    public function testSubtractStatic()
     {
         $args = func_get_args();
         $complex1 = new Complex($args[0]);
         $complex2 = new Complex($args[1]);
-        $result = subtract($complex1, $complex2);
+        $result = Operations::subtract($complex1, $complex2);
 
         $this->complexNumberAssertions($args[2], $result);
         // Verify that the original complex values remains unchanged

@@ -9,11 +9,11 @@ class sechTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testSech()
+    public function testSechStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = sech($complex);
+        $result = Functions::sech($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

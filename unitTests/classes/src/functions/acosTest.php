@@ -9,11 +9,11 @@ class acosTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAcos()
+    public function testAcosStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = acos($complex);
+        $result = Functions::acos($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

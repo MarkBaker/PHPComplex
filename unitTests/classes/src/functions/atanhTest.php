@@ -9,11 +9,11 @@ class atanhTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAtanh()
+    public function testAtanhStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = atanh($complex);
+        $result = Functions::atanh($complex);
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);

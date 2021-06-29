@@ -9,11 +9,11 @@ class cscTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testCsc()
+    public function testCscStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = csc($complex);
+        $result = Functions::csc($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

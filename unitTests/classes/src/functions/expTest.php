@@ -9,11 +9,11 @@ class expTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testExp()
+    public function testExpStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = exp($complex);
+        $result = Functions::exp($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

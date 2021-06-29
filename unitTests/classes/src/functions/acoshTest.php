@@ -9,11 +9,11 @@ class acoshTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAcosh()
+    public function testAcoshStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = acosh($complex);
+        $result = Functions::acosh($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

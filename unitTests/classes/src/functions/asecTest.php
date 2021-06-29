@@ -9,11 +9,11 @@ class asecTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testAsec()
+    public function testAsecStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = asec($complex);
+        $result = Functions::asec($complex);
 
         $this->complexNumberAssertions($args[1], $result);
         // Verify that the original complex value remains unchanged

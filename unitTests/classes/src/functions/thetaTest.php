@@ -9,11 +9,11 @@ class thetaTest extends BaseFunctionTestAbstract
     /**
      * @dataProvider dataProvider
      */
-    public function testTheta()
+    public function testThetaStatic()
     {
         $args = func_get_args();
         $complex = new Complex($args[0]);
-        $result = theta($complex);
+        $result = Functions::theta($complex);
 
         $this->assertEquals($args[1], $result);
         // Verify that the original complex value remains unchanged
