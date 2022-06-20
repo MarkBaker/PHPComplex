@@ -68,7 +68,7 @@ together with functions for
 # Installation
 
 ```shell
-composer require markbaker/complex:^3.0
+composer require markbaker/complex:^1.0
 ```
 
 # Important BC Note
