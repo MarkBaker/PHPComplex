@@ -14,8 +14,10 @@ class acosTest extends BaseFunctionTestAbstract
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = Functions::acos($complex);
+        $reverse = $result->cos();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -28,8 +30,10 @@ class acosTest extends BaseFunctionTestAbstract
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = $complex->acos();
+        $reverse = $result->cos();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }

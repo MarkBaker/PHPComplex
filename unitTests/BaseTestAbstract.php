@@ -9,9 +9,6 @@ abstract class BaseTestAbstract extends TestCase
     // Saved php.ini precision, so that we can adjust the setting
     private static $precision;
 
-    // Number of significant digits used for assertEquals
-    private $significantDigits = 12;
-
     /**
      * @beforeClass
      */
@@ -45,7 +42,13 @@ abstract class BaseTestAbstract extends TestCase
 
     protected function getAssertionPrecision($value)
     {
-        return \pow(10, \floor(\log10($value)) - $this->significantDigits + 1);
+        if ($value === 0.0) {
+            return \pow(10, -10);
+        } elseif ($value > 10) {
+            return \pow(10, -8);
+        }
+
+        return 1.0e-11;
     }
 
     protected function complexNumberAssertions($expected, $result)
@@ -101,8 +104,9 @@ abstract class BaseTestAbstract extends TestCase
     {
         $testValues = array();
         foreach ($this->oneComplexValueDataSets as $test => $dataSet) {
-            $testValues[$test][] = $dataSet;
-            $testValues[$test][] = $expectedResults[$test];
+            $name = 'value ' . (new Complex($dataSet))->format();
+            $testValues[$name][] = $dataSet;
+            $testValues[$name][] = $expectedResults[$test];
         }
 
         return $testValues;
@@ -112,7 +116,6 @@ abstract class BaseTestAbstract extends TestCase
 
     public function dataProviderInvoker()
     {
-        $tests = $this->dataProvider();
-        return [array_pop($tests)];
+        return $this->dataProvider();
     }
 }

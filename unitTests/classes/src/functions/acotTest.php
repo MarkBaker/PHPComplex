@@ -17,8 +17,10 @@ class acotTest extends BaseFunctionTestAbstract
         }
         $complex = new Complex($args[0]);
         $result = Functions::acot($complex);
+        $reverse = $result->cot();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -34,14 +36,16 @@ class acotTest extends BaseFunctionTestAbstract
         }
         $complex = new Complex($args[0]);
         $result = $complex->acot();
+        $reverse = $result->cot();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
 
     /*
-     * Results derived from Wolfram Alpha ucotg
+     * Results derived from Wolfram Alpha using
      *  N[ArcCot[<VALUE>], 18]
      */
     public function dataProvider()

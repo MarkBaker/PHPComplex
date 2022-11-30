@@ -10,14 +10,14 @@ class ComplexOperationTest extends \PHPUnit\Framework\TestCase
     private static $precision;
 
     // Number of significant digits used for assertEquals
-    private $significantDigits = 12;
+    private $significantDigits = 14;
 
     /**
      * @beforeClass
      */
     public static function setPrecision()
     {
-        self::$precision = ini_set('precision', 16);
+        self::$precision = ini_set('precision', 15);
     }
 
     /**
@@ -71,8 +71,8 @@ class ComplexOperationTest extends \PHPUnit\Framework\TestCase
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $result->getReal());
-        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        $this->assertEqualsWithDelta($expected->getReal(), $result->getReal(), $this->getAssertionPrecision($expected->getReal()));
+        $this->assertEqualsWithDelta($expected->getImaginary(), $result->getImaginary(), $this->getAssertionPrecision($expected->getImaginary()));
 
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -102,8 +102,8 @@ class ComplexOperationTest extends \PHPUnit\Framework\TestCase
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $result->getReal());
-        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        $this->assertEqualsWithDelta($expected->getReal(), $result->getReal(), $this->getAssertionPrecision($expected->getReal()));
+        $this->assertEqualsWithDelta($expected->getImaginary(), $result->getImaginary(), $this->getAssertionPrecision($expected->getImaginary()));
 
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -133,8 +133,8 @@ class ComplexOperationTest extends \PHPUnit\Framework\TestCase
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $result->getReal());
-        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        $this->assertEqualsWithDelta($expected->getReal(), $result->getReal(), $this->getAssertionPrecision($expected->getReal()));
+        $this->assertEqualsWithDelta($expected->getImaginary(), $result->getImaginary(), $this->getAssertionPrecision($expected->getImaginary()));
 
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -164,8 +164,8 @@ class ComplexOperationTest extends \PHPUnit\Framework\TestCase
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $result->getReal());
-        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        $this->assertEqualsWithDelta($expected->getReal(), $result->getReal(), $this->getAssertionPrecision($expected->getReal()));
+        $this->assertEqualsWithDelta($expected->getImaginary(), $result->getImaginary(), $this->getAssertionPrecision($expected->getImaginary()));
 
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
@@ -203,8 +203,8 @@ class ComplexOperationTest extends \PHPUnit\Framework\TestCase
         );
 
         $expected = new Complex($args[2]);
-        $this->assertEquals($expected->getReal(), $result->getReal());
-        $this->assertEquals($expected->getImaginary(), $result->getImaginary());
+        $this->assertEqualsWithDelta($expected->getReal(), $result->getReal(), $this->getAssertionPrecision($expected->getReal()));
+        $this->assertEqualsWithDelta($expected->getImaginary(), $result->getImaginary(), $this->getAssertionPrecision($expected->getImaginary()));
 
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);

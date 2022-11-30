@@ -14,8 +14,10 @@ class acoshTest extends BaseFunctionTestAbstract
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = Functions::acosh($complex);
+        $reverse = $result->cosh();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -28,8 +30,10 @@ class acoshTest extends BaseFunctionTestAbstract
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = $complex->acosh();
+        $reverse = $result->cosh();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }

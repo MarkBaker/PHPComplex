@@ -17,7 +17,10 @@ class atanTest extends BaseFunctionTestAbstract
         }
         $complex = new Complex($args[0]);
         $result = Functions::atan($complex);
+        $reverse = $result->tan();
+
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -33,7 +36,10 @@ class atanTest extends BaseFunctionTestAbstract
         }
         $complex = new Complex($args[0]);
         $result = $complex->atan();
+        $reverse = $result->tan();
+
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }

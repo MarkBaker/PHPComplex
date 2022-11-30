@@ -14,8 +14,10 @@ class asechTest extends BaseFunctionTestAbstract
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = Functions::asech($complex);
+        $reverse = $result->sech();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -28,8 +30,10 @@ class asechTest extends BaseFunctionTestAbstract
         $args = func_get_args();
         $complex = new Complex($args[0]);
         $result = $complex->asech();
+        $reverse = $result->sech();
 
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }

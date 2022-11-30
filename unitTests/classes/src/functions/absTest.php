@@ -15,7 +15,7 @@ class absTest extends BaseFunctionTestAbstract
         $complex = new Complex($args[0]);
         $result = Functions::abs($complex);
 
-        $this->assertEquals($args[1], $result);
+        $this->assertEqualsWithDelta($args[1], $result, $this->getAssertionPrecision($args[1]));
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -29,7 +29,7 @@ class absTest extends BaseFunctionTestAbstract
         $complex = new Complex($args[0]);
         $result = $complex->abs();
 
-        $this->assertEquals($args[1], $result);
+        $this->assertEqualsWithDelta($args[1], $result, $this->getAssertionPrecision($args[1]));
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
