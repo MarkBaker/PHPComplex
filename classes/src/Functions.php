@@ -36,11 +36,7 @@ class Functions
     {
         $complex = Complex::validateComplexArgument($complex);
 
-        $square = clone $complex;
-        $square = Operations::multiply($square, $complex);
-        $invsqrt = new Complex(1.0);
-        $invsqrt = Operations::subtract($invsqrt, $square);
-        $invsqrt = self::sqrt($invsqrt);
+        $invsqrt = self::sqrt(Operations::subtract(1, Operations::multiply($complex, $complex)));
         $adjust = new Complex(
             $complex->getReal() - $invsqrt->getImaginary(),
             $complex->getImaginary() + $invsqrt->getReal()
@@ -219,10 +215,7 @@ class Functions
     {
         $complex = Complex::validateComplexArgument($complex);
 
-        $square = Operations::multiply($complex, $complex);
-        $invsqrt = new Complex(1.0);
-        $invsqrt = Operations::subtract($invsqrt, $square);
-        $invsqrt = self::sqrt($invsqrt);
+        $invsqrt = self::sqrt(Operations::subtract(1, Operations::multiply($complex, $complex)));
         $adjust = new Complex(
             $invsqrt->getReal() - $complex->getImaginary(),
             $invsqrt->getImaginary() + $complex->getReal()
@@ -284,9 +277,21 @@ class Functions
         $uResult = $d1Value->divideBy($d2Value);
         $uResult = self::ln($uResult);
 
+        $realMultiplier = -0.5;
+        $imaginaryMultiplier = 0.5;
+
+        if (abs($uResult->getImaginary()) === M_PI) {
+            // If we have an imaginary value at the max or min (PI or -PI), then we need to ensure
+            //    that the primary is assigned for the correct quadrant.
+            $realMultiplier = (
+                ($uResult->getImaginary() === M_PI && $uResult->getReal() > 0.0) ||
+                ($uResult->getImaginary() === -M_PI && $uResult->getReal() < 0.0)
+            ) ? 0.5 : -0.5;
+        }
+
         return new Complex(
-            (($uResult->getImaginary() == M_PI) ? -M_PI : $uResult->getImaginary()) * -0.5,
-            $uResult->getReal() * 0.5,
+            $uResult->getImaginary() * $realMultiplier,
+            $uResult->getReal() * $imaginaryMultiplier,
             $complex->getSuffix()
         );
     }
