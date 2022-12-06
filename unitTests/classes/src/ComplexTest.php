@@ -10,7 +10,7 @@ class ComplexTest extends \PHPUnit\Framework\TestCase
     private static $precision;
 
     // Number of significant digits used for assertEquals
-    private $significantDigits = 12;
+    private $significantDigits = 14;
 
     /**
      * @beforeClass

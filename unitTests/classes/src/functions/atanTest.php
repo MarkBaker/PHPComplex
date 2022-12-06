@@ -17,7 +17,10 @@ class atanTest extends BaseFunctionTestAbstract
         }
         $complex = new Complex($args[0]);
         $result = Functions::atan($complex);
+        $reverse = $result->tan();
+
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -33,7 +36,10 @@ class atanTest extends BaseFunctionTestAbstract
         }
         $complex = new Complex($args[0]);
         $result = $complex->atan();
+        $reverse = $result->tan();
+
         $this->complexNumberAssertions($args[1], $result);
+        $this->complexNumberAssertions($complex->format(), $reverse);
         // Verify that the original complex value remains unchanged
         $this->assertEquals(new Complex($args[0]), $complex);
     }
@@ -67,6 +73,23 @@ class atanTest extends BaseFunctionTestAbstract
             -0.785398163397448310,
         ];
 
-        return $this->formatOneArgumentTestResultArray($expectedResults);
+        return array_merge(
+            $this->formatOneArgumentTestResultArray($expectedResults),
+            $this->piTestDataProvider()
+        );
+    }
+
+    private function piTestDataProvider(): array
+    {
+        return [
+            'value PI' => [[M_PI, 0.0, null], 1.26262725567891168],
+            'value -PI' => [[-M_PI, 0.0, null], -1.26262725567891168],
+            'value PIi' => [[0.0, M_PI, null], '1.57079632679489662+0.329765314956699108i'],
+            'value -PIi' => [[0.0, -M_PI, null], '-1.57079632679489662-0.329765314956699108i'],
+            'value PI+PIi' => [[M_PI, M_PI, null], '1.40903828502376183+0.15638868878129625i'],
+            'value -PI+PIi' => [[-M_PI, M_PI, null], '-1.40903828502376183+0.15638868878129625i'],
+            'value PI-PIi' => [[M_PI, -M_PI, null], '1.40903828502376183-0.15638868878129625i'],
+            'value -PI-PIi' => [[-M_PI, -M_PI, null], '-1.40903828502376183-0.15638868878129625i'],
+        ];
     }
 }
